@@ -36,5 +36,10 @@ namespace Library_Management_System.UI
         {
 
         }
+
+        private void FormMain_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
