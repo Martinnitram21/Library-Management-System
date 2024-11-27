@@ -1,8 +1,10 @@
-﻿using Library_Management_System.UI;
+﻿using Library_Management_System.Class;
+using Library_Management_System.UI;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
@@ -15,12 +17,11 @@ namespace Library_Management_System
 {
     public partial class FormLogin : Form
     {
+
         public FormLogin()
         {
             InitializeComponent();
         }
-        // Connection string to the MySQL database
-        private string connectionString = "server=localhost;database=librarydb;uid=root;pwd=martinjericho22@2002;";
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -42,8 +43,8 @@ namespace Library_Management_System
 
             try
             {
-                // Connect to the database
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                // Connect to the database using DatabaseHelper
+                using (MySqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
 

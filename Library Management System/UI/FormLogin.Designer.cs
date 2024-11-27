@@ -56,7 +56,7 @@
             this.label2.Location = new System.Drawing.Point(108, 275);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(321, 21);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 5;
             this.label2.Text = "Enter username and password to get started!";
             // 
             // label3
@@ -66,7 +66,7 @@
             this.label3.Location = new System.Drawing.Point(108, 352);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 21);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Username";
             // 
             // txtUsername
@@ -74,7 +74,7 @@
             this.txtUsername.Location = new System.Drawing.Point(112, 376);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(317, 29);
-            this.txtUsername.TabIndex = 2;
+            this.txtUsername.TabIndex = 0;
             // 
             // label4
             // 
@@ -83,7 +83,7 @@
             this.label4.Location = new System.Drawing.Point(108, 432);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 21);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 7;
             this.label4.Text = "Password";
             // 
             // txtPassword
@@ -91,7 +91,7 @@
             this.txtPassword.Location = new System.Drawing.Point(112, 456);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(317, 29);
-            this.txtPassword.TabIndex = 2;
+            this.txtPassword.TabIndex = 1;
             // 
             // btnLogin
             // 
@@ -102,7 +102,7 @@
             this.btnLogin.Location = new System.Drawing.Point(112, 520);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(317, 45);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Login";
             this.btnLogin.UseVisualStyleBackColor = false;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
