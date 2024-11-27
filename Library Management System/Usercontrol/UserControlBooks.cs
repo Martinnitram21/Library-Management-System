@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.Class;
+using Library_Management_System.UI;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -46,6 +47,12 @@ namespace Library_Management_System.Usercontrol
 
         private void UserControlBooks_Load(object sender, EventArgs e)
         {
+        }
+
+        private void btnAdd_Click(object sender, EventArgs e)
+        {
+            FormAddBook formAddBook = new FormAddBook();
+            formAddBook.ShowDialog();
         }
     }
 }

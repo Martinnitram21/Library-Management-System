@@ -63,7 +63,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.Color.DarkViolet;
+            this.panel1.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel1.Controls.Add(this.lblExit);
             this.panel1.Controls.Add(this.lblUser);
             this.panel1.Controls.Add(this.label1);
@@ -152,7 +152,7 @@
             // 
             // panelSlide
             // 
-            this.panelSlide.BackColor = System.Drawing.Color.BlueViolet;
+            this.panelSlide.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panelSlide.Location = new System.Drawing.Point(0, 116);
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(10, 49);
@@ -160,7 +160,7 @@
             // 
             // panel7
             // 
-            this.panel7.BackColor = System.Drawing.Color.BlueViolet;
+            this.panel7.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel7.Location = new System.Drawing.Point(0, 100);
@@ -304,7 +304,7 @@
             // 
             // panel4
             // 
-            this.panel4.BackColor = System.Drawing.Color.DarkViolet;
+            this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(0, 591);
@@ -314,7 +314,7 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
             this.mainPanel.Controls.Add(this.userControlDashboard1);
             this.mainPanel.Controls.Add(this.userControlBooks1);
             this.mainPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -350,6 +350,7 @@
             // userControlDashboard1
             // 
             this.userControlDashboard1.AutoSize = true;
+            this.userControlDashboard1.BackColor = System.Drawing.SystemColors.Control;
             this.userControlDashboard1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.userControlDashboard1.Location = new System.Drawing.Point(0, 0);
             this.userControlDashboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);

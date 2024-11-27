@@ -102,6 +102,12 @@
     <Compile Include="Class\DatabaseHelper.cs" />
     <Compile Include="Class\Member.cs" />
     <Compile Include="Class\Transaction.cs" />
+    <Compile Include="UI\FormAddBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\FormAddBook.Designer.cs">
+      <DependentUpon>FormAddBook.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -164,6 +170,9 @@
     <Compile Include="Usercontrol\UserControlSettings.Designer.cs">
       <DependentUpon>UserControlSettings.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UI\FormAddBook.resx">
+      <DependentUpon>FormAddBook.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </EmbeddedResource>
