@@ -53,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(274, 227);
+            this.label2.Location = new System.Drawing.Point(324, 218);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(88, 21);
             this.label2.TabIndex = 1;
@@ -62,7 +62,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(647, 227);
+            this.label3.Location = new System.Drawing.Point(608, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(156, 21);
             this.label3.TabIndex = 1;
@@ -71,7 +71,7 @@
             // lblTotalBooks
             // 
             this.lblTotalBooks.AutoSize = true;
-            this.lblTotalBooks.Location = new System.Drawing.Point(308, 248);
+            this.lblTotalBooks.Location = new System.Drawing.Point(357, 239);
             this.lblTotalBooks.Name = "lblTotalBooks";
             this.lblTotalBooks.Size = new System.Drawing.Size(17, 21);
             this.lblTotalBooks.TabIndex = 1;
@@ -80,7 +80,7 @@
             // lblTotalMembers
             // 
             this.lblTotalMembers.AutoSize = true;
-            this.lblTotalMembers.Location = new System.Drawing.Point(713, 248);
+            this.lblTotalMembers.Location = new System.Drawing.Point(671, 239);
             this.lblTotalMembers.Name = "lblTotalMembers";
             this.lblTotalMembers.Size = new System.Drawing.Size(17, 21);
             this.lblTotalMembers.TabIndex = 1;
@@ -89,7 +89,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(227, 372);
+            this.label6.Location = new System.Drawing.Point(269, 296);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(193, 21);
             this.label6.TabIndex = 1;
@@ -98,7 +98,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(671, 372);
+            this.label7.Location = new System.Drawing.Point(626, 296);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(116, 21);
             this.label7.TabIndex = 1;
@@ -107,7 +107,7 @@
             // lblBorrowedBooks
             // 
             this.lblBorrowedBooks.AutoSize = true;
-            this.lblBorrowedBooks.Location = new System.Drawing.Point(308, 393);
+            this.lblBorrowedBooks.Location = new System.Drawing.Point(357, 334);
             this.lblBorrowedBooks.Name = "lblBorrowedBooks";
             this.lblBorrowedBooks.Size = new System.Drawing.Size(17, 21);
             this.lblBorrowedBooks.TabIndex = 1;
@@ -116,7 +116,7 @@
             // lblOverdueBooks
             // 
             this.lblOverdueBooks.AutoSize = true;
-            this.lblOverdueBooks.Location = new System.Drawing.Point(713, 393);
+            this.lblOverdueBooks.Location = new System.Drawing.Point(668, 317);
             this.lblOverdueBooks.Name = "lblOverdueBooks";
             this.lblOverdueBooks.Size = new System.Drawing.Size(17, 21);
             this.lblOverdueBooks.TabIndex = 1;
@@ -138,7 +138,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "UserControlDashboard";
-            this.Size = new System.Drawing.Size(1080, 593);
+            this.Size = new System.Drawing.Size(1080, 591);
             this.ResumeLayout(false);
             this.PerformLayout();
 

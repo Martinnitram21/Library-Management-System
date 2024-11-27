@@ -23,7 +23,8 @@ namespace Library_Management_System.UI
             panelSlide.Top = btn.Top;
             panelSlide.Height = btn.Height;
         }
-        UserControlDashboard ucdash = new UserControlDashboard();
+        UserControlDashboard ucDash = new UserControlDashboard();
+        UserControlBooks ucBook = new UserControlBooks();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -47,8 +48,11 @@ namespace Library_Management_System.UI
         {
             MovePanel(btnDashboard);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            ucdash.Dock = DockStyle.Fill;  // Make it fill the panel
-            mainPanel.Controls.Add(ucdash); // Add the user control to the panel
+            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
+            mainPanel.Controls.Add(ucDash); // Add the user control to the panel
+            //userControlBooks1.Hide();
+            //userControlDashboard1.Show();
+
         }
 
         private void panel7_Paint(object sender, PaintEventArgs e)
@@ -59,6 +63,11 @@ namespace Library_Management_System.UI
         private void btnBooks_Click(object sender, EventArgs e)
         {
             MovePanel(btnBooks);
+            mainPanel.Controls.Clear();      // Clear existing controls in the panel
+            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
+            mainPanel.Controls.Add(ucBook); // Add the user control to the panel
+            //userControlDashboard1.Hide();
+            //userControlBooks1.Show();
         }
 
         private void btnMembers_Click(object sender, EventArgs e)
@@ -99,6 +108,11 @@ namespace Library_Management_System.UI
         private void timer1_Tick_1(object sender, EventArgs e)
         {
             lblDateTime.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt");
+        }
+
+        private void userControlBooks1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

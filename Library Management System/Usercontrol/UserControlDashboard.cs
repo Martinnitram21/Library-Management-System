@@ -21,11 +21,12 @@ namespace Library_Management_System.Usercontrol
             LoadDashboardData();
         }
         // Connection string (replace with your actual connection string)
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
         private void LoadDashboardData()
         {
             try
             {
-                using (MySqlConnection conn = DatabaseHelper.GetConnection())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -44,6 +45,7 @@ namespace Library_Management_System.Usercontrol
             }
             catch (Exception ex)
             {
+                // Display a message box in case of errors
                 MessageBox.Show($"Error loading dashboard data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }

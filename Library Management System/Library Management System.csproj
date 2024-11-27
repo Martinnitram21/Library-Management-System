@@ -122,11 +122,47 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usercontrol\UserControlBooks.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlBooks.Designer.cs">
+      <DependentUpon>UserControlBooks.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlBorrowReturn.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlBorrowReturn.Designer.cs">
+      <DependentUpon>UserControlBorrowReturn.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\UserControlDashboard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Usercontrol\UserControlDashboard.Designer.cs">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlMembers.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlMembers.Designer.cs">
+      <DependentUpon>UserControlMembers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlReports.Designer.cs">
+      <DependentUpon>UserControlReports.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlSearch.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlSearch.Designer.cs">
+      <DependentUpon>UserControlSearch.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlSettings.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\UserControlSettings.Designer.cs">
+      <DependentUpon>UserControlSettings.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\FormLogin.resx">
       <DependentUpon>FormLogin.cs</DependentUpon>
@@ -145,6 +181,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\FormSignup.resx">
       <DependentUpon>FormSignup.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\UserControlBooks.resx">
+      <DependentUpon>UserControlBooks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\UserControlDashboard.resx">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>

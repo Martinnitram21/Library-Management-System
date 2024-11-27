@@ -10,10 +10,18 @@ namespace Library_Management_System.Class
 {
     internal class DatabaseHelper
     {
-        // Method to get the connection string from App.config
+        // Get the connection string from app.config
         public static string GetConnectionString()
         {
-            return ConfigurationManager.ConnectionStrings["LibraryDbConnection"].ConnectionString;
+            string connectionString = ConfigurationManager.ConnectionStrings["LibraryDbConnection"].ConnectionString;
+
+            // Check if the connection string is null or empty
+            if (string.IsNullOrEmpty(connectionString))
+            {
+                throw new InvalidOperationException("Connection string is not found in app.config.");
+            }
+
+            return connectionString;
         }
 
         // Method to create and return a new MySqlConnection
