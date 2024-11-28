@@ -221,6 +221,9 @@
     <EmbeddedResource Include="Usercontrol\UserControlMembers.resx">
       <DependentUpon>UserControlMembers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\UserControlReports.resx">
+      <DependentUpon>UserControlReports.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

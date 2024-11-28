@@ -27,6 +27,7 @@ namespace Library_Management_System.UI
         UserControlBooks ucBook = new UserControlBooks();
         UserControlMembers ucMember = new UserControlMembers();
         UserControlBorrowReturn ucBorrow = new UserControlBorrowReturn();
+        UserControlReports ucReport = new UserControlReports();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -94,6 +95,8 @@ namespace Library_Management_System.UI
         private void btnReports_Click(object sender, EventArgs e)
         {
             MovePanel(btnReports);
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(ucReport);
         }
 
         private void btnSettings_Click(object sender, EventArgs e)
