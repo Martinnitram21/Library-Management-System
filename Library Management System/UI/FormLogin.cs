@@ -27,6 +27,7 @@ namespace Library_Management_System
         {
 
         }
+        string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
@@ -44,7 +45,7 @@ namespace Library_Management_System
             try
             {
                 // Connect to the database using DatabaseHelper
-                using (MySqlConnection conn = DatabaseHelper.GetConnection())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
@@ -84,6 +85,11 @@ namespace Library_Management_System
         {
             FormSignup signUpForm = new FormSignup();
             signUpForm.ShowDialog(); // Open the Sign-Up Form as a dialog
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
