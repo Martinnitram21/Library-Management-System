@@ -32,8 +32,8 @@ namespace Library_Management_System.Usercontrol
 
                     // Fetch data from the database
                     int totalBooks = GetScalarValue(conn, "SELECT COUNT(*) FROM books_tbl");
-                    int borrowedBooks = GetScalarValue(conn, "SELECT COUNT(*) FROM transactions_tbl WHERE Status = 'Borrowed'");
-                    int overdueBooks = GetScalarValue(conn, "SELECT COUNT(*) FROM transactions_tbl WHERE Status = 'Borrowed' AND due_date < NOW()");
+                    int borrowedBooks = GetScalarValue(conn, "SELECT COUNT(*) FROM transactions_tbl WHERE transaction_Status = 'Borrowed'");
+                    int overdueBooks = GetScalarValue(conn, "SELECT COUNT(*) FROM transactions_tbl WHERE transaction_Status = 'Borrowed' AND due_date < NOW()");
                     int totalMembers = GetScalarValue(conn, "SELECT COUNT(*) FROM members_tbl");
 
                     // Set the values to labels or other controls in your user control

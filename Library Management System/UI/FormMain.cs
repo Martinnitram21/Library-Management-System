@@ -26,6 +26,7 @@ namespace Library_Management_System.UI
         UserControlDashboard ucDash = new UserControlDashboard();
         UserControlBooks ucBook = new UserControlBooks();
         UserControlMembers ucMember = new UserControlMembers();
+        UserControlBorrowReturn ucBorrow = new UserControlBorrowReturn();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -81,6 +82,8 @@ namespace Library_Management_System.UI
         private void btnBorrowReturn_Click(object sender, EventArgs e)
         {
             MovePanel(btnBorrowReturn);
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(ucBorrow);
         }
 
         private void btnSearch_Click(object sender, EventArgs e)
