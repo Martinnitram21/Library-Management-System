@@ -25,6 +25,7 @@ namespace Library_Management_System.UI
         }
         UserControlDashboard ucDash = new UserControlDashboard();
         UserControlBooks ucBook = new UserControlBooks();
+        UserControlMembers ucMember = new UserControlMembers();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -48,8 +49,8 @@ namespace Library_Management_System.UI
         {
             MovePanel(btnDashboard);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
             mainPanel.Controls.Add(ucDash); // Add the user control to the panel
+            //ucDash.Dock = DockStyle.Fill;  // Make it fill the panel
             //userControlBooks1.Hide();
             //userControlDashboard1.Show();
 
@@ -64,8 +65,8 @@ namespace Library_Management_System.UI
         {
             MovePanel(btnBooks);
             mainPanel.Controls.Clear();      // Clear existing controls in the panel
-            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
             mainPanel.Controls.Add(ucBook); // Add the user control to the panel
+            //ucBook.Dock = DockStyle.Fill;  // Make it fill the panel
             //userControlDashboard1.Hide();
             //userControlBooks1.Show();
         }
@@ -73,6 +74,8 @@ namespace Library_Management_System.UI
         private void btnMembers_Click(object sender, EventArgs e)
         {
             MovePanel(btnMembers);
+            mainPanel.Controls.Clear();      // Clear existing controls in the panel
+            mainPanel.Controls.Add(ucMember); // Add the user control to the panel
         }
 
         private void btnBorrowReturn_Click(object sender, EventArgs e)

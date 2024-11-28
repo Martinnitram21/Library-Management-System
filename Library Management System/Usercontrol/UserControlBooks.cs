@@ -23,7 +23,7 @@ namespace Library_Management_System.Usercontrol
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
         private void LoadBooksData()
         {
-            string query = "SELECT Title, Author, Category, ISBN, Genre, Year_Published, status FROM books_tbl";
+            string query = "SELECT Title, Author, Category, ISBN, Genre, Year_Published, book_status FROM books_tbl";
 
             try
             {
