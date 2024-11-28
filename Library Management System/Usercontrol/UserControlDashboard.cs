@@ -21,7 +21,8 @@ namespace Library_Management_System.Usercontrol
             LoadDashboardData();
         }
         // Connection string (replace with your actual connection string)
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=129765090001;";
+        //private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
         private void LoadDashboardData()
         {
             try

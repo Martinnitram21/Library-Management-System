@@ -115,6 +115,7 @@
             this.dgvBooks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvBooks.Size = new System.Drawing.Size(1073, 451);
             this.dgvBooks.TabIndex = 4;
+            this.dgvBooks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBooks_CellContentClick);
             // 
             // Title
             // 

@@ -20,7 +20,8 @@ namespace Library_Management_System.Usercontrol
             InitializeComponent();
             LoadBooksData();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=129765090001;";
+        //private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
         private void LoadBooksData()
         {
             string query = "SELECT Title, Author, Category, ISBN, Genre, Year_Published, status FROM books_tbl";
@@ -53,6 +54,11 @@ namespace Library_Management_System.Usercontrol
         {
             FormAddBook formAddBook = new FormAddBook();
             formAddBook.ShowDialog();
+        }
+
+        private void dgvBooks_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

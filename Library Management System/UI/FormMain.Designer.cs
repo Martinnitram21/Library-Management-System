@@ -49,11 +49,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
             this.mainPanel = new System.Windows.Forms.Panel();
+            this.userControlDashboard2 = new Library_Management_System.Usercontrol.UserControlDashboard();
+            this.userControlBooks2 = new Library_Management_System.Usercontrol.UserControlBooks();
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.userControlDashboard1 = new Library_Management_System.Usercontrol.UserControlDashboard();
-            this.userControlBooks1 = new Library_Management_System.Usercontrol.UserControlBooks();
+            this.userControlMembers1 = new Library_Management_System.Usercontrol.UserControlMembers();
             this.panel1.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -315,13 +316,31 @@
             // mainPanel
             // 
             this.mainPanel.BackColor = System.Drawing.SystemColors.Control;
-            this.mainPanel.Controls.Add(this.userControlDashboard1);
-            this.mainPanel.Controls.Add(this.userControlBooks1);
+            this.mainPanel.Controls.Add(this.userControlMembers1);
+            this.mainPanel.Controls.Add(this.userControlDashboard2);
+            this.mainPanel.Controls.Add(this.userControlBooks2);
             this.mainPanel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.mainPanel.Location = new System.Drawing.Point(286, 100);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1080, 591);
             this.mainPanel.TabIndex = 4;
+            // 
+            // userControlDashboard2
+            // 
+            this.userControlDashboard2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.userControlDashboard2.Location = new System.Drawing.Point(0, 0);
+            this.userControlDashboard2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userControlDashboard2.Name = "userControlDashboard2";
+            this.userControlDashboard2.Size = new System.Drawing.Size(1080, 591);
+            this.userControlDashboard2.TabIndex = 1;
+            // 
+            // userControlBooks2
+            // 
+            this.userControlBooks2.AutoSize = true;
+            this.userControlBooks2.Location = new System.Drawing.Point(0, -3);
+            this.userControlBooks2.Name = "userControlBooks2";
+            this.userControlBooks2.Size = new System.Drawing.Size(1080, 591);
+            this.userControlBooks2.TabIndex = 0;
             // 
             // label4
             // 
@@ -347,30 +366,15 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
             // 
-            // userControlDashboard1
+            // userControlMembers1
             // 
-            this.userControlDashboard1.AutoSize = true;
-            this.userControlDashboard1.BackColor = System.Drawing.SystemColors.Control;
-            this.userControlDashboard1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.userControlDashboard1.Location = new System.Drawing.Point(0, 0);
-            this.userControlDashboard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.userControlDashboard1.Name = "userControlDashboard1";
-            this.userControlDashboard1.Size = new System.Drawing.Size(1080, 591);
-            this.userControlDashboard1.TabIndex = 1;
-            this.userControlDashboard1.Visible = false;
-            // 
-            // userControlBooks1
-            // 
-            this.userControlBooks1.AutoScroll = true;
-            this.userControlBooks1.AutoSize = true;
-            this.userControlBooks1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.userControlBooks1.Location = new System.Drawing.Point(0, 0);
-            this.userControlBooks1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.userControlBooks1.Name = "userControlBooks1";
-            this.userControlBooks1.Size = new System.Drawing.Size(1080, 591);
-            this.userControlBooks1.TabIndex = 0;
-            this.userControlBooks1.Visible = false;
-            this.userControlBooks1.Load += new System.EventHandler(this.userControlBooks1_Load);
+            this.userControlMembers1.AutoSize = true;
+            this.userControlMembers1.Location = new System.Drawing.Point(0, 0);
+            this.userControlMembers1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.userControlMembers1.Name = "userControlMembers1";
+            this.userControlMembers1.Size = new System.Drawing.Size(1586, 670);
+            this.userControlMembers1.TabIndex = 2;
+            this.userControlMembers1.Visible = false;
             // 
             // FormMain
             // 
@@ -426,7 +430,8 @@
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timer1;
-        private Usercontrol.UserControlBooks userControlBooks1;
-        private Usercontrol.UserControlDashboard userControlDashboard1;
+        private Usercontrol.UserControlDashboard userControlDashboard2;
+        private Usercontrol.UserControlBooks userControlBooks2;
+        private Usercontrol.UserControlMembers userControlMembers1;
     }
 }
