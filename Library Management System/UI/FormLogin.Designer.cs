@@ -43,7 +43,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI Black", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.BlueViolet;
-            this.label1.Location = new System.Drawing.Point(104, 215);
+            this.label1.Location = new System.Drawing.Point(100, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(250, 45);
             this.label1.TabIndex = 0;
@@ -53,7 +53,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(108, 275);
+            this.label2.Location = new System.Drawing.Point(104, 121);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(321, 21);
             this.label2.TabIndex = 1;
@@ -63,7 +63,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label3.Location = new System.Drawing.Point(108, 352);
+            this.label3.Location = new System.Drawing.Point(104, 198);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(81, 21);
             this.label3.TabIndex = 1;
@@ -71,7 +71,7 @@
             // 
             // txtUsername
             // 
-            this.txtUsername.Location = new System.Drawing.Point(112, 376);
+            this.txtUsername.Location = new System.Drawing.Point(108, 222);
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(317, 29);
             this.txtUsername.TabIndex = 2;
@@ -80,7 +80,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.label4.Location = new System.Drawing.Point(108, 432);
+            this.label4.Location = new System.Drawing.Point(104, 278);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(76, 21);
             this.label4.TabIndex = 1;
@@ -88,7 +88,7 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Location = new System.Drawing.Point(112, 456);
+            this.txtPassword.Location = new System.Drawing.Point(108, 302);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(317, 29);
             this.txtPassword.TabIndex = 2;
@@ -99,7 +99,7 @@
             this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnLogin.Location = new System.Drawing.Point(112, 520);
+            this.btnLogin.Location = new System.Drawing.Point(108, 366);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(317, 45);
             this.btnLogin.TabIndex = 3;
@@ -113,7 +113,7 @@
             this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignup.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSignup.Location = new System.Drawing.Point(112, 571);
+            this.btnSignup.Location = new System.Drawing.Point(108, 417);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(317, 45);
             this.btnSignup.TabIndex = 3;
@@ -125,7 +125,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(549, 727);
+            this.ClientSize = new System.Drawing.Size(521, 522);
             this.Controls.Add(this.btnSignup);
             this.Controls.Add(this.btnLogin);
             this.Controls.Add(this.txtPassword);

@@ -17,7 +17,7 @@ namespace Library_Management_System.UI
         {
             InitializeComponent();
         }
-        private string connectionString = "server=localhost;database=librarydb;uid=root;pwd=martinjericho22@2002;";
+        private string connectionString = "server=localhost;database=librarydb;uid=root;pwd=129765090001";
         private void btnSignup_Click(object sender, EventArgs e)
         {
             // Get user inputs

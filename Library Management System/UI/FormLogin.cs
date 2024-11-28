@@ -20,7 +20,7 @@ namespace Library_Management_System
             InitializeComponent();
         }
         // Connection string to the MySQL database
-        private string connectionString = "server=localhost;database=librarydb;uid=root;pwd=martinjericho22@2002;";
+        private string connectionString = "server=localhost;database=librarydb;uid=root;pwd=129765090001;";
 
         private void label1_Click(object sender, EventArgs e)
         {
