@@ -20,13 +20,13 @@ namespace Library_Management_System.Usercontrol
 
         private void btnBorrow_Click(object sender, EventArgs e)
         {
-            BorrowForm borrowForm = new BorrowForm();
+            FormBorrowBook borrowForm = new FormBorrowBook();
             borrowForm.ShowDialog(); // Opens the borrow form
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            ReturnForm returnForm = new ReturnForm();
+            FormReturnBook returnForm = new FormReturnBook();
             returnForm.ShowDialog(); // Opens the return form
         }
     }

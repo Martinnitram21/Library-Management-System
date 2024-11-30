@@ -31,9 +31,9 @@
             this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
             this.lblExit = new System.Windows.Forms.Label();
-            this.lblUser = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.lblDateTime = new System.Windows.Forms.Label();
+            this.lblUser = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panelSlide = new System.Windows.Forms.Panel();
@@ -61,10 +61,8 @@
             // 
             this.panel1.BackColor = System.Drawing.Color.Maroon;
             this.panel1.Controls.Add(this.lblExit);
-            this.panel1.Controls.Add(this.lblUser);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.lblDateTime);
-            this.panel1.Controls.Add(this.label2);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel1.Location = new System.Drawing.Point(0, 0);
@@ -77,23 +75,12 @@
             this.lblExit.AutoSize = true;
             this.lblExit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblExit.Location = new System.Drawing.Point(1283, 76);
+            this.lblExit.Location = new System.Drawing.Point(1293, 9);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(34, 21);
             this.lblExit.TabIndex = 5;
             this.lblExit.Text = "Exit";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
-            // 
-            // lblUser
-            // 
-            this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblUser.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblUser.Location = new System.Drawing.Point(1175, 76);
-            this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(42, 21);
-            this.lblUser.TabIndex = 5;
-            this.lblUser.Text = "User";
             // 
             // label1
             // 
@@ -112,18 +99,29 @@
             this.lblDateTime.AutoSize = true;
             this.lblDateTime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblDateTime.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.lblDateTime.Location = new System.Drawing.Point(466, 76);
+            this.lblDateTime.Location = new System.Drawing.Point(1160, 58);
             this.lblDateTime.Name = "lblDateTime";
             this.lblDateTime.Size = new System.Drawing.Size(74, 21);
             this.lblDateTime.TabIndex = 5;
             this.lblDateTime.Text = "Welcome";
+            // 
+            // lblUser
+            // 
+            this.lblUser.AutoSize = true;
+            this.lblUser.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.ForeColor = System.Drawing.Color.DeepSkyBlue;
+            this.lblUser.Location = new System.Drawing.Point(116, 21);
+            this.lblUser.Name = "lblUser";
+            this.lblUser.Size = new System.Drawing.Size(42, 21);
+            this.lblUser.TabIndex = 5;
+            this.lblUser.Text = "User";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DeepSkyBlue;
-            this.label2.Location = new System.Drawing.Point(1077, 76);
+            this.label2.Location = new System.Drawing.Point(23, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 21);
             this.label2.TabIndex = 5;
@@ -131,6 +129,7 @@
             // 
             // panel3
             // 
+            this.panel3.BackColor = System.Drawing.Color.Azure;
             this.panel3.Controls.Add(this.panelSlide);
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.btnSettings);
@@ -155,7 +154,7 @@
             this.panelSlide.Location = new System.Drawing.Point(0, 116);
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(10, 49);
-            this.panelSlide.TabIndex = 0;
+            this.panelSlide.TabIndex = 6;
             // 
             // panel7
             // 
@@ -279,6 +278,8 @@
             // 
             this.panel5.BackColor = System.Drawing.Color.Azure;
             this.panel5.Controls.Add(this.label3);
+            this.panel5.Controls.Add(this.lblUser);
+            this.panel5.Controls.Add(this.label2);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel5.Location = new System.Drawing.Point(0, 0);

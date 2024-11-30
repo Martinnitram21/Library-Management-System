@@ -102,6 +102,7 @@
             // 
             this.dgvBooks.AllowUserToAddRows = false;
             this.dgvBooks.AllowUserToDeleteRows = false;
+            this.dgvBooks.BackgroundColor = System.Drawing.Color.Azure;
             this.dgvBooks.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -227,6 +228,7 @@
             this.btnSearchBooks.BackColor = System.Drawing.Color.Honeydew;
             this.btnSearchBooks.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnSearchBooks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchBooks.FlatAppearance.BorderSize = 0;
             this.btnSearchBooks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearchBooks.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSearchBooks.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;

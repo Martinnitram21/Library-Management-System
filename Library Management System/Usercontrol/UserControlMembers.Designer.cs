@@ -35,13 +35,13 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
-            this.btnSearchMembers = new System.Windows.Forms.Button();
             this.member_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.membership_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.member_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btnSearchMembers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -50,7 +50,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(4, 59);
+            this.label2.Location = new System.Drawing.Point(4, 67);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 21);
@@ -61,9 +61,9 @@
             // txtSearchMembers
             // 
             this.txtSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchMembers.Location = new System.Drawing.Point(155, 56);
+            this.txtSearchMembers.Location = new System.Drawing.Point(105, 64);
             this.txtSearchMembers.Name = "txtSearchMembers";
-            this.txtSearchMembers.Size = new System.Drawing.Size(123, 29);
+            this.txtSearchMembers.Size = new System.Drawing.Size(106, 29);
             this.txtSearchMembers.TabIndex = 6;
             this.txtSearchMembers.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -122,7 +122,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 0);
+            this.label1.Location = new System.Drawing.Point(4, 14);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(336, 45);
@@ -133,6 +133,7 @@
             // 
             this.dgvMembers.AllowUserToAddRows = false;
             this.dgvMembers.AllowUserToDeleteRows = false;
+            this.dgvMembers.BackgroundColor = System.Drawing.Color.Azure;
             this.dgvMembers.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -142,29 +143,12 @@
             this.phone,
             this.membership_date,
             this.member_status});
-            this.dgvMembers.Location = new System.Drawing.Point(4, 83);
+            this.dgvMembers.Location = new System.Drawing.Point(3, 91);
             this.dgvMembers.Name = "dgvMembers";
             this.dgvMembers.ReadOnly = true;
             this.dgvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMembers.Size = new System.Drawing.Size(714, 286);
             this.dgvMembers.TabIndex = 10;
-            // 
-            // btnSearchMembers
-            // 
-            this.btnSearchMembers.BackColor = System.Drawing.Color.Honeydew;
-            this.btnSearchMembers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSearchMembers.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSearchMembers.FlatAppearance.BorderSize = 0;
-            this.btnSearchMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearchMembers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnSearchMembers.Location = new System.Drawing.Point(284, 56);
-            this.btnSearchMembers.Name = "btnSearchMembers";
-            this.btnSearchMembers.Size = new System.Drawing.Size(87, 26);
-            this.btnSearchMembers.TabIndex = 8;
-            this.btnSearchMembers.Text = "Search";
-            this.btnSearchMembers.UseVisualStyleBackColor = false;
-            this.btnSearchMembers.Click += new System.EventHandler(this.btnSearchMembers_Click);
             // 
             // member_id
             // 
@@ -218,6 +202,23 @@
             this.member_status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             this.member_status.Width = 90;
             // 
+            // btnSearchMembers
+            // 
+            this.btnSearchMembers.BackColor = System.Drawing.Color.Honeydew;
+            this.btnSearchMembers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSearchMembers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchMembers.FlatAppearance.BorderSize = 0;
+            this.btnSearchMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchMembers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSearchMembers.Location = new System.Drawing.Point(217, 62);
+            this.btnSearchMembers.Name = "btnSearchMembers";
+            this.btnSearchMembers.Size = new System.Drawing.Size(87, 26);
+            this.btnSearchMembers.TabIndex = 8;
+            this.btnSearchMembers.Text = "Search";
+            this.btnSearchMembers.UseVisualStyleBackColor = false;
+            this.btnSearchMembers.Click += new System.EventHandler(this.btnSearchMembers_Click);
+            // 
             // UserControlMembers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,7 +233,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UserControlMembers";
-            this.Size = new System.Drawing.Size(721, 379);
+            this.Size = new System.Drawing.Size(721, 380);
             this.Load += new System.EventHandler(this.UserControlMembers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).EndInit();
             this.ResumeLayout(false);

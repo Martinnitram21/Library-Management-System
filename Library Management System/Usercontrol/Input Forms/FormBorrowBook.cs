@@ -12,9 +12,9 @@ using System.Windows.Forms;
 
 namespace Library_Management_System.UI
 {
-    public partial class BorrowForm : Form
+    public partial class FormBorrowBook : Form
     {
-        public BorrowForm()
+        public FormBorrowBook()
         {
             InitializeComponent();
             LoadBooks();

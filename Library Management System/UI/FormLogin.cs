@@ -79,6 +79,66 @@ namespace Library_Management_System
                 // Handle errors
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+            /*
+            string username = txtUsername.Text.Trim();
+            string password = txtPassword.Text.Trim();
+            string selectedRole = cmbRole.SelectedItem?.ToString(); // Get selected role
+
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(selectedRole))
+            {
+                MessageBox.Show("Please fill in all fields and select a role.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Query to fetch user details and verify role
+                    string query = "SELECT role FROM users_tbl WHERE username = @username AND password_hash = SHA2(@password, 256) AND role = @role";
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@username", username);
+                        cmd.Parameters.AddWithValue("@password", password);
+                        cmd.Parameters.AddWithValue("@role", selectedRole.ToLower());
+
+                        object result = cmd.ExecuteScalar();
+
+                        if (result != null)
+                        {
+                            string role = result.ToString();
+
+                            if (role == "admin")
+                            {
+                                MessageBox.Show("Welcome Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Open admin dashboard
+                                AdminDashboard adminForm = new AdminDashboard();
+                                adminForm.Show();
+                                this.Hide();
+                            }
+                            else if (role == "staff")
+                            {
+                                MessageBox.Show("Welcome Staff!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                // Open staff dashboard
+                                StaffDashboard staffForm = new StaffDashboard();
+                                staffForm.Show();
+                                this.Hide();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid username, password, or role.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            */
         }
 
         private void btnSignup_Click(object sender, EventArgs e)

@@ -23,7 +23,7 @@ namespace Library_Management_System.Usercontrol
         {
             string query = @"
                 SELECT 
-                    Book_Id AS 'book_ID', 
+                    Book_Id AS 'Book ID', 
                     Title AS 'Title', 
                     Author AS 'Author', 
                     Category AS 'Category', 
@@ -51,11 +51,11 @@ namespace Library_Management_System.Usercontrol
             //string query = "SELECT Member_Id AS 'ID', Name AS 'Name', Email AS 'Email', Phone AS 'Phone', member_Status AS 'Status' FROM Members_tbl";
             string query = @"
         SELECT 
-            member_id AS 'ID', 
+            member_id AS 'Member ID', 
             name AS 'Name', 
             Email AS 'Email', 
             Phone AS 'Phone',  
-            member_Status AS 'member_Status' 
+            member_Status AS 'Member Status' 
         FROM members_tbl";
 
             // Add a WHERE clause if there's a search query

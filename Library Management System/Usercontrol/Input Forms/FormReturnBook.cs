@@ -13,9 +13,9 @@ using System.Windows.Forms;
 
 namespace Library_Management_System.UI
 {
-    public partial class ReturnForm : Form
+    public partial class FormReturnBook : Form
     {
-        public ReturnForm()
+        public FormReturnBook()
         {
             InitializeComponent();
             LoadMembers();
@@ -187,8 +187,11 @@ namespace Library_Management_System.UI
                         }
                     }
 
-                    // Update Transactions table to mark the book as returned
-                    string updateTransactionQuery = "UPDATE Transactions_tbl SET transaction_Status = 'Returned' WHERE Book_Id = @BookId AND Member_Id = @MemberId AND transaction_Status = 'Borrowed'";
+                    // Update Transactions table to mark the book as returned and set the return date
+                    string updateTransactionQuery = @"
+                    UPDATE Transactions_tbl 
+                    SET transaction_Status = 'Returned', Return_Date = NOW() 
+                    WHERE Book_Id = @BookId AND Member_Id = @MemberId AND transaction_Status = 'Borrowed'";
                     MySqlCommand updateTransactionCmd = new MySqlCommand(updateTransactionQuery, conn);
                     updateTransactionCmd.Parameters.AddWithValue("@BookId", bookId);
                     updateTransactionCmd.Parameters.AddWithValue("@MemberId", memberId);

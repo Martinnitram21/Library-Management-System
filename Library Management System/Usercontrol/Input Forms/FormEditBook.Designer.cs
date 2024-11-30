@@ -54,7 +54,7 @@
             this.txtYear.Location = new System.Drawing.Point(38, 411);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(266, 29);
-            this.txtYear.TabIndex = 20;
+            this.txtYear.TabIndex = 5;
             // 
             // btnCancel
             // 
@@ -64,7 +64,7 @@
             this.btnCancel.Location = new System.Drawing.Point(161, 492);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 40);
-            this.btnCancel.TabIndex = 18;
+            this.btnCancel.TabIndex = 7;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
@@ -77,7 +77,7 @@
             this.btnEdit.Location = new System.Drawing.Point(291, 492);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(124, 40);
-            this.btnEdit.TabIndex = 19;
+            this.btnEdit.TabIndex = 6;
             this.btnEdit.Text = "Save";
             this.btnEdit.UseVisualStyleBackColor = false;
             this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
@@ -111,7 +111,7 @@
             this.comboGenre.Location = new System.Drawing.Point(234, 277);
             this.comboGenre.Name = "comboGenre";
             this.comboGenre.Size = new System.Drawing.Size(181, 29);
-            this.comboGenre.TabIndex = 16;
+            this.comboGenre.TabIndex = 3;
             // 
             // comboCategory
             // 
@@ -123,7 +123,7 @@
             this.comboCategory.Location = new System.Drawing.Point(34, 277);
             this.comboCategory.Name = "comboCategory";
             this.comboCategory.Size = new System.Drawing.Size(193, 29);
-            this.comboCategory.TabIndex = 17;
+            this.comboCategory.TabIndex = 2;
             // 
             // txtISBN
             // 
@@ -131,7 +131,7 @@
             this.txtISBN.Location = new System.Drawing.Point(34, 343);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(380, 29);
-            this.txtISBN.TabIndex = 13;
+            this.txtISBN.TabIndex = 4;
             // 
             // txtAuthor
             // 
@@ -139,7 +139,7 @@
             this.txtAuthor.Location = new System.Drawing.Point(35, 209);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(380, 29);
-            this.txtAuthor.TabIndex = 14;
+            this.txtAuthor.TabIndex = 1;
             // 
             // label8
             // 
@@ -191,7 +191,7 @@
             this.txtTitle.Location = new System.Drawing.Point(38, 143);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(380, 29);
-            this.txtTitle.TabIndex = 15;
+            this.txtTitle.TabIndex = 0;
             // 
             // label3
             // 

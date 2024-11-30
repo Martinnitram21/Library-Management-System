@@ -98,13 +98,76 @@ namespace Library_Management_System.Usercontrol
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
+            if (dgvMembers.SelectedRows.Count > 0)
+            {
+                // Get the selected member's ID
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member_ID"].Value);
 
+                // Open the edit form and pass the member ID
+                FormEditMember formEditMember = new FormEditMember(memberId);
+                formEditMember.ShowDialog();
+
+                // Refresh data after editing
+                LoadMembersData();
+            }
+            else
+            {
+                MessageBox.Show("Please select a member to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
+            if (dgvMembers.SelectedRows.Count > 0)
+            {
+                // Get the selected member's ID
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member_ID"].Value);
 
+                // Confirm deletion
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this member?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteMemberFromDatabase(memberId);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a member to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
         }
+
+        private void DeleteMemberFromDatabase(int memberId)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM Members_tbl WHERE Member_Id = @MemberId";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@MemberId", memberId);
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Member deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadMembersData(); // Refresh the DataGridView
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the member. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error deleting member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
 
         private void label2_Click(object sender, EventArgs e)
         {
