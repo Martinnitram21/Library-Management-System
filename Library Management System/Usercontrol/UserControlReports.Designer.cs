@@ -101,6 +101,7 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.Size = new System.Drawing.Size(679, 323);
             this.dataGridViewBooks.TabIndex = 0;
+            this.dataGridViewBooks.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBooks_ColumnHeaderMouseClick);
             // 
             // tabPage2
             // 

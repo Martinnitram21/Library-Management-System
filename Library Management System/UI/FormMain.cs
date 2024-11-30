@@ -89,7 +89,6 @@ namespace Library_Management_System.UI
 
         private void btnSearch_Click(object sender, EventArgs e)
         {
-            MovePanel(btnSearch);
         }
 
         private void btnReports_Click(object sender, EventArgs e)

@@ -208,5 +208,10 @@ namespace Library_Management_System.Usercontrol
                     break;
             }
         }
+
+        private void dataGridViewBooks_ColumnHeaderMouseClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+
+        }
     }
 }

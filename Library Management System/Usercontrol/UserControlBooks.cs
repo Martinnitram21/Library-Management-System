@@ -103,5 +103,71 @@ namespace Library_Management_System.Usercontrol
             string searchQuery = txtSearchBooks.Text.Trim();
             LoadBooksData(searchQuery);
         }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (dgvBooks.SelectedRows.Count > 0)
+            {
+                int bookId = Convert.ToInt32(dgvBooks.SelectedRows[0].Cells["book_id"].Value);
+                FormEditBook formEditBook = new FormEditBook(bookId);
+                formEditBook.ShowDialog();
+                LoadBooksData(); // Refresh the grid after editing
+            }
+            else
+            {
+                MessageBox.Show("Please select a book to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (dgvBooks.SelectedRows.Count > 0)
+            {
+                int bookId = Convert.ToInt32(dgvBooks.SelectedRows[0].Cells["book_id"].Value);
+
+                DialogResult result = MessageBox.Show("Are you sure you want to delete this book?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (result == DialogResult.Yes)
+                {
+                    DeleteBookFromDatabase(bookId);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a book to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void DeleteBookFromDatabase(int bookId)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+                    string query = "DELETE FROM books_tbl WHERE Book_Id = @BookId";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@BookId", bookId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Book deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadBooksData(); // Refresh the DataGridView
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the book. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
