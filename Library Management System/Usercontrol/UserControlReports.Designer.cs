@@ -31,21 +31,24 @@
             this.label1 = new System.Windows.Forms.Label();
             this.tabControlReports = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.dataGridViewMembers = new System.Windows.Forms.DataGridView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridViewTransactions = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dataGridViewOverdueBooks = new System.Windows.Forms.DataGridView();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.tabControlReports.SuspendLayout();
             this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
+            this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).BeginInit();
+            this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverdueBooks)).BeginInit();
             this.SuspendLayout();
             // 
@@ -86,38 +89,6 @@
             this.tabPage1.Text = "Books";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.dataGridViewMembers);
-            this.tabPage2.Location = new System.Drawing.Point(32, 4);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(679, 323);
-            this.tabPage2.TabIndex = 0;
-            this.tabPage2.Text = "Members";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.dataGridViewTransactions);
-            this.tabPage3.Location = new System.Drawing.Point(32, 4);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(679, 323);
-            this.tabPage3.TabIndex = 1;
-            this.tabPage3.Text = "Transaction";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.dataGridViewOverdueBooks);
-            this.tabPage4.Location = new System.Drawing.Point(32, 4);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(679, 323);
-            this.tabPage4.TabIndex = 2;
-            this.tabPage4.Text = "Overdue";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
             // dataGridViewBooks
             // 
             this.dataGridViewBooks.AllowUserToAddRows = false;
@@ -130,6 +101,16 @@
             this.dataGridViewBooks.ReadOnly = true;
             this.dataGridViewBooks.Size = new System.Drawing.Size(679, 323);
             this.dataGridViewBooks.TabIndex = 0;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.dataGridViewMembers);
+            this.tabPage2.Location = new System.Drawing.Point(32, 4);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Size = new System.Drawing.Size(679, 323);
+            this.tabPage2.TabIndex = 0;
+            this.tabPage2.Text = "Members";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // dataGridViewMembers
             // 
@@ -145,6 +126,17 @@
             this.dataGridViewMembers.TabIndex = 1;
             this.dataGridViewMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMembers_CellContentClick);
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dataGridViewTransactions);
+            this.tabPage3.Location = new System.Drawing.Point(32, 4);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(679, 323);
+            this.tabPage3.TabIndex = 1;
+            this.tabPage3.Text = "Transaction";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
             // dataGridViewTransactions
             // 
             this.dataGridViewTransactions.AllowUserToAddRows = false;
@@ -157,6 +149,17 @@
             this.dataGridViewTransactions.ReadOnly = true;
             this.dataGridViewTransactions.Size = new System.Drawing.Size(673, 317);
             this.dataGridViewTransactions.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dataGridViewOverdueBooks);
+            this.tabPage4.Location = new System.Drawing.Point(32, 4);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(679, 323);
+            this.tabPage4.TabIndex = 2;
+            this.tabPage4.Text = "Overdue";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // dataGridViewOverdueBooks
             // 
@@ -171,10 +174,42 @@
             this.dataGridViewOverdueBooks.Size = new System.Drawing.Size(673, 317);
             this.dataGridViewOverdueBooks.TabIndex = 1;
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(236, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(57, 21);
+            this.label2.TabIndex = 12;
+            this.label2.Text = "Search";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.Location = new System.Drawing.Point(299, 17);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(100, 29);
+            this.txtSearch.TabIndex = 13;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearch.Location = new System.Drawing.Point(405, 17);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 34);
+            this.btnSearch.TabIndex = 14;
+            this.btnSearch.Text = "Search";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
             // UserControlReports
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.btnSearch);
+            this.Controls.Add(this.txtSearch);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.tabControlReports);
             this.Controls.Add(this.label1);
             this.Name = "UserControlReports";
@@ -182,12 +217,12 @@
             this.Load += new System.EventHandler(this.UserControlReports_Load);
             this.tabControlReports.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).EndInit();
+            this.tabPage2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewMembers)).EndInit();
+            this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverdueBooks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -206,5 +241,8 @@
         private System.Windows.Forms.DataGridView dataGridViewMembers;
         private System.Windows.Forms.DataGridView dataGridViewTransactions;
         private System.Windows.Forms.DataGridView dataGridViewOverdueBooks;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txtSearch;
+        private System.Windows.Forms.Button btnSearch;
     }
 }

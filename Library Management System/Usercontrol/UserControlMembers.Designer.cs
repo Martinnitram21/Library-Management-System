@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtSearchMembers = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
+            this.btnSearchMembers = new System.Windows.Forms.Button();
             this.member_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,7 +50,7 @@
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.DarkGray;
-            this.label2.Location = new System.Drawing.Point(4, 106);
+            this.label2.Location = new System.Drawing.Point(4, 59);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(154, 21);
@@ -57,14 +58,14 @@
             this.label2.Text = "Search For Members";
             this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
-            // textBox1
+            // txtSearchMembers
             // 
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(165, 103);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(138, 29);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.txtSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearchMembers.Location = new System.Drawing.Point(155, 56);
+            this.txtSearchMembers.Name = "txtSearchMembers";
+            this.txtSearchMembers.Size = new System.Drawing.Size(123, 29);
+            this.txtSearchMembers.TabIndex = 6;
+            this.txtSearchMembers.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // btnAdd
             // 
@@ -75,9 +76,9 @@
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdd.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAdd.Location = new System.Drawing.Point(320, 103);
+            this.btnAdd.Location = new System.Drawing.Point(437, 56);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(128, 29);
+            this.btnAdd.Size = new System.Drawing.Size(89, 26);
             this.btnAdd.TabIndex = 9;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
@@ -92,9 +93,9 @@
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnEdit.Location = new System.Drawing.Point(454, 103);
+            this.btnEdit.Location = new System.Drawing.Point(532, 56);
             this.btnEdit.Name = "btnEdit";
-            this.btnEdit.Size = new System.Drawing.Size(128, 29);
+            this.btnEdit.Size = new System.Drawing.Size(89, 26);
             this.btnEdit.TabIndex = 8;
             this.btnEdit.Text = "EDIT";
             this.btnEdit.UseVisualStyleBackColor = false;
@@ -109,9 +110,9 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnDelete.Location = new System.Drawing.Point(588, 103);
+            this.btnDelete.Location = new System.Drawing.Point(627, 56);
             this.btnDelete.Name = "btnDelete";
-            this.btnDelete.Size = new System.Drawing.Size(128, 29);
+            this.btnDelete.Size = new System.Drawing.Size(89, 26);
             this.btnDelete.TabIndex = 7;
             this.btnDelete.Text = "DELETE";
             this.btnDelete.UseVisualStyleBackColor = false;
@@ -121,7 +122,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(4, 9);
+            this.label1.Location = new System.Drawing.Point(4, 0);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(336, 45);
@@ -141,20 +142,37 @@
             this.phone,
             this.membership_date,
             this.member_status});
-            this.dgvMembers.Location = new System.Drawing.Point(4, 137);
+            this.dgvMembers.Location = new System.Drawing.Point(4, 83);
             this.dgvMembers.Name = "dgvMembers";
             this.dgvMembers.ReadOnly = true;
             this.dgvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvMembers.Size = new System.Drawing.Size(714, 232);
+            this.dgvMembers.Size = new System.Drawing.Size(714, 286);
             this.dgvMembers.TabIndex = 10;
+            // 
+            // btnSearchMembers
+            // 
+            this.btnSearchMembers.BackColor = System.Drawing.Color.Honeydew;
+            this.btnSearchMembers.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnSearchMembers.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSearchMembers.FlatAppearance.BorderSize = 0;
+            this.btnSearchMembers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnSearchMembers.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSearchMembers.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnSearchMembers.Location = new System.Drawing.Point(284, 56);
+            this.btnSearchMembers.Name = "btnSearchMembers";
+            this.btnSearchMembers.Size = new System.Drawing.Size(87, 26);
+            this.btnSearchMembers.TabIndex = 8;
+            this.btnSearchMembers.Text = "Search";
+            this.btnSearchMembers.UseVisualStyleBackColor = false;
+            this.btnSearchMembers.Click += new System.EventHandler(this.btnSearchMembers_Click);
             // 
             // member_id
             // 
             this.member_id.DataPropertyName = "member_id";
-            this.member_id.HeaderText = "Member ID";
+            this.member_id.HeaderText = "ID";
             this.member_id.Name = "member_id";
             this.member_id.ReadOnly = true;
-            this.member_id.Width = 150;
+            this.member_id.Width = 50;
             // 
             // name
             // 
@@ -171,7 +189,7 @@
             this.email.Name = "email";
             this.email.ReadOnly = true;
             this.email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.email.Width = 125;
+            this.email.Width = 300;
             // 
             // phone
             // 
@@ -207,9 +225,10 @@
             this.AutoSize = true;
             this.Controls.Add(this.dgvMembers);
             this.Controls.Add(this.btnDelete);
+            this.Controls.Add(this.btnSearchMembers);
             this.Controls.Add(this.btnEdit);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtSearchMembers);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "UserControlMembers";
@@ -223,12 +242,13 @@
 
         #endregion
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtSearchMembers;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvMembers;
+        private System.Windows.Forms.Button btnSearchMembers;
         private System.Windows.Forms.DataGridViewTextBoxColumn member_id;
         private System.Windows.Forms.DataGridViewTextBoxColumn name;
         private System.Windows.Forms.DataGridViewTextBoxColumn email;

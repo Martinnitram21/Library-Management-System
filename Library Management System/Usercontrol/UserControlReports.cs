@@ -19,21 +19,60 @@ namespace Library_Management_System.Usercontrol
             InitializeComponent();
         }
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
-        private void LoadBooksReport()
+        private void LoadBooksReport(string searchQuery = "")
         {
-            string query = "SELECT Book_Id AS 'ID', Title AS 'Title', Author AS 'Author', book_Status AS 'Status', Category AS 'Category' FROM Books_tbl";
+            string query = @"
+                SELECT 
+                    Book_Id AS 'book_ID', 
+                    Title AS 'Title', 
+                    Author AS 'Author', 
+                    Category AS 'Category', 
+                    Genre AS 'Genre', 
+                    book_Status AS 'Status' 
+                FROM Books_tbl";
 
-            PopulateDataGridView(query, dataGridViewBooks);
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE book_ID LIKE @Search 
+                    OR Title LIKE @Search 
+                    OR Author LIKE @Search
+                    OR Category LIKE @Search
+                    OR Genre LIKE @Search
+                    OR book_status LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dataGridViewBooks, searchQuery);
         }
 
-        private void LoadMembersReport()
+        private void LoadMembersReport(string searchQuery = "")
         {
-            string query = "SELECT Member_Id AS 'ID', Name AS 'Name', Email AS 'Email', Phone AS 'Phone', member_Status AS 'Status' FROM Members_tbl";
+            //string query = "SELECT Member_Id AS 'ID', Name AS 'Name', Email AS 'Email', Phone AS 'Phone', member_Status AS 'Status' FROM Members_tbl";
+            string query = @"
+        SELECT 
+            member_id AS 'ID', 
+            name AS 'Name', 
+            Email AS 'Email', 
+            Phone AS 'Phone',  
+            member_Status AS 'member_Status' 
+        FROM members_tbl";
 
-            PopulateDataGridView(query, dataGridViewMembers);
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE member_ID LIKE @Search 
+                    OR name LIKE @Search 
+                    OR Email LIKE @Search
+                    OR Phone LIKE @Search
+                    OR member_status LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dataGridViewMembers, searchQuery);
         }
 
-        private void LoadTransactionsReport()
+        private void LoadTransactionsReport(string searchQuery = "")
         {
             string query = @"
                 SELECT 
@@ -50,10 +89,20 @@ namespace Library_Management_System.Usercontrol
                 JOIN Members_tbl m ON t.Member_Id = m.Member_Id
                 JOIN Books_tbl b ON t.Book_Id = b.Book_Id";
 
-            PopulateDataGridView(query, dataGridViewTransactions);
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE m.Name LIKE @Search 
+                    OR b.Title LIKE @Search 
+                    OR t.Transaction_Id LIKE @Search
+                    OR t.transaction_Status LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dataGridViewTransactions, searchQuery);
         }
 
-        private void LoadOverdueBooksReport()
+        private void LoadOverdueBooksReport(string searchQuery = "")
         {
             string query = @"
                 SELECT 
@@ -70,20 +119,39 @@ namespace Library_Management_System.Usercontrol
                 WHERE 
                     t.transaction_Status = 'Borrowed' AND t.Due_Date < CURDATE()";
 
-            PopulateDataGridView(query, dataGridViewOverdueBooks);
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE t.transaction_ID LIKE @Search 
+                    OR m.name LIKE @Search 
+                    OR b.Title LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dataGridViewOverdueBooks, searchQuery);
         }
 
-        private void PopulateDataGridView(string query, DataGridView dataGridView)
+        private void PopulateDataGridView(string query, DataGridView dataGridView, string searchQuery = "")
         {
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-                    DataTable dataTable = new DataTable();
-                    adapter.Fill(dataTable);
-                    dataGridView.DataSource = dataTable;
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        // If there's a search query, bind the parameter
+                        if (!string.IsNullOrEmpty(searchQuery))
+                        {
+                            cmd.Parameters.AddWithValue("@Search", "%" + searchQuery + "%");
+                        }
+
+                        // Use MySqlCommand with the DataAdapter
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+                        dataGridView.DataSource = dataTable;
+                    }
                 }
             }
             catch (Exception ex)
@@ -119,6 +187,26 @@ namespace Library_Management_System.Usercontrol
         private void dataGridViewMembers_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void btnSearch_Click(object sender, EventArgs e)
+        {
+            string searchQuery = txtSearch.Text.Trim();
+            switch (tabControlReports.SelectedIndex)
+            {
+                case 0: // Books Report
+                    LoadBooksReport(searchQuery);
+                    break;
+                case 1: // Members Report
+                    LoadMembersReport(searchQuery);
+                    break;
+                case 2: // Transactions Report
+                    LoadTransactionsReport(searchQuery);
+                    break;
+                case 3: // Overdue Books Report
+                    LoadOverdueBooksReport(searchQuery);
+                    break;
+            }
         }
     }
 }

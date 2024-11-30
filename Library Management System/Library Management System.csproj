@@ -140,6 +140,12 @@
     <Compile Include="UI\ReturnForm.Designer.cs">
       <DependentUpon>ReturnForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\FormAddMember.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\FormAddMember.Designer.cs">
+      <DependentUpon>FormAddMember.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\UserControlBooks.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -208,6 +214,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ReturnForm.resx">
       <DependentUpon>ReturnForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\FormAddMember.resx">
+      <DependentUpon>FormAddMember.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\UserControlBooks.resx">
       <DependentUpon>UserControlBooks.cs</DependentUpon>
