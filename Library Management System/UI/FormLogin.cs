@@ -1,6 +1,7 @@
 ﻿using Library_Management_System.Class;
 using Library_Management_System.UI;
 using MySql.Data.MySqlClient;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,6 +32,7 @@ namespace Library_Management_System
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            /*
             // Get user inputs
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
@@ -79,66 +81,72 @@ namespace Library_Management_System
                 // Handle errors
                 MessageBox.Show("An error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            /*
+            */
+
+            // Get user inputs
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-            string selectedRole = cmbRole.SelectedItem?.ToString(); // Get selected role
+            string selectedRole = rbtnAdmin.Checked ? "Admin" : "Staff"; // Get the selected role
 
-            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password) || string.IsNullOrEmpty(selectedRole))
+            // Validate inputs
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("Please fill in all fields and select a role.", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Username and Password are required.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             try
             {
+                // Connect to the database
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    // Query to fetch user details and verify role
-                    string query = "SELECT role FROM users_tbl WHERE username = @username AND password_hash = SHA2(@password, 256) AND role = @role";
+                    // SQL query to validate the user credentials and role
+                    string query = "SELECT COUNT(*) FROM users_tbl WHERE username = @Username AND password = SHA2(@Password, 256) AND role = @Role";
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@username", username);
-                        cmd.Parameters.AddWithValue("@password", password);
-                        cmd.Parameters.AddWithValue("@role", selectedRole.ToLower());
+                        cmd.Parameters.AddWithValue("@Username", username);
+                        cmd.Parameters.AddWithValue("@Password", password);
+                        cmd.Parameters.AddWithValue("@Role", selectedRole);
 
-                        object result = cmd.ExecuteScalar();
+                        int userCount = Convert.ToInt32(cmd.ExecuteScalar());
 
-                        if (result != null)
+                        // Check if a matching user exists
+                        if (userCount > 0)
                         {
-                            string role = result.ToString();
+                            // Success message and redirect based on role
+                            MessageBox.Show($"Welcome {selectedRole}!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            CurrentSession.Username = txtUsername.Text; // Store the username
+                            CurrentSession.Role = selectedRole;         // Store the role
 
-                            if (role == "admin")
+                            if (selectedRole == "Admin")
                             {
-                                MessageBox.Show("Welcome Admin!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // Open admin dashboard
-                                AdminDashboard adminForm = new AdminDashboard();
-                                adminForm.Show();
-                                this.Hide();
+                               AdminDashboard adminDashboard = new AdminDashboard();
+                               adminDashboard.Show();
                             }
-                            else if (role == "staff")
+                            else if (selectedRole == "Staff")
                             {
-                                MessageBox.Show("Welcome Staff!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                // Open staff dashboard
-                                StaffDashboard staffForm = new StaffDashboard();
-                                staffForm.Show();
-                                this.Hide();
+                               StaffDashboard staffDashboard = new StaffDashboard();
+                               staffDashboard.Show();
                             }
+                            this.Hide(); // Close the login form
                         }
                         else
                         {
-                            MessageBox.Show("Invalid username, password, or role.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Invalid credentials or incorrect role.", "Login Failed", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
             }
+            catch (MySqlException ex)
+            {
+                MessageBox.Show("An error occurred while connecting to the database: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            */
         }
 
         private void btnSignup_Click(object sender, EventArgs e)

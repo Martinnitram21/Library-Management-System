@@ -1,4 +1,6 @@
-﻿using Library_Management_System.Usercontrol;
+﻿using Library_Management_System.Class;
+using Library_Management_System.Usercontrol;
+using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,9 +14,9 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Library_Management_System.UI
 {
-    public partial class FormMain : Form
+    public partial class AdminDashboard : Form
     {
-        public FormMain()
+        public AdminDashboard()
         {
             InitializeComponent();
         }
@@ -23,11 +25,12 @@ namespace Library_Management_System.UI
             panelSlide.Top = btn.Top;
             panelSlide.Height = btn.Height;
         }
-        UserControlDashboard ucDash = new UserControlDashboard();
-        UserControlBooks ucBook = new UserControlBooks();
-        UserControlMembers ucMember = new UserControlMembers();
-        UserControlBorrowReturn ucBorrow = new UserControlBorrowReturn();
-        UserControlReports ucReport = new UserControlReports();
+        readonly UserControlDashboard ucDash = new UserControlDashboard();
+        readonly UserControlBooks ucBook = new UserControlBooks();
+        readonly UserControlMembers ucMember = new UserControlMembers();
+        readonly UserControlBorrowReturn ucBorrow = new UserControlBorrowReturn();
+        readonly UserControlReports ucReport = new UserControlReports();
+        readonly UserControlSettings ucSetting = new UserControlSettings();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -45,6 +48,8 @@ namespace Library_Management_System.UI
         private void FormMain_Load(object sender, EventArgs e)
         {
             timer1.Start();
+            lblWelcome.Text = $"Welcome, {CurrentSession.Username}!"; // Example: Display username
+            //lblRole.Text = $"Role: {CurrentSession.Role}";            // Example: Display role
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -101,6 +106,12 @@ namespace Library_Management_System.UI
         private void btnSettings_Click(object sender, EventArgs e)
         {
             MovePanel(btnSettings);
+            DialogResult result = MessageBox.Show("Are you sure you want to log out?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                Application.ExitThread(); // Terminate current thread
+                System.Diagnostics.Process.Start(Application.ExecutablePath); // Restart the application
+            }
         }
 
         private void lblExit_Click(object sender, EventArgs e)

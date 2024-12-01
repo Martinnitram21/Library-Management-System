@@ -8,11 +8,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library_Management_System.Usercontrol
+namespace Library_Management_System.Usercontrol.StaffUserControl
 {
-    public partial class UserControlSettings : UserControl
+    public partial class FindIssueBookUserControl : UserControl
     {
-        public UserControlSettings()
+        public FindIssueBookUserControl()
         {
             InitializeComponent();
         }

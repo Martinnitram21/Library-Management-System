@@ -1,6 +1,6 @@
-﻿namespace Library_Management_System.Usercontrol
+﻿namespace Library_Management_System.Usercontrol.StaffUserControl
 {
-    partial class UserControlSettings
+    partial class FindIssueBookUserControl
     {
         /// <summary> 
         /// Required designer variable.

@@ -38,6 +38,10 @@
             this.label5 = new System.Windows.Forms.Label();
             this.txtConfirmPassword = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.rbtnAdmin = new System.Windows.Forms.RadioButton();
+            this.rbtnStaff = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnSignup
@@ -46,10 +50,10 @@
             this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignup.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnSignup.Location = new System.Drawing.Point(120, 387);
+            this.btnSignup.Location = new System.Drawing.Point(120, 502);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(317, 45);
-            this.btnSignup.TabIndex = 10;
+            this.btnSignup.TabIndex = 5;
             this.btnSignup.Text = "Signup";
             this.btnSignup.UseVisualStyleBackColor = false;
             this.btnSignup.Click += new System.EventHandler(this.btnSignup_Click);
@@ -60,7 +64,7 @@
             this.txtNewPassword.Name = "txtNewPassword";
             this.txtNewPassword.PasswordChar = '*';
             this.txtNewPassword.Size = new System.Drawing.Size(317, 29);
-            this.txtNewPassword.TabIndex = 8;
+            this.txtNewPassword.TabIndex = 1;
             // 
             // label4
             // 
@@ -77,7 +81,7 @@
             this.txtNewUsername.Location = new System.Drawing.Point(120, 209);
             this.txtNewUsername.Name = "txtNewUsername";
             this.txtNewUsername.Size = new System.Drawing.Size(317, 29);
-            this.txtNewUsername.TabIndex = 9;
+            this.txtNewUsername.TabIndex = 0;
             // 
             // label3
             // 
@@ -92,6 +96,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.DarkGray;
             this.label2.Location = new System.Drawing.Point(116, 108);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(321, 21);
@@ -125,7 +130,7 @@
             this.txtConfirmPassword.Name = "txtConfirmPassword";
             this.txtConfirmPassword.PasswordChar = '*';
             this.txtConfirmPassword.Size = new System.Drawing.Size(317, 29);
-            this.txtConfirmPassword.TabIndex = 8;
+            this.txtConfirmPassword.TabIndex = 2;
             // 
             // btnCancel
             // 
@@ -133,18 +138,52 @@
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLight;
-            this.btnCancel.Location = new System.Drawing.Point(120, 438);
+            this.btnCancel.Location = new System.Drawing.Point(120, 553);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(317, 45);
-            this.btnCancel.TabIndex = 10;
+            this.btnCancel.TabIndex = 6;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
+            // 
+            // rbtnAdmin
+            // 
+            this.rbtnAdmin.AutoSize = true;
+            this.rbtnAdmin.Location = new System.Drawing.Point(61, 46);
+            this.rbtnAdmin.Name = "rbtnAdmin";
+            this.rbtnAdmin.Size = new System.Drawing.Size(74, 25);
+            this.rbtnAdmin.TabIndex = 3;
+            this.rbtnAdmin.TabStop = true;
+            this.rbtnAdmin.Text = "Admin";
+            this.rbtnAdmin.UseVisualStyleBackColor = true;
+            // 
+            // rbtnStaff
+            // 
+            this.rbtnStaff.AutoSize = true;
+            this.rbtnStaff.Location = new System.Drawing.Point(203, 46);
+            this.rbtnStaff.Name = "rbtnStaff";
+            this.rbtnStaff.Size = new System.Drawing.Size(59, 25);
+            this.rbtnStaff.TabIndex = 4;
+            this.rbtnStaff.TabStop = true;
+            this.rbtnStaff.Text = "Staff";
+            this.rbtnStaff.UseVisualStyleBackColor = true;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.rbtnStaff);
+            this.groupBox1.Controls.Add(this.rbtnAdmin);
+            this.groupBox1.Location = new System.Drawing.Point(120, 378);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(317, 100);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Role";
             // 
             // FormSignup
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 527);
+            this.ClientSize = new System.Drawing.Size(549, 681);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSignup);
             this.Controls.Add(this.txtConfirmPassword);
@@ -161,6 +200,8 @@
             this.Name = "FormSignup";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Signup";
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -178,5 +219,8 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox txtConfirmPassword;
         private System.Windows.Forms.Button btnCancel;
+        private System.Windows.Forms.RadioButton rbtnAdmin;
+        private System.Windows.Forms.RadioButton rbtnStaff;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
