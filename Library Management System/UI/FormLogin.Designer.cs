@@ -130,6 +130,7 @@
             // rbtnAdmin
             // 
             this.rbtnAdmin.AutoSize = true;
+            this.rbtnAdmin.Checked = true;
             this.rbtnAdmin.Location = new System.Drawing.Point(63, 41);
             this.rbtnAdmin.Name = "rbtnAdmin";
             this.rbtnAdmin.Size = new System.Drawing.Size(74, 25);
@@ -145,7 +146,6 @@
             this.rbtnStaff.Name = "rbtnStaff";
             this.rbtnStaff.Size = new System.Drawing.Size(59, 25);
             this.rbtnStaff.TabIndex = 1;
-            this.rbtnStaff.TabStop = true;
             this.rbtnStaff.Text = "Staff";
             this.rbtnStaff.UseVisualStyleBackColor = true;
             // 

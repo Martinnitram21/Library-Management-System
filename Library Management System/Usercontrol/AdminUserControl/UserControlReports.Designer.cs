@@ -155,7 +155,7 @@
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewOverdueBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewOverdueBooks.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridViewOverdueBooks.Size = new System.Drawing.Size(673, 317);
             this.dataGridViewOverdueBooks.TabIndex = 1;
@@ -195,7 +195,6 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewTransactions.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridViewTransactions.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewTransactions.EnableHeadersVisualStyles = false;
             this.dataGridViewTransactions.Location = new System.Drawing.Point(3, 3);
             this.dataGridViewTransactions.Name = "dataGridViewTransactions";
             this.dataGridViewTransactions.ReadOnly = true;
@@ -207,7 +206,7 @@
             dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
-            dataGridViewCellStyle8.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewTransactions.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dataGridViewTransactions.Size = new System.Drawing.Size(673, 317);
             this.dataGridViewTransactions.TabIndex = 1;
@@ -246,7 +245,6 @@
             dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewMembers.DefaultCellStyle = dataGridViewCellStyle10;
             this.dataGridViewMembers.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewMembers.EnableHeadersVisualStyles = false;
             this.dataGridViewMembers.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewMembers.Name = "dataGridViewMembers";
             this.dataGridViewMembers.ReadOnly = true;
@@ -258,7 +256,7 @@
             dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewMembers.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle12;
             this.dataGridViewMembers.Size = new System.Drawing.Size(679, 323);
             this.dataGridViewMembers.TabIndex = 1;
@@ -298,7 +296,6 @@
             dataGridViewCellStyle14.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridViewBooks.DefaultCellStyle = dataGridViewCellStyle14;
             this.dataGridViewBooks.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridViewBooks.EnableHeadersVisualStyles = false;
             this.dataGridViewBooks.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewBooks.Name = "dataGridViewBooks";
             this.dataGridViewBooks.ReadOnly = true;
@@ -310,7 +307,7 @@
             dataGridViewCellStyle15.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle15.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dataGridViewBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
-            dataGridViewCellStyle16.BackColor = System.Drawing.Color.Transparent;
+            dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewBooks.RowsDefaultCellStyle = dataGridViewCellStyle16;
             this.dataGridViewBooks.Size = new System.Drawing.Size(679, 323);
             this.dataGridViewBooks.TabIndex = 0;
