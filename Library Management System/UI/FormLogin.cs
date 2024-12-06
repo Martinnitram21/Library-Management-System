@@ -159,5 +159,10 @@ namespace Library_Management_System
         {
 
         }
+
+        private void pictureBoxExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
 }

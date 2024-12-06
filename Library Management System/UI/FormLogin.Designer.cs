@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormLogin));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,7 +40,9 @@
             this.rbtnAdmin = new System.Windows.Forms.RadioButton();
             this.rbtnStaff = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBoxExit = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -131,7 +134,7 @@
             // 
             this.rbtnAdmin.AutoSize = true;
             this.rbtnAdmin.Checked = true;
-            this.rbtnAdmin.Location = new System.Drawing.Point(63, 41);
+            this.rbtnAdmin.Location = new System.Drawing.Point(63, 28);
             this.rbtnAdmin.Name = "rbtnAdmin";
             this.rbtnAdmin.Size = new System.Drawing.Size(74, 25);
             this.rbtnAdmin.TabIndex = 0;
@@ -142,7 +145,7 @@
             // rbtnStaff
             // 
             this.rbtnStaff.AutoSize = true;
-            this.rbtnStaff.Location = new System.Drawing.Point(183, 41);
+            this.rbtnStaff.Location = new System.Drawing.Point(183, 28);
             this.rbtnStaff.Name = "rbtnStaff";
             this.rbtnStaff.Size = new System.Drawing.Size(59, 25);
             this.rbtnStaff.TabIndex = 1;
@@ -155,16 +158,28 @@
             this.groupBox1.Controls.Add(this.rbtnAdmin);
             this.groupBox1.Location = new System.Drawing.Point(108, 320);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(317, 100);
+            this.groupBox1.Size = new System.Drawing.Size(317, 71);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Role";
+            // 
+            // pictureBoxExit
+            // 
+            this.pictureBoxExit.Image = ((System.Drawing.Image)(resources.GetObject("pictureBoxExit.Image")));
+            this.pictureBoxExit.Location = new System.Drawing.Point(517, 1);
+            this.pictureBoxExit.Name = "pictureBoxExit";
+            this.pictureBoxExit.Size = new System.Drawing.Size(29, 20);
+            this.pictureBoxExit.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxExit.TabIndex = 10;
+            this.pictureBoxExit.TabStop = false;
+            this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
             // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 681);
+            this.Controls.Add(this.pictureBoxExit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSignup);
             this.Controls.Add(this.btnLogin);
@@ -175,7 +190,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.Name = "FormLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -183,6 +198,7 @@
             this.Load += new System.EventHandler(this.FormLogin_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,6 +217,7 @@
         private System.Windows.Forms.RadioButton rbtnAdmin;
         private System.Windows.Forms.RadioButton rbtnStaff;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.PictureBox pictureBoxExit;
     }
 }
 

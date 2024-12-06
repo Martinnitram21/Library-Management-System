@@ -229,6 +229,24 @@
     <Compile Include="Usercontrol\StaffUserControl\FindStudentUserControl.Designer.cs">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\FormIssueBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\FormIssueBook.Designer.cs">
+      <DependentUpon>FormIssueBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\FormReturnBook.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\FormReturnBook.Designer.cs">
+      <DependentUpon>FormReturnBook.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\IssueReturnUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\IssueReturnUserControl.Designer.cs">
+      <DependentUpon>IssueReturnUserControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\StaffUserControl\StaffBooks.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -240,6 +258,12 @@
     </Compile>
     <Compile Include="Usercontrol\StaffUserControl\StaffDashBoardUserControl.Designer.cs">
       <DependentUpon>StaffDashBoardUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\ViewLogUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\StaffUserControl\ViewLogUserControl.Designer.cs">
+      <DependentUpon>ViewLogUserControl.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="UI\StaffDashboard.resx">
       <DependentUpon>StaffDashboard.cs</DependentUpon>
@@ -307,11 +331,23 @@
     <EmbeddedResource Include="Usercontrol\StaffUserControl\FindStudentUserControl.resx">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\StaffUserControl\FormIssueBook.resx">
+      <DependentUpon>FormIssueBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\StaffUserControl\FormReturnBook.resx">
+      <DependentUpon>FormReturnBook.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\StaffUserControl\IssueReturnUserControl.resx">
+      <DependentUpon>IssueReturnUserControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\StaffBooks.resx">
       <DependentUpon>StaffBooks.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\StaffDashBoardUserControl.resx">
       <DependentUpon>StaffDashBoardUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\StaffUserControl\ViewLogUserControl.resx">
+      <DependentUpon>ViewLogUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">

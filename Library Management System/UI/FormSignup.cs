@@ -141,5 +141,17 @@ namespace Library_Management_System.UI
                 MessageBox.Show("An unexpected error occurred: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            FormLogin formLogin = new FormLogin();
+            this.Hide();
+            formLogin.Show();
+        }
+
+        private void pictureBoxExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
     }
     }
