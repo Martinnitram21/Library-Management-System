@@ -36,7 +36,7 @@
             // 
             // btnBorrow
             // 
-            this.btnBorrow.BackColor = System.Drawing.Color.Honeydew;
+            this.btnBorrow.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnBorrow.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnBorrow.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBorrow.FlatAppearance.BorderSize = 0;
@@ -53,7 +53,7 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.BackColor = System.Drawing.Color.Honeydew;
+            this.btnReturn.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnReturn.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnReturn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnReturn.FlatAppearance.BorderSize = 0;
