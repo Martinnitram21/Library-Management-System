@@ -118,16 +118,36 @@ namespace Library_Management_System.Usercontrol
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (dgvBooks.SelectedRows.Count > 0)
+            try
             {
-                int bookId = Convert.ToInt32(dgvBooks.SelectedRows[0].Cells["book_id"].Value);
-                FormEditBook formEditBook = new FormEditBook(bookId);
-                formEditBook.ShowDialog();
-                LoadBooksData(); // Refresh the grid after editing
+                if (dgvBooks.SelectedRows.Count > 0) // Ensure a row is selected
+                {
+                    // Retrieve the Book_Id from the DataGridView
+                    DataGridViewRow selectedRow = dgvBooks.SelectedRows[0];
+
+                    // Check if the column exists before accessing
+                    if (dgvBooks.Columns.Contains("Book ID"))
+                    {
+                        int bookId = Convert.ToInt32(selectedRow.Cells["Book ID"].Value);
+
+                        // Open the update book form with the selected Book_Id
+                        FormEditBook updateBookForm = new FormEditBook(bookId);
+                        updateBookForm.ShowDialog();
+                    }
+                    else
+                    {
+                        MessageBox.Show("The column 'Book_Id' does not exist in the DataGridView. Ensure your query includes it.",
+                                        "Column Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please select a book to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -135,7 +155,7 @@ namespace Library_Management_System.Usercontrol
         {
             if (dgvBooks.SelectedRows.Count > 0)
             {
-                int bookId = Convert.ToInt32(dgvBooks.SelectedRows[0].Cells["book_id"].Value);
+                int bookId = Convert.ToInt32(dgvBooks.SelectedRows[0].Cells["Book ID"].Value);
 
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this book?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)

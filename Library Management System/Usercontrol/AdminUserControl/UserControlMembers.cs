@@ -102,7 +102,7 @@ namespace Library_Management_System.Usercontrol
             if (dgvMembers.SelectedRows.Count > 0)
             {
                 // Get the selected member's ID
-                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member_ID"].Value);
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member ID"].Value);
 
                 // Open the edit form and pass the member ID
                 FormEditMember formEditMember = new FormEditMember(memberId);
@@ -122,7 +122,7 @@ namespace Library_Management_System.Usercontrol
             if (dgvMembers.SelectedRows.Count > 0)
             {
                 // Get the selected member's ID
-                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member_ID"].Value);
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member ID"].Value);
 
                 // Confirm deletion
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this member?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);

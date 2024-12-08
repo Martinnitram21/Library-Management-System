@@ -41,7 +41,19 @@ namespace Library_Management_System.Usercontrol
                 using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT Title, Author, Category, ISBN, Genre, Year_Published FROM books_tbl WHERE Book_Id = @BookId";
+                    string query = @"
+                SELECT 
+                    b.Title, 
+                    a.author_Name AS Author, 
+                    p.publisher_Name AS Publisher,
+                    b.Category, 
+                    b.Genre, 
+                    b.ISBN, 
+                    b.Year_Published 
+                FROM books_tbl b
+                JOIN authors_tbl a ON b.Author_Id = a.Author_Id
+                JOIN publishers_tbl p ON b.Publisher_Id = p.Publisher_Id
+                WHERE b.Book_Id = @BookId";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -53,19 +65,18 @@ namespace Library_Management_System.Usercontrol
                             {
                                 txtTitle.Text = reader["Title"].ToString();
                                 txtAuthor.Text = reader["Author"].ToString();
+                                txtPublisher.Text = reader["Publisher"].ToString();
                                 comboCategory.Text = reader["Category"].ToString();
                                 comboGenre.Text = reader["Genre"].ToString();
                                 txtISBN.Text = reader["ISBN"].ToString();
-                                // Safely parse Year_Published as DateTime
-                                string yearPublished = reader["Year_Published"].ToString();
-                                if (DateTime.TryParse(yearPublished, out DateTime parsedYear))
+
+                                if (DateTime.TryParse(reader["Year_Published"].ToString(), out DateTime parsedYear))
                                 {
                                     txtYear.Value = parsedYear;
                                 }
                                 else
                                 {
-                                    // Handle cases where the year is not a valid DateTime
-                                    txtYear.Value = new DateTime(DateTime.Now.Year, 1, 1); // Default to current year
+                                    txtYear.Value = new DateTime(DateTime.Now.Year, 1, 1);
                                 }
                             }
                         }
@@ -85,14 +96,15 @@ namespace Library_Management_System.Usercontrol
         private void UpdateBookInDatabase()
         {
             string title = txtTitle.Text.Trim();
-            string author = txtAuthor.Text.Trim();
+            string authorName = txtAuthor.Text.Trim();
+            string publisherName = txtPublisher.Text.Trim();
             string category = comboCategory.Text.Trim();
             string genre = comboGenre.Text.Trim();
             string isbn = txtISBN.Text.Trim();
             string yearPublished = txtYear.Text.Trim();
 
-            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(author) || string.IsNullOrWhiteSpace(category) ||
-                string.IsNullOrWhiteSpace(genre) || string.IsNullOrWhiteSpace(isbn) || string.IsNullOrWhiteSpace(yearPublished))
+            if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(authorName) || string.IsNullOrWhiteSpace(publisherName) ||
+                string.IsNullOrWhiteSpace(category) || string.IsNullOrWhiteSpace(genre) || string.IsNullOrWhiteSpace(isbn) || string.IsNullOrWhiteSpace(yearPublished))
             {
                 MessageBox.Show("Please fill in all the fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -103,13 +115,30 @@ namespace Library_Management_System.Usercontrol
                 using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string query = "UPDATE books_tbl SET Title = @Title, Author = @Author, Category = @Category, " +
-                                   "Genre = @Genre, ISBN = @ISBN, Year_Published = @YearPublished WHERE Book_Id = @BookId";
+
+                    // Get or insert AuthorId
+                    int authorId = GetOrInsertAuthor(conn, authorName);
+
+                    // Get or insert PublisherId
+                    int publisherId = GetOrInsertPublisher(conn, publisherName);
+
+                    string query = @"
+                UPDATE books_tbl 
+                SET 
+                    Title = @Title, 
+                    Author_Id = @AuthorId, 
+                    Publisher_Id = @PublisherId,
+                    Category = @Category, 
+                    Genre = @Genre, 
+                    ISBN = @ISBN, 
+                    Year_Published = @YearPublished 
+                WHERE Book_Id = @BookId";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@Title", title);
-                        cmd.Parameters.AddWithValue("@Author", author);
+                        cmd.Parameters.AddWithValue("@AuthorId", authorId);
+                        cmd.Parameters.AddWithValue("@PublisherId", publisherId);
                         cmd.Parameters.AddWithValue("@Category", category);
                         cmd.Parameters.AddWithValue("@Genre", genre);
                         cmd.Parameters.AddWithValue("@ISBN", isbn);
@@ -139,6 +168,53 @@ namespace Library_Management_System.Usercontrol
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+        private int GetOrInsertAuthor(MySqlConnection conn, string authorName)
+        {
+            // Check if author exists
+            string selectQuery = "SELECT Author_Id FROM Authors_tbl WHERE author_name = @Name";
+            using (MySqlCommand cmd = new MySqlCommand(selectQuery, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", authorName);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null) // Author exists
+                {
+                    return Convert.ToInt32(result);
+                }
+            }
+
+            // Insert new author
+            string insertQuery = "INSERT INTO Authors_tbl (author_Name) VALUES (@Name); SELECT LAST_INSERT_ID();";
+            using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", authorName);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
+        }
+
+        private int GetOrInsertPublisher(MySqlConnection conn, string publisherName)
+        {
+            // Check if publisher exists
+            string selectQuery = "SELECT Publisher_Id FROM Publishers_tbl WHERE publisher_Name = @Name";
+            using (MySqlCommand cmd = new MySqlCommand(selectQuery, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", publisherName);
+                object result = cmd.ExecuteScalar();
+
+                if (result != null) // Publisher exists
+                {
+                    return Convert.ToInt32(result);
+                }
+            }
+
+            // Insert new publisher
+            string insertQuery = "INSERT INTO Publishers_tbl (publisher_Name) VALUES (@Name); SELECT LAST_INSERT_ID();";
+            using (MySqlCommand cmd = new MySqlCommand(insertQuery, conn))
+            {
+                cmd.Parameters.AddWithValue("@Name", publisherName);
+                return Convert.ToInt32(cmd.ExecuteScalar());
+            }
         }
     }
 }
