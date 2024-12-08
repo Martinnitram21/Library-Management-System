@@ -7,6 +7,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -33,14 +34,20 @@ namespace Library_Management_System.Usercontrol
         private void AddMemberToDatabase()
         {
             string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
-            string name = txtName.Text.Trim();
+
+            // Collect data from form inputs
+            string firstName = txtFirstName.Text.Trim();
+            string lastName = txtLastName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
-            //string status = cmbStatus.SelectedItem?.ToString() ?? "Inactive";
+            string memberType = comboMemberType.Text.Trim();
 
-            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(phone))
+            // Validate required fields
+            if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
+                string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone) ||
+                string.IsNullOrWhiteSpace(memberType))
             {
-                MessageBox.Show("Please fill out all fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Please fill in all the fields.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
@@ -49,26 +56,32 @@ namespace Library_Management_System.Usercontrol
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
+
                     string query = @"
-                        INSERT INTO Members_tbl (Name, Email, Phone, membership_date)
-                        VALUES (@Name, @Email, @Phone, NOW())";
+                        INSERT INTO Members_tbl 
+                        (First_Name, Last_Name, Email, Phone, Member_Type) 
+                        VALUES 
+                        (@FirstName, @LastName, @Email, @Phone, @MemberType)";
+
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@Name", name);
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
                         cmd.Parameters.AddWithValue("@Email", email);
                         cmd.Parameters.AddWithValue("@Phone", phone);
-                        //cmd.Parameters.AddWithValue("@MembershipDate", membership_date);
-                        //cmd.Parameters.AddWithValue("@Status", status);
+                        cmd.Parameters.AddWithValue("@MemberType", memberType);
 
-                        int result = cmd.ExecuteNonQuery();
-                        if (result > 0)
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
                         {
                             MessageBox.Show("Member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            this.DialogResult = DialogResult.OK;
+                            ClearFields();
+                            this.Close();
                         }
                         else
                         {
-                            MessageBox.Show("Failed to add the member.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Failed to add the member. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -77,6 +90,19 @@ namespace Library_Management_System.Usercontrol
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+        private void ClearFields()
+        {
+            txtFirstName.Clear();
+            txtLastName.Clear();
+            txtEmail.Clear();
+            txtPhone.Clear();
+            comboMemberType.SelectedIndex = -1;
+        }
+
+        private void FormAddMember_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

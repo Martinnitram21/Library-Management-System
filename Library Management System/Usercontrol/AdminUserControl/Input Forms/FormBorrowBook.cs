@@ -28,30 +28,6 @@ namespace Library_Management_System.UI
         }
         private void LoadBooks()
         {
-            /*
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = "SELECT Book_Id, Title FROM Books_tbl WHERE book_Status = 'Available'";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            //cmbBooks.Items.Add(new { Text = reader["Title"].ToString(), Value = reader["Book_Id"] });
-                            cmbBooks.Items.Add(new { ID = reader["Book_Id"], Title = reader["Title"].ToString() });
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
@@ -67,8 +43,8 @@ namespace Library_Management_System.UI
                             books.Add(new KeyValuePair<string, int>(reader["Title"].ToString(), Convert.ToInt32(reader["Book_Id"])));
                         }
                         cmbBooks.DataSource = books;
-                        cmbBooks.DisplayMember = "Key"; // Use the Key (Title) for display
-                        cmbBooks.ValueMember = "Value"; // Use the Value (BookId) for selection
+                        cmbBooks.DisplayMember = "Key"; // Use the Title (Key) for display
+                        cmbBooks.ValueMember = "Value"; // Use Book_Id (Value) for selection
                     }
                 }
             }
@@ -79,47 +55,24 @@ namespace Library_Management_System.UI
         }
         private void LoadMembers()
         {
-            /*
             try
             {
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT Member_Id, Name FROM Members_tbl WHERE member_Status = 'Active'";
-                    MySqlCommand cmd = new MySqlCommand(query, conn);
-                    using (MySqlDataReader reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            //cmbMembers.Items.Add(new { Text = reader["Name"].ToString(), Value = reader["Member_Id"] });
-                            cmbMembers.Items.Add(new { Value = reader["Member_Id"], Text = reader["Name"].ToString(),  });
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"Error loading members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
-            try
-            {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-                    string query = "SELECT Member_Id, Name FROM Members_tbl WHERE member_Status = 'Active'";
+                    string query = "SELECT Member_Id, CONCAT(first_name, ' ', last_name) AS FullName FROM Members_tbl WHERE member_Status = 'Active'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         var members = new List<KeyValuePair<string, int>>();
                         while (reader.Read())
                         {
-                            // Add each member's FullName and MemberId to the ComboBox data source
-                            members.Add(new KeyValuePair<string, int>(reader["Name"].ToString(), Convert.ToInt32(reader["Member_Id"])));
+                            // Add combined first and last name along with MemberId to the ComboBox data source
+                            members.Add(new KeyValuePair<string, int>(reader["FullName"].ToString(), Convert.ToInt32(reader["Member_Id"])));
                         }
                         cmbMembers.DataSource = members;
-                        cmbMembers.DisplayMember = "Key";  // Use the FullName (Key) for display
-                        cmbMembers.ValueMember = "Value";  // Use the MemberId (Value) for selection
+                        cmbMembers.DisplayMember = "Key"; // Use the FullName (Key) for display
+                        cmbMembers.ValueMember = "Value"; // Use the MemberId (Value) for selection
                     }
                 }
             }
@@ -142,24 +95,23 @@ namespace Library_Management_System.UI
 
             int bookId = selectedBook.Value;
             int memberId = selectedMember.Value;
-            DateTime dueDate = dtpDueDate.Value;
 
             try
             {
-                using (MySqlConnection conn = DatabaseHelper.GetConnection())
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    // Insert transaction
-                    string transactionQuery = "INSERT INTO Transactions_tbl (Member_Id, Book_Id, Borrow_Date, Due_Date, transaction_Status) " +
-                                               "VALUES (@MemberId, @BookId, NOW(), @DueDate, 'Borrowed')";
-                    MySqlCommand transactionCmd = new MySqlCommand(transactionQuery, conn);
-                    transactionCmd.Parameters.AddWithValue("@MemberId", memberId);
-                    transactionCmd.Parameters.AddWithValue("@BookId", bookId);
-                    transactionCmd.Parameters.AddWithValue("@DueDate", dueDate);
-                    transactionCmd.ExecuteNonQuery();
+                    // Insert into Borrowers_tbl with auto-calculated due date (7 days from now)
+                    string borrowQuery = @"
+                INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
+                VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY))";
+                    MySqlCommand borrowCmd = new MySqlCommand(borrowQuery, conn);
+                    borrowCmd.Parameters.AddWithValue("@BookId", bookId);
+                    borrowCmd.Parameters.AddWithValue("@MemberId", memberId);
+                    borrowCmd.ExecuteNonQuery();
 
-                    // Update book status
+                    // Update the book status to 'Borrowed'
                     string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
                     MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn);
                     updateBookCmd.Parameters.AddWithValue("@BookId", bookId);

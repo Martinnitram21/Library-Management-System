@@ -23,49 +23,53 @@ namespace Library_Management_System.Usercontrol
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
         private void LoadBooksData(string searchQuery = "")
         {
-            //string query = "SELECT Title, Author, Category, ISBN, Genre, Year_Published, book_status FROM books_tbl";
-            /*
             try
             {
-                // Open the database connection and fetch data
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                // Ensure connection string is valid
+                if (string.IsNullOrEmpty(connectionString))
                 {
-                    conn.Open();
-                    MySqlDataAdapter adapter = new MySqlDataAdapter(query, conn);
-                    DataTable booksTable = new DataTable();
-                    adapter.Fill(booksTable);
-
-                    dgvBooks.DataSource = booksTable; // Bind data to DataGridView
+                    MessageBox.Show("Connection string is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
-            }
-            catch (Exception ex)
-            {
-                // Show error message
-                MessageBox.Show($"Error loading books data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-            */
 
-            try
-            {
+                // Check if DataGridView is initialized
+                if (dgvBooks == null)
+                {
+                    MessageBox.Show("DataGridView is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
+
+                    // Updated query to join with Authors_tbl and Publishers_tbl
                     string query = @"
                 SELECT 
-                    Book_Id AS 'book_id', 
-                    Title AS 'Title', 
-                    Author AS 'Author', 
-                    Category AS 'Category',
-                    ISBN AS 'ISBN',
-                    Genre AS 'Genre',
-                    Year_Published AS 'Year_Published',
-                    book_status AS 'book_Status'
-                FROM Books_tbl";
+                    b.Book_Id AS 'Book ID', 
+                    b.Title AS 'Title', 
+                    b.Category AS 'Category',
+                    b.ISBN AS 'ISBN',
+                    b.Genre AS 'Genre',
+                    a.Author_Name AS 'Author Name', 
+                    p.Publisher_Name AS 'Publisher Name', 
+                    b.Year_Published AS 'Year Published',
+                    b.Book_Status AS 'Status'
+                FROM Books_tbl b
+                LEFT JOIN Authors_tbl a ON b.Author_Id = a.Author_Id
+                LEFT JOIN Publishers_tbl p ON b.Publisher_Id = p.Publisher_Id";
 
                     // Add search filter
                     if (!string.IsNullOrEmpty(searchQuery))
                     {
-                        query += " WHERE book_id LIKE @Search OR Title LIKE @Search OR Author LIKE @Search OR Category LIKE @Search OR Genre LIKE @Search OR book_status LIKE @Search";
+                        query += @"
+                    WHERE b.Book_Id LIKE @Search
+                    OR b.Title LIKE @Search
+                    OR a.Author_Name LIKE @Search
+                    OR p.Publisher_Name LIKE @Search
+                    OR b.Category LIKE @Search
+                    OR b.Genre LIKE @Search
+                    OR b.Book_Status LIKE @Search";
                     }
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -75,12 +79,20 @@ namespace Library_Management_System.Usercontrol
                             cmd.Parameters.AddWithValue("@Search", $"%{searchQuery}%");
                         }
 
+                        // Load the data into a DataTable and bind it to the DataGridView
                         MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
-                        dgvBooks.DataSource = dataTable;
+                        if (dataTable != null)
+                        {
+                            dgvBooks.DataSource = dataTable;
+                        }
+                        else
+                        {
+                            MessageBox.Show("No data returned from the database.", "Info", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                     }
-                }           
+                }
             }
             catch (Exception ex)
             {

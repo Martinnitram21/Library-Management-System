@@ -25,9 +25,12 @@ namespace Library_Management_System.Usercontrol
                 SELECT 
                     Book_Id AS 'Book ID', 
                     Title AS 'Title', 
-                    Author AS 'Author', 
                     Category AS 'Category', 
-                    Genre AS 'Genre', 
+                    Genre AS 'Genre',
+                    ISBN AS 'ISBN', 
+                    Author_id AS 'Author ID', 
+                    publisher_id AS 'Publisher ID',
+                    year_published AS 'Year Published', 
                     book_Status AS 'Status' 
                 FROM Books_tbl";
 
@@ -50,22 +53,27 @@ namespace Library_Management_System.Usercontrol
         {
             //string query = "SELECT Member_Id AS 'ID', Name AS 'Name', Email AS 'Email', Phone AS 'Phone', member_Status AS 'Status' FROM Members_tbl";
             string query = @"
-        SELECT 
-            member_id AS 'Member ID', 
-            name AS 'Name', 
-            Email AS 'Email', 
-            Phone AS 'Phone',  
-            member_Status AS 'Member Status' 
-        FROM members_tbl";
+                SELECT 
+                    member_id AS 'Member ID', 
+                    last_name AS 'Last Name',
+                    first_name AS 'First Name',
+                    Email AS 'Email', 
+                    Phone AS 'Phone',
+                    member_type AS 'Type',
+                    membership_date AS 'Membership Date',
+                    member_Status AS 'Member Status' 
+                FROM members_tbl";
 
             // Add a WHERE clause if there's a search query
             if (!string.IsNullOrEmpty(searchQuery))
             {
                 query += @"
                     WHERE member_ID LIKE @Search 
-                    OR name LIKE @Search 
+                    OR last_name LIKE @Search
+                    OR first_name LIKE @Search
                     OR Email LIKE @Search
                     OR Phone LIKE @Search
+                    OR member_type LIKE @Search
                     OR member_status LIKE @Search";
             }
 
@@ -77,17 +85,19 @@ namespace Library_Management_System.Usercontrol
             string query = @"
                 SELECT 
                     t.Transaction_Id AS 'Transaction ID',
-                    m.Name AS 'Member',
-                    b.Title AS 'Book',
-                    t.Borrow_Date AS 'Borrow Date',
-                    t.Due_Date AS 'Due Date',
-                    t.Return_Date AS 'Return Date',
+                    t.Borrower_id AS 'Borrower ID',
+                    br.book_id AS 'Book ID',
+                    br.member_id AS 'Member ID',
+                    br.Borrow_Date AS 'Borrow Date',
+                    br.Due_Date AS 'Due Date',
+                    br.Return_Date AS 'Return Date',
                     t.Fine AS 'Fine',
                     t.transaction_Status AS 'Status'
                 FROM 
                     Transactions_tbl t
-                JOIN Members_tbl m ON t.Member_Id = m.Member_Id
-                JOIN Books_tbl b ON t.Book_Id = b.Book_Id";
+                JOIN Borrowers_tbl br ON t.Borrower_Id = br.Borrower_Id";
+            // JOIN Members_tbl m ON t.Member_Id = m.Member_Id
+            // JOIN Books_tbl b ON t.Book_Id = b.Book_Id
 
             // Add a WHERE clause if there's a search query
             if (!string.IsNullOrEmpty(searchQuery))
@@ -104,31 +114,121 @@ namespace Library_Management_System.Usercontrol
 
         private void LoadOverdueBooksReport(string searchQuery = "")
         {
+            /* using transaction tbl
             string query = @"
                 SELECT 
                     t.Transaction_Id AS 'Transaction ID',
-                    m.Name AS 'Member',
-                    b.Title AS 'Book',
-                    t.Due_Date AS 'Due Date',
-                    DATEDIFF(CURDATE(), t.Due_Date) AS 'Overdue Days',
+                    br.member_id AS 'Member ID',
+                    br.book_id AS 'Book ID',
+                    br.Due_Date AS 'Due Date',
+                    DATEDIFF(CURDATE(), br.Due_Date) AS 'Overdue Days',
                     t.Fine AS 'Fine'
                 FROM 
                     Transactions_tbl t
-                JOIN Members_tbl m ON t.Member_Id = m.Member_Id
-                JOIN Books_tbl b ON t.Book_Id = b.Book_Id
+                JOIN borrowers_tbl br ON t.borrower_id
                 WHERE 
-                    t.transaction_Status = 'Borrowed' AND t.Due_Date < CURDATE()";
-
+                    t.transaction_Status = 'Borrowed' AND br.Due_Date < CURDATE()";
+            // JOIN Members_tbl m ON t.Member_Id = m.Member_Id
+            // JOIN Books_tbl b ON t.Book_Id = b.Book_Id
             // Add a WHERE clause if there's a search query
             if (!string.IsNullOrEmpty(searchQuery))
             {
                 query += @"
                     WHERE t.transaction_ID LIKE @Search 
-                    OR m.name LIKE @Search 
-                    OR b.Title LIKE @Search";
+                    OR br.member_id LIKE @Search 
+                    OR br.book_id LIKE @Search";
             }
 
             PopulateDataGridView(query, dataGridViewOverdueBooks, searchQuery);
+            */
+            //using dues_tbl
+            string query = @"
+                SELECT 
+                    d.due_Id AS 'Due ID',
+                    br.borrower_id AS 'Borrower ID',
+                    br.borrow_date AS 'Borrow Date',
+                    br.due_Date AS 'Due Date',
+                    DATEDIFF(CURDATE(), br.Due_Date) AS 'Overdue Days',
+                    d.Fine_amount AS 'Amount'
+                FROM 
+                    dues_tbl d
+                JOIN borrowers_tbl br ON d.borrow_id
+                WHERE 
+                    d.dues_status = 'Unpaid' AND br.Due_Date < CURDATE()";
+            // JOIN Members_tbl m ON t.Member_Id = m.Member_Id
+            // JOIN Books_tbl b ON t.Book_Id = b.Book_Id
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE d.due_id LIKE @Search 
+                    OR br.borrower_id LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dataGridViewOverdueBooks, searchQuery);
+        }
+
+        private void LoadAuthorsReport(string searchQuery = "")
+        {
+            string query = @"
+                SELECT 
+                    author_Id AS 'ID', 
+                    author_name AS 'Author', 
+                    biography AS 'Biography'
+                FROM authors_tbl";
+
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE author_id LIKE @Search 
+                    OR author_name LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dgvAuthors, searchQuery);
+        }
+
+        private void LoadPublishersReport(string searchQuery = "")
+        {
+            string query = @"
+                SELECT 
+                    publisher_Id AS 'ID', 
+                    publisher_name AS 'Publisher', 
+                    contact_info AS 'Contact Info'
+                FROM publishers_tbl";
+
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE publisher_id LIKE @Search 
+                    OR publisher_name LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dgvPublishers, searchQuery);
+        }
+        private void LoadBorrowersReport(string searchQuery = "")
+        {
+            string query = @"
+                SELECT 
+                    borrower_Id AS 'ID', 
+                    book_id AS 'Book ID', 
+                    member_id AS 'Member ID',
+                    borrow_date AS 'Borrow Date',
+                    due_date AS 'Due Date',
+                    return_date AS 'Return Date'
+                FROM borrowers_tbl";
+
+            // Add a WHERE clause if there's a search query
+            if (!string.IsNullOrEmpty(searchQuery))
+            {
+                query += @"
+                    WHERE borrower_id LIKE @Search 
+                    OR book_id LIKE @Search
+                    OR member_id LIKE @Search";
+            }
+
+            PopulateDataGridView(query, dgvBorrowers, searchQuery);
         }
 
         private void PopulateDataGridView(string query, DataGridView dataGridView, string searchQuery = "")
@@ -181,6 +281,15 @@ namespace Library_Management_System.Usercontrol
                 case 3: // Overdue Books Report
                     LoadOverdueBooksReport();
                     break;
+                case 4: // Authors
+                    LoadAuthorsReport();
+                    break;
+                case 5: // Publishers
+                    LoadPublishersReport();
+                    break;
+                case 6: // Borrowers
+                    LoadBorrowersReport();
+                    break;
             }
         }
 
@@ -203,8 +312,17 @@ namespace Library_Management_System.Usercontrol
                 case 2: // Transactions Report
                     LoadTransactionsReport(searchQuery);
                     break;
-                case 3: // Overdue Books Report
+                case 3: // Overdue Books Reports
                     LoadOverdueBooksReport(searchQuery);
+                    break;
+                case 4: // Authors
+                    LoadAuthorsReport(searchQuery);
+                    break;
+                case 5: // Publishers
+                    LoadPublishersReport(searchQuery);
+                    break;
+                case 6: // Borrowers
+                    LoadBorrowersReport(searchQuery);
                     break;
             }
         }

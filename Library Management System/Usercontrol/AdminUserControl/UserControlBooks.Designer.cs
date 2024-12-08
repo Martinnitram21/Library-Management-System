@@ -38,14 +38,6 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSearchBooks = new System.Windows.Forms.Button();
-            this.book_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.YearPublish = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ISBN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Genre = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Author = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.book_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvBooks = new System.Windows.Forms.DataGridView();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBooks)).BeginInit();
             this.SuspendLayout();
@@ -152,74 +144,6 @@
             this.btnSearchBooks.UseVisualStyleBackColor = false;
             this.btnSearchBooks.Click += new System.EventHandler(this.btnSearchBooks_Click);
             // 
-            // book_status
-            // 
-            this.book_status.DataPropertyName = "book_status";
-            this.book_status.HeaderText = "Status";
-            this.book_status.Name = "book_status";
-            this.book_status.ReadOnly = true;
-            this.book_status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.book_status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.book_status.Width = 90;
-            // 
-            // YearPublish
-            // 
-            this.YearPublish.DataPropertyName = "year_published";
-            this.YearPublish.HeaderText = "Year Publish";
-            this.YearPublish.Name = "YearPublish";
-            this.YearPublish.ReadOnly = true;
-            this.YearPublish.Width = 90;
-            // 
-            // ISBN
-            // 
-            this.ISBN.DataPropertyName = "ISBN";
-            this.ISBN.HeaderText = "ISBN";
-            this.ISBN.Name = "ISBN";
-            this.ISBN.ReadOnly = true;
-            this.ISBN.Width = 135;
-            // 
-            // Genre
-            // 
-            this.Genre.DataPropertyName = "genre";
-            this.Genre.HeaderText = "Genre";
-            this.Genre.Name = "Genre";
-            this.Genre.ReadOnly = true;
-            this.Genre.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Genre.Width = 120;
-            // 
-            // Category
-            // 
-            this.Category.DataPropertyName = "category";
-            this.Category.HeaderText = "Category";
-            this.Category.Name = "Category";
-            this.Category.ReadOnly = true;
-            this.Category.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Category.Width = 82;
-            // 
-            // Author
-            // 
-            this.Author.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Author.DataPropertyName = "author";
-            this.Author.HeaderText = "Author";
-            this.Author.Name = "Author";
-            this.Author.ReadOnly = true;
-            this.Author.Width = 150;
-            // 
-            // Title
-            // 
-            this.Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Title.DataPropertyName = "title";
-            this.Title.HeaderText = "Title";
-            this.Title.Name = "Title";
-            this.Title.ReadOnly = true;
-            // 
-            // book_id
-            // 
-            this.book_id.DataPropertyName = "book_id";
-            this.book_id.HeaderText = "Book ID";
-            this.book_id.Name = "book_id";
-            this.book_id.ReadOnly = true;
-            // 
             // dgvBooks
             // 
             this.dgvBooks.AllowUserToAddRows = false;
@@ -235,15 +159,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvBooks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvBooks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBooks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.book_id,
-            this.Title,
-            this.Author,
-            this.Category,
-            this.Genre,
-            this.ISBN,
-            this.YearPublish,
-            this.book_status});
             this.dgvBooks.Location = new System.Drawing.Point(3, 137);
             this.dgvBooks.Name = "dgvBooks";
             this.dgvBooks.ReadOnly = true;
@@ -291,14 +206,6 @@
         private System.Windows.Forms.Button btnEdit;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSearchBooks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn book_status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn YearPublish;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ISBN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Genre;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Author;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Title;
-        private System.Windows.Forms.DataGridViewTextBoxColumn book_id;
         private System.Windows.Forms.DataGridView dgvBooks;
     }
 }

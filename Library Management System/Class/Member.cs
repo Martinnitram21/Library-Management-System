@@ -11,17 +11,18 @@ namespace Library_Management_System.Class
     internal class Member
     {
         public int MemberId { get; set; }
-        public string FullName { get; set; }
+        public string Name { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
         public DateTime MembershipDate { get; set; }
-        public string Status { get; set; }
+        public string MemberType { get; set; } // E.g., "Teacher", "Staff", "Student"
+        public string Status { get; set; } // E.g., "Active", "Inactive"
 
         // Constructor
-        public Member(int memberId, string fullName, string email, string phone, DateTime membershipDate, string status)
+        public Member(int memberId, string name, string email, string phone, DateTime membershipDate, string status)
         {
             MemberId = memberId;
-            FullName = fullName;
+            Name = name;
             Email = email;
             Phone = phone;
             MembershipDate = membershipDate;
@@ -40,11 +41,11 @@ namespace Library_Management_System.Class
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO Members (FullName, Email, Phone, MembershipDate, Status) VALUES (@FullName, @Email, @Phone, @MembershipDate, @Status)";
+                    string query = "INSERT INTO Members (FullName, Email, Phone, MembershipDate, Status) VALUES (@Name, @Email, @Phone, @MembershipDate, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", FullName);
+                        cmd.Parameters.AddWithValue("@FullName", Name);
                         cmd.Parameters.AddWithValue("@Email", Email);
                         cmd.Parameters.AddWithValue("@Phone", Phone);
                         cmd.Parameters.AddWithValue("@MembershipDate", MembershipDate);

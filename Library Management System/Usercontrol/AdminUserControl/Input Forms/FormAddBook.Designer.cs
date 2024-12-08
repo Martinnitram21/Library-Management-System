@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -45,6 +45,8 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.txtYear = new System.Windows.Forms.DateTimePicker();
+            this.label9 = new System.Windows.Forms.Label();
+            this.txtPublisher = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -57,19 +59,7 @@
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(447, 100);
-            this.panel1.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(27, 22);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(200, 39);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Add a Book";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
+            this.panel1.TabIndex = 9;
             // 
             // label2
             // 
@@ -83,6 +73,18 @@
             this.label2.Text = "input details here";
             this.label2.Click += new System.EventHandler(this.label1_Click);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(27, 22);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(200, 39);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Add a Book";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -91,7 +93,7 @@
             this.label3.Location = new System.Drawing.Point(34, 126);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(78, 21);
-            this.label3.TabIndex = 1;
+            this.label3.TabIndex = 10;
             this.label3.Text = "Book Title";
             this.label3.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -100,7 +102,7 @@
             this.txtTitle.Location = new System.Drawing.Point(38, 150);
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(380, 29);
-            this.txtTitle.TabIndex = 2;
+            this.txtTitle.TabIndex = 0;
             // 
             // label4
             // 
@@ -110,7 +112,7 @@
             this.label4.Location = new System.Drawing.Point(31, 192);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(104, 21);
-            this.label4.TabIndex = 1;
+            this.label4.TabIndex = 11;
             this.label4.Text = "Author Name";
             this.label4.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -119,17 +121,17 @@
             this.txtAuthor.Location = new System.Drawing.Point(35, 216);
             this.txtAuthor.Name = "txtAuthor";
             this.txtAuthor.Size = new System.Drawing.Size(380, 29);
-            this.txtAuthor.TabIndex = 2;
+            this.txtAuthor.TabIndex = 1;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.ForeColor = System.Drawing.Color.Black;
-            this.label5.Location = new System.Drawing.Point(31, 260);
+            this.label5.Location = new System.Drawing.Point(31, 310);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(73, 21);
-            this.label5.TabIndex = 1;
+            this.label5.TabIndex = 13;
             this.label5.Text = "Category";
             this.label5.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -138,10 +140,10 @@
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.Black;
-            this.label6.Location = new System.Drawing.Point(230, 260);
+            this.label6.Location = new System.Drawing.Point(230, 310);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(52, 21);
-            this.label6.TabIndex = 1;
+            this.label6.TabIndex = 16;
             this.label6.Text = "Genre";
             this.label6.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -151,7 +153,7 @@
             this.comboCategory.Items.AddRange(new object[] {
             "Fiction",
             "Non-Fiction"});
-            this.comboCategory.Location = new System.Drawing.Point(34, 284);
+            this.comboCategory.Location = new System.Drawing.Point(34, 334);
             this.comboCategory.Name = "comboCategory";
             this.comboCategory.Size = new System.Drawing.Size(193, 29);
             this.comboCategory.TabIndex = 3;
@@ -181,39 +183,39 @@
             "Health & Wellness",
             "Cooking",
             "Crime/Detective"});
-            this.comboGenre.Location = new System.Drawing.Point(234, 284);
+            this.comboGenre.Location = new System.Drawing.Point(234, 334);
             this.comboGenre.Name = "comboGenre";
             this.comboGenre.Size = new System.Drawing.Size(181, 29);
-            this.comboGenre.TabIndex = 3;
+            this.comboGenre.TabIndex = 4;
             // 
             // label7
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.Color.Black;
-            this.label7.Location = new System.Drawing.Point(39, 326);
+            this.label7.Location = new System.Drawing.Point(39, 371);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(44, 21);
-            this.label7.TabIndex = 1;
+            this.label7.TabIndex = 14;
             this.label7.Text = "ISBN";
             this.label7.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtISBN
             // 
-            this.txtISBN.Location = new System.Drawing.Point(34, 350);
+            this.txtISBN.Location = new System.Drawing.Point(34, 395);
             this.txtISBN.Name = "txtISBN";
             this.txtISBN.Size = new System.Drawing.Size(380, 29);
-            this.txtISBN.TabIndex = 2;
+            this.txtISBN.TabIndex = 5;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label8.ForeColor = System.Drawing.Color.Black;
-            this.label8.Location = new System.Drawing.Point(39, 394);
+            this.label8.Location = new System.Drawing.Point(39, 435);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(112, 21);
-            this.label8.TabIndex = 1;
+            this.label8.TabIndex = 15;
             this.label8.Text = "Year Published";
             this.label8.Click += new System.EventHandler(this.label1_Click);
             // 
@@ -222,10 +224,10 @@
             this.btnAdd.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAdd.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(291, 499);
+            this.btnAdd.Location = new System.Drawing.Point(291, 512);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(124, 40);
-            this.btnAdd.TabIndex = 4;
+            this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "ADD";
             this.btnAdd.UseVisualStyleBackColor = false;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
@@ -235,20 +237,39 @@
             this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(161, 499);
+            this.btnCancel.Location = new System.Drawing.Point(161, 512);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 40);
-            this.btnCancel.TabIndex = 4;
+            this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
             this.btnCancel.UseVisualStyleBackColor = false;
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(38, 418);
+            this.txtYear.Location = new System.Drawing.Point(38, 459);
             this.txtYear.Name = "txtYear";
             this.txtYear.Size = new System.Drawing.Size(266, 29);
-            this.txtYear.TabIndex = 5;
+            this.txtYear.TabIndex = 6;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Black;
+            this.label9.Location = new System.Drawing.Point(34, 254);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(75, 21);
+            this.label9.TabIndex = 12;
+            this.label9.Text = "Publisher";
+            this.label9.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // txtPublisher
+            // 
+            this.txtPublisher.Location = new System.Drawing.Point(30, 278);
+            this.txtPublisher.Name = "txtPublisher";
+            this.txtPublisher.Size = new System.Drawing.Size(380, 29);
+            this.txtPublisher.TabIndex = 2;
             // 
             // FormAddBook
             // 
@@ -261,10 +282,12 @@
             this.Controls.Add(this.comboGenre);
             this.Controls.Add(this.comboCategory);
             this.Controls.Add(this.txtISBN);
+            this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.txtAuthor);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
+            this.Controls.Add(this.label9);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtTitle);
@@ -302,5 +325,7 @@
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.DateTimePicker txtYear;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtPublisher;
     }
 }

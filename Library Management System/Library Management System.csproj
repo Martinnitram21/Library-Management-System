@@ -102,10 +102,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Author.cs" />
     <Compile Include="Class\Book.cs" />
+    <Compile Include="Class\Borrower.cs" />
     <Compile Include="Class\CurrentSession.cs" />
     <Compile Include="Class\DatabaseHelper.cs" />
+    <Compile Include="Class\Dues.cs" />
     <Compile Include="Class\Member.cs" />
+    <Compile Include="Class\Publisher.cs" />
     <Compile Include="Class\Transaction.cs" />
     <Compile Include="UI\StaffDashboard.cs">
       <SubType>Form</SubType>

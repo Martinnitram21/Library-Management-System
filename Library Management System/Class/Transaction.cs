@@ -1,9 +1,12 @@
-﻿using System;
+﻿using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Library_Management_System.Class
 {
@@ -14,8 +17,9 @@ namespace Library_Management_System.Class
         public int BookId { get; set; }
         public DateTime BorrowDate { get; set; }
         public DateTime DueDate { get; set; }
-        public DateTime? ReturnDate { get; set; } // Nullable to handle when the book isn't returned yet
-        public decimal Fine { get; set; }
+        public DateTime? ReturnDate { get; set; } // Nullable for transactions without a return
+        public decimal? Fine { get; set; } // Nullable for transactions without a fine
+        public string TransactionStatus { get; set; } // E.g., "Borrowed", "Returned", "Overdue"
 
         // Constructor
         public Transaction(int transactionId, int memberId, int bookId, DateTime borrowDate, DateTime dueDate, DateTime returnDate, decimal fine)
@@ -28,18 +32,21 @@ namespace Library_Management_System.Class
             ReturnDate = null; // Will be assigned when the book is returned
             Fine = fine;
         }
-        public void AddTransactionToDatabase(string connectionString)
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        // Add a new transaction
+        public void AddTransaction()
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO Transactions (MemberId, BookId, BorrowDate, DueDate, ReturnDate, Fine) " +
-                                   "VALUES (@MemberId, @BookId, @BorrowDate, @DueDate, @ReturnDate, @Fine)";
+                    string query = @"INSERT INTO Transactions_tbl 
+                                (Member_Id, Book_Id, Borrow_Date, Due_Date, Return_Date, Fine, transaction_Status) 
+                                VALUES (@MemberId, @BookId, @BorrowDate, @DueDate, @ReturnDate, @Fine, @TransactionStatus)";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
                         cmd.Parameters.AddWithValue("@MemberId", MemberId);
                         cmd.Parameters.AddWithValue("@BookId", BookId);
@@ -47,16 +54,10 @@ namespace Library_Management_System.Class
                         cmd.Parameters.AddWithValue("@DueDate", DueDate);
                         cmd.Parameters.AddWithValue("@ReturnDate", (object)ReturnDate ?? DBNull.Value);
                         cmd.Parameters.AddWithValue("@Fine", Fine);
+                        cmd.Parameters.AddWithValue("@TransactionStatus", TransactionStatus);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            Console.WriteLine("Transaction added successfully.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Error adding transaction.");
-                        }
+                        Console.WriteLine(rowsAffected > 0 ? "Transaction added successfully." : "Failed to add transaction.");
                     }
                 }
             }
@@ -65,84 +66,96 @@ namespace Library_Management_System.Class
                 Console.WriteLine("Error: " + ex.Message);
             }
         }
-        /*
-        public static Transaction GetTransactionFromDatabase(int transactionId, string connectionString)
+        // Update an existing transaction
+        public void UpdateTransaction()
         {
             try
             {
-                using (SqlConnection conn = new SqlConnection(connectionString))
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
-                    string query = "SELECT TransactionId, MemberId, BookId, BorrowDate, DueDate, ReturnDate, Fine " +
-                                   "FROM Transactions WHERE TransactionId = @TransactionId";
+                    string query = @"UPDATE Transactions_tbl 
+                                SET Return_Date = @ReturnDate, Fine = @Fine, transaction_Status = @TransactionStatus 
+                                WHERE Transaction_Id = @TransactionId";
 
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@TransactionId", transactionId);
-
-                        using (SqlDataReader reader = cmd.ExecuteReader())
-                        {
-
-                            if (reader.Read())
-                            {
-                                return new Transaction(
-                                    reader.GetInt32(0), // TransactionId
-                                    reader.GetInt32(1), // MemberId
-                                    reader.GetInt32(2), // BookId
-                                    reader.GetDateTime(3), // BorrowDate
-                                    reader.GetDateTime(4), // DueDate
-                                    //reader.IsDBNull(5) ? (DateTime?)null : reader.GetDateTime(5), // ReturnDate (nullable)
-                                    reader.GetDecimal(6) // Fine
-                                );
-                            }
-                            else
-                            {
-                                Console.WriteLine("Transaction not found.");
-                                return null;
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Error: " + ex.Message);
-                return null;
-            }
-        }
-        */
-        public void UpdateReturnDateAndFine(int transactionId, DateTime returnDate, decimal fine, string connectionString)
-        {
-            try
-            {
-                using (SqlConnection conn = new SqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    string query = "UPDATE Transactions SET ReturnDate = @ReturnDate, Fine = @Fine WHERE TransactionId = @TransactionId";
-
-                    using (SqlCommand cmd = new SqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@TransactionId", transactionId);
-                        cmd.Parameters.AddWithValue("@ReturnDate", returnDate);
-                        cmd.Parameters.AddWithValue("@Fine", fine);
+                        cmd.Parameters.AddWithValue("@TransactionId", TransactionId);
+                        cmd.Parameters.AddWithValue("@ReturnDate", (object)ReturnDate ?? DBNull.Value);
+                        cmd.Parameters.AddWithValue("@Fine", Fine);
+                        cmd.Parameters.AddWithValue("@TransactionStatus", TransactionStatus);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
-                        if (rowsAffected > 0)
-                        {
-                            Console.WriteLine("Transaction updated successfully.");
-                        }
-                        else
-                        {
-                            Console.WriteLine("Error updating transaction.");
-                        }
+                        Console.WriteLine(rowsAffected > 0 ? "Transaction updated successfully." : "Failed to update transaction.");
                     }
                 }
             }
             catch (Exception ex)
             {
                 Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+
+        // Delete a transaction
+        public void DeleteTransaction()
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = "DELETE FROM Transactions_tbl WHERE Transaction_Id = @TransactionId";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@TransactionId", TransactionId);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+                        Console.WriteLine(rowsAffected > 0 ? "Transaction deleted successfully." : "Failed to delete transaction.");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error: " + ex.Message);
+            }
+        }
+        // Display transactions in a DataGridView
+        public void DisplayTransactions(DataGridView dataGridView)
+        {
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    string query = @"SELECT 
+                                    Transaction_Id AS 'Transaction ID', 
+                                    Member_Id AS 'Member ID', 
+                                    Book_Id AS 'Book ID', 
+                                    Borrow_Date AS 'Borrow Date', 
+                                    Due_Date AS 'Due Date', 
+                                    Return_Date AS 'Return Date', 
+                                    Fine AS 'Fine', 
+                                    transaction_Status AS 'Status' 
+                                FROM Transactions_tbl";
+
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                        DataTable dataTable = new DataTable();
+                        adapter.Fill(dataTable);
+
+                        // Bind the data to the DataGridView
+                        dataGridView.DataSource = dataTable;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error displaying transactions: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

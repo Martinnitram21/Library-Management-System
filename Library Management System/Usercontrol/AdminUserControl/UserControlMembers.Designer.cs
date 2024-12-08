@@ -39,12 +39,6 @@
             this.btnDelete = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvMembers = new System.Windows.Forms.DataGridView();
-            this.member_id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.phone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.membership_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.member_status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnSearchMembers = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvMembers)).BeginInit();
             this.SuspendLayout();
@@ -148,13 +142,6 @@
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgvMembers.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvMembers.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvMembers.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.member_id,
-            this.name,
-            this.email,
-            this.phone,
-            this.membership_date,
-            this.member_status});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.ActiveCaption;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -179,58 +166,6 @@
             this.dgvMembers.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvMembers.Size = new System.Drawing.Size(714, 286);
             this.dgvMembers.TabIndex = 10;
-            // 
-            // member_id
-            // 
-            this.member_id.DataPropertyName = "member_id";
-            this.member_id.HeaderText = "ID";
-            this.member_id.Name = "member_id";
-            this.member_id.ReadOnly = true;
-            this.member_id.Width = 50;
-            // 
-            // name
-            // 
-            this.name.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.name.DataPropertyName = "name";
-            this.name.HeaderText = "Full Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            // 
-            // email
-            // 
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Email";
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
-            this.email.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.email.Width = 300;
-            // 
-            // phone
-            // 
-            this.phone.DataPropertyName = "phone";
-            this.phone.HeaderText = "Phone";
-            this.phone.Name = "phone";
-            this.phone.ReadOnly = true;
-            this.phone.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.phone.Width = 120;
-            // 
-            // membership_date
-            // 
-            this.membership_date.DataPropertyName = "membership_date";
-            this.membership_date.HeaderText = "Membership Date";
-            this.membership_date.Name = "membership_date";
-            this.membership_date.ReadOnly = true;
-            this.membership_date.Width = 135;
-            // 
-            // member_status
-            // 
-            this.member_status.DataPropertyName = "member_status";
-            this.member_status.HeaderText = "Status";
-            this.member_status.Name = "member_status";
-            this.member_status.ReadOnly = true;
-            this.member_status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.member_status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            this.member_status.Width = 90;
             // 
             // btnSearchMembers
             // 
@@ -280,11 +215,5 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvMembers;
         private System.Windows.Forms.Button btnSearchMembers;
-        private System.Windows.Forms.DataGridViewTextBoxColumn member_id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn name;
-        private System.Windows.Forms.DataGridViewTextBoxColumn email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn phone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn membership_date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn member_status;
     }
 }

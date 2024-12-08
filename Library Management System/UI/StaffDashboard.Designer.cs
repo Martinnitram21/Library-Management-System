@@ -365,9 +365,9 @@
             this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label1.Location = new System.Drawing.Point(127, 34);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(423, 45);
+            this.label1.Size = new System.Drawing.Size(175, 45);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Library Management System";
+            this.label1.Text = "LibraryHub";
             // 
             // StaffDashboard
             // 

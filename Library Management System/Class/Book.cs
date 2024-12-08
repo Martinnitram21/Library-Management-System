@@ -15,6 +15,8 @@ namespace Library_Management_System.Class
         public string Category { get; set; }
         public string Genre { get; set; }
         public string ISBN { get; set; }
+        public int AuthorId { get; set; }
+        public int PublisherId { get; set; }
         public int YearPublished { get; set; }
         public bool IsAvailable { get; set; } // Indicates if the book is available for checkout
 

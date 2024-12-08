@@ -100,9 +100,9 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(626, 296);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(116, 21);
+            this.label7.Size = new System.Drawing.Size(106, 21);
             this.label7.TabIndex = 1;
-            this.label7.Text = "Overdue Books";
+            this.label7.Text = "Unpaid Books";
             // 
             // lblBorrowedBooks
             // 

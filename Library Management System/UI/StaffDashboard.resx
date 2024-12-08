@@ -164,7 +164,7 @@
   <data name="btnBorrowReturn.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAAMdJREFUWEfNklEOwkAIRHsEvZjeRI/tFfyrYAo2DTgCYd1JXrKdYQgxLl90IR4b
+        vwAADr8BOAVTJAAAAMdJREFUWEfNklEOwkAIRHsEvZjeRI/tFfyrYAo2DTgCYd1JXrKdYQgxLl90IR4b
         /I6q2n8X1w1+R1Xta1mIqtovL/i5fxxkzsTxJzztvhGRvmneif2f6ErcCGvWItI3zSfBS/hqhsvsWbMW
         kb5pjsQ0R2KaI/k8Bmv+A8TvzuFAdw4HunM40J27A92a/wDxu3M40J3Dge4cDnTn7kC35j9A/GyOpD1v
         gfjZHEl73gLxszmS9rwF4mdzJO1lF1Q13wH/wjQHsawvpnfbBNbgl3EAAAAASUVORK5CYII=
@@ -189,7 +189,7 @@
   <data name="btnBooks.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        wAAADsABataJCQAAA3pJREFUWEfVl1tIVEEYx9fMontBRdCClRtLS7oXg54qkHppKwKJyILoQcQKwsAe
+        vwAADr8BOAVTJAAAA3pJREFUWEfVl1tIVEEYx9fMontBRdCClRtLS7oXg54qkHppKwKJyILoQcQKwsAe
         ih66EPgi+iC+mEZQD1EQPm1Et4cwiYRAMDNDoosQdrVQM+s3s9/YnL3p2inwD39mznf5f7Nz5szMeqYt
         iouLyyKRyEV4hH4E08y45z+AovvhTwr/MuR5EN4Lh8MX4M5QKLRMwt0FwtsoNGwXT0VixmAPvMxzZTAY
         DJGeG1eZIhBCL/LFLpQNVS6zc4f2PM9Rn883W6QnBgkFJPbbgn9L9FpFPjOKioqWE9xjJT7nVWzn15TC
@@ -227,7 +227,7 @@
   <data name="pictureBox1.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         iVBORw0KGgoAAAANSUhEUgAAAEgAAABICAYAAABV7bNHAAAABGdBTUEAALGPC/xhBQAAAAlwSFlzAAAO
-        vgAADr4B6kKxwAAAB8VJREFUeF7tXGtsFFUYLQ8DEokaTPzBD36IiTEao02UILLdnbaUaAIYio8qYAwm
+        vQAADr0BR/uQrQAAB8VJREFUeF7tXGtsFFUYLQ8DEokaTPzBD36IiTEao02UILLdnbaUaAIYio8qYAwm
         VBGVoEQeS0qkBMEH8VVDLNjdNbQK9EHrI6EE0VRDTXiE1+60QFvaUqG0lUJfez3fcku7O9+0M7ONmcE9
         yQl05rtn7zk799u5s4WkBBJIIIEEEvhPoOysn+TxB+e6faE1rm9DD8nD/1+kFqp3pgTUp93+0Baw2uNX
         u5WAKoj4e0Ny3uHbZGl88CYljW7IXpR1IXuh1yqbMF4UFo5paGjIqq+v91oljRdCjJJTi4Lrs+N3uAtq
