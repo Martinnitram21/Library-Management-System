@@ -77,8 +77,8 @@ namespace Library_Management_System.UI
                     string query = @"
                 SELECT b.Book_Id, b.Title 
                 FROM Books_tbl b
-                JOIN Transactions_tbl t ON b.Book_Id = t.Book_Id
-                WHERE t.Member_Id = @MemberId AND t.transaction_Status = 'Borrowed'";
+                JOIN borrowers_tbl br ON b.Book_Id = br.Book_Id
+                WHERE br.Member_Id = @MemberId AND b.book_status = 'Borrowed'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@MemberId", memberId);
 
@@ -122,45 +122,66 @@ namespace Library_Management_System.UI
                 {
                     conn.Open();
 
-                    // Fetch the due date for the selected book
-                    string query = "SELECT Due_Date FROM Borrowers_tbl WHERE Book_Id = @BookId AND Member_Id = @MemberId AND Return_Date IS NULL";
+                    // Fetch the borrow_id and due date
+                    string query = @"
+    SELECT Borrower_Id, Due_Date 
+    FROM Borrowers_tbl 
+    WHERE Book_Id = @BookId AND Member_Id = @MemberId AND Return_Date IS NULL";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@BookId", bookId);
                     cmd.Parameters.AddWithValue("@MemberId", memberId);
 
-                    object dueDateObj = cmd.ExecuteScalar();
-                    if (dueDateObj != null)
+                    int borrowId = -1;
+                    DateTime dueDate = DateTime.MinValue;
+
+                    using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
-                        DateTime dueDate = Convert.ToDateTime(dueDateObj);
-                        DateTime currentDate = DateTime.Now;
-
-                        // Calculate fine if the book is overdue
-                        if (currentDate > dueDate)
+                        if (reader.Read())
                         {
-                            int overdueDays = (currentDate - dueDate).Days;
-                            decimal fine = overdueDays * 5; // Assume fine is $5 per overdue day
-
-                            // Show message with fine
-                            MessageBox.Show($"This book is overdue by {overdueDays} days. Fine: ${fine}", "Overdue Book", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-
-                            // Update fine in Borrowers_tbl
-                            string updateFineQuery = "UPDATE Borrowers_tbl SET Fine = @Fine WHERE Book_Id = @BookId AND Member_Id = @MemberId AND Return_Date IS NULL";
-                            MySqlCommand updateFineCmd = new MySqlCommand(updateFineQuery, conn);
-                            updateFineCmd.Parameters.AddWithValue("@Fine", fine);
-                            updateFineCmd.Parameters.AddWithValue("@BookId", bookId);
-                            updateFineCmd.Parameters.AddWithValue("@MemberId", memberId);
-                            updateFineCmd.ExecuteNonQuery();
+                            borrowId = reader.GetInt32("Borrower_Id");
+                            dueDate = reader.GetDateTime("Due_Date");
                         }
                     }
 
-                    // Mark the book as returned in Borrowers_tbl and set the return date to NOW()
+                    // Ensure the reader is closed before executing other commands
+                    if (borrowId != -1)
+                    {
+                        DateTime currentDate = DateTime.Now;
+
+                        // Check for overdue and calculate fine
+                        if (currentDate > dueDate)
+                        {
+                            int overdueDays = (currentDate - dueDate).Days;
+                            decimal fine = overdueDays * 5;
+
+                            MessageBox.Show($"This book is overdue by {overdueDays} days. Fine: ${fine}", "Overdue Book", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                            // Update the dues_tbl fine and set status to 'Unpaid'
+                            string updateFineQuery = @"
+            UPDATE dues_tbl 
+            SET Fine_amount = @Fine, dues_status = 'Unpaid' 
+            WHERE Borrow_Id = @BorrowId";
+                            MySqlCommand updateFineCmd = new MySqlCommand(updateFineQuery, conn);
+                            updateFineCmd.Parameters.AddWithValue("@Fine", fine);
+                            updateFineCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                            updateFineCmd.ExecuteNonQuery();
+                        }
+
+                        // Mark dues as 'Paid' when the book is returned
+                        string markPaidQuery = "UPDATE dues_tbl SET dues_status = 'Paid' WHERE Borrow_Id = @BorrowId";
+                        MySqlCommand markPaidCmd = new MySqlCommand(markPaidQuery, conn);
+                        markPaidCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                        markPaidCmd.ExecuteNonQuery();
+                    }
+
+                    // Mark the book as returned in Borrowers_tbl
                     string updateBorrowersQuery = "UPDATE Borrowers_tbl SET Return_Date = NOW() WHERE Book_Id = @BookId AND Member_Id = @MemberId AND Return_Date IS NULL";
                     MySqlCommand updateBorrowersCmd = new MySqlCommand(updateBorrowersQuery, conn);
                     updateBorrowersCmd.Parameters.AddWithValue("@BookId", bookId);
                     updateBorrowersCmd.Parameters.AddWithValue("@MemberId", memberId);
                     updateBorrowersCmd.ExecuteNonQuery();
 
-                    // Update the book status to 'Available' in Books_tbl
+                    // Update book status to 'Available'
                     string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Available' WHERE Book_Id = @BookId";
                     MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn);
                     updateBookCmd.Parameters.AddWithValue("@BookId", bookId);

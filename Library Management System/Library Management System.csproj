@@ -233,17 +233,17 @@
     <Compile Include="Usercontrol\StaffUserControl\FindStudentUserControl.Designer.cs">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FormIssueBook.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffFormIssueBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FormIssueBook.Designer.cs">
-      <DependentUpon>FormIssueBook.cs</DependentUpon>
+    <Compile Include="Usercontrol\Obsolete\StaffFormIssueBook.Designer.cs">
+      <DependentUpon>StaffFormIssueBook.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FormReturnBook.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffFormReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FormReturnBook.Designer.cs">
-      <DependentUpon>FormReturnBook.cs</DependentUpon>
+    <Compile Include="Usercontrol\Obsolete\StaffFormReturnBook.Designer.cs">
+      <DependentUpon>StaffFormReturnBook.cs</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\StaffUserControl\IssueReturnUserControl.cs">
       <SubType>UserControl</SubType>
@@ -251,16 +251,16 @@
     <Compile Include="Usercontrol\StaffUserControl\IssueReturnUserControl.Designer.cs">
       <DependentUpon>IssueReturnUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\StaffBooks.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffBooks.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\StaffBooks.Designer.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffBooks.Designer.cs">
       <DependentUpon>StaffBooks.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\StaffDashBoardUserControl.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffDashBoardUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\StaffDashBoardUserControl.Designer.cs">
+    <Compile Include="Usercontrol\Obsolete\StaffDashBoardUserControl.Designer.cs">
       <DependentUpon>StaffDashBoardUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\StaffUserControl\ViewLogUserControl.cs">
@@ -335,19 +335,19 @@
     <EmbeddedResource Include="Usercontrol\StaffUserControl\FindStudentUserControl.resx">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\StaffUserControl\FormIssueBook.resx">
-      <DependentUpon>FormIssueBook.cs</DependentUpon>
+    <EmbeddedResource Include="Usercontrol\Obsolete\StaffFormIssueBook.resx">
+      <DependentUpon>StaffFormIssueBook.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\StaffUserControl\FormReturnBook.resx">
-      <DependentUpon>FormReturnBook.cs</DependentUpon>
+    <EmbeddedResource Include="Usercontrol\Obsolete\StaffFormReturnBook.resx">
+      <DependentUpon>StaffFormReturnBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\IssueReturnUserControl.resx">
       <DependentUpon>IssueReturnUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\StaffUserControl\StaffBooks.resx">
+    <EmbeddedResource Include="Usercontrol\Obsolete\StaffBooks.resx">
       <DependentUpon>StaffBooks.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\StaffUserControl\StaffDashBoardUserControl.resx">
+    <EmbeddedResource Include="Usercontrol\Obsolete\StaffDashBoardUserControl.resx">
       <DependentUpon>StaffDashBoardUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\ViewLogUserControl.resx">

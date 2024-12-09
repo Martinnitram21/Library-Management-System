@@ -1,4 +1,5 @@
-﻿using MySql.Data.MySqlClient;
+﻿using Library_Management_System.Class;
+using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,18 +12,19 @@ using System.Windows.Forms;
 
 namespace Library_Management_System.Usercontrol.StaffUserControl
 {
-    public partial class FormReturnBook : Form
+    public partial class StaffFormIssueBook : Form
     {
+        // Connection string to the database
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
 
-        public FormReturnBook()
+        public StaffFormIssueBook()
         {
             InitializeComponent();
             LoadBooks();
             LoadMembers();
         }
 
-        // Load Books that are borrowed (book status = 'Borrowed')
+        // Method to load available books into the ComboBox
         private void LoadBooks()
         {
             try
@@ -30,7 +32,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT Book_Id, Title FROM Books_tbl WHERE book_Status = 'Borrowed'";
+                    string query = "SELECT Book_Id, Title FROM Books_tbl WHERE book_Status = 'Available'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
@@ -40,8 +42,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             books.Add(new KeyValuePair<string, int>(reader["Title"].ToString(), Convert.ToInt32(reader["Book_Id"])));
                         }
                         cmbBooks.DataSource = books;
-                        cmbBooks.DisplayMember = "Key";  // Title
-                        cmbBooks.ValueMember = "Value";  // BookId
+                        cmbBooks.DisplayMember = "Key";  // Display the title of the book
+                        cmbBooks.ValueMember = "Value";  // Use the BookId for selection
                     }
                 }
             }
@@ -51,7 +53,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             }
         }
 
-        // Load Active Members
+        // Method to load active members into the ComboBox
         private void LoadMembers()
         {
             try
@@ -69,8 +71,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             members.Add(new KeyValuePair<string, int>(reader["Name"].ToString(), Convert.ToInt32(reader["Member_Id"])));
                         }
                         cmbMembers.DataSource = members;
-                        cmbMembers.DisplayMember = "Key";  // Name
-                        cmbMembers.ValueMember = "Value";  // MemberId
+                        cmbMembers.DisplayMember = "Key";  // Display member name
+                        cmbMembers.ValueMember = "Value";  // Use MemberId for selection
                     }
                 }
             }
@@ -80,8 +82,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             }
         }
 
-        // Handle Book Return on Submit
-        private void btnSubmit_Click(object sender, EventArgs e)
+        // Issue book when the "Issue" button is clicked
+        private void btnIssue_Click(object sender, EventArgs e)
         {
             if (cmbBooks.SelectedItem == null || cmbMembers.SelectedItem == null)
             {
@@ -94,48 +96,43 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
             int bookId = selectedBook.Value;
             int memberId = selectedMember.Value;
-            DateTime returnDate = DateTime.Now;
+            DateTime dueDate = dtpDueDate.Value;
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
 
-                    // Update the transaction to mark it as returned
-                    string updateTransactionQuery = "UPDATE Transactions_tbl SET Return_Date = @ReturnDate, transaction_Status = 'Returned' WHERE Member_Id = @MemberId AND Book_Id = @BookId AND transaction_Status = 'Borrowed'";
-                    MySqlCommand updateTransactionCmd = new MySqlCommand(updateTransactionQuery, conn);
-                    updateTransactionCmd.Parameters.AddWithValue("@ReturnDate", returnDate);
-                    updateTransactionCmd.Parameters.AddWithValue("@MemberId", memberId);
-                    updateTransactionCmd.Parameters.AddWithValue("@BookId", bookId);
-                    int rowsAffected = updateTransactionCmd.ExecuteNonQuery();
+                    // Insert transaction
+                    string transactionQuery = "INSERT INTO Transactions_tbl (Member_Id, Book_Id, Borrow_Date, Due_Date, transaction_Status) " +
+                                               "VALUES (@MemberId, @BookId, NOW(), @DueDate, 'Borrowed')";
+                    MySqlCommand transactionCmd = new MySqlCommand(transactionQuery, conn);
+                    transactionCmd.Parameters.AddWithValue("@MemberId", memberId);
+                    transactionCmd.Parameters.AddWithValue("@BookId", bookId);
+                    transactionCmd.Parameters.AddWithValue("@DueDate", dueDate);
+                    transactionCmd.ExecuteNonQuery();
 
-                    if (rowsAffected == 0)
-                    {
-                        MessageBox.Show("No active borrow transaction found for this book and member.", "Return Failed", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
-                    }
-
-                    // Update the book status to 'Available'
-                    string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Available' WHERE Book_Id = @BookId";
+                    // Update book status
+                    string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
                     MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn);
                     updateBookCmd.Parameters.AddWithValue("@BookId", bookId);
                     updateBookCmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Book returned successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    this.Close();  // Close the form after successful return
+                    MessageBox.Show("Book issued successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Close();
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error processing return: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show($"Error processing transaction: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        // Handle Cancel button click
+        // Cancel the operation when the "Cancel" button is clicked
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            this.Hide();  // Close the form or hide it
+            this.Close();
         }
     }
 }

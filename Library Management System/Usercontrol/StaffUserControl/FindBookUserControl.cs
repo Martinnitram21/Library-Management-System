@@ -36,15 +36,24 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
             try
             {
-                // Connection string to the database
-                //string connectionString = "your_connection_string";
-
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
 
                     // Query for book details
-                    string bookQuery = "SELECT * FROM books_tbl WHERE book_id = @BookID";
+                    // Query for book details and join with the author_tbl
+                    string bookQuery = @"
+                SELECT 
+                    b.title,
+                    b.category,
+                    b.genre,
+                    b.ISBN,
+                    b.year_published,
+                    b.book_status,
+                    a.author_name
+                FROM books_tbl b
+                LEFT JOIN authors_tbl a ON b.author_id = a.author_id
+                WHERE b.book_id = @BookID";
                     MySqlCommand bookCmd = new MySqlCommand(bookQuery, conn);
                     bookCmd.Parameters.AddWithValue("@BookID", bookId);
 
@@ -54,7 +63,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                         {
                             // Populate Book Details
                             lblTitle.Text = reader["title"].ToString();
-                            lblAuthor.Text = reader["author"].ToString();
+                            lblAuthor.Text = reader["author_name"].ToString();
                             lblCategory.Text = reader["category"].ToString();
                             lblGenre.Text = reader["genre"].ToString();
                             lblISBN.Text = reader["ISBN"].ToString();
@@ -64,30 +73,32 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                         else
                         {
                             MessageBox.Show("Book not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
                         }
                     }
 
-                    // Query for student details related to the book
-                    string studentQuery = @"
-                        SELECT m.member_id, m.name, m.email, m.phone
-                        FROM members_tbl m
-                        JOIN transactions_tbl t ON m.member_id = t.member_id
-                        WHERE t.book_id = @BookID";
-                    MySqlCommand studentCmd = new MySqlCommand(studentQuery, conn);
-                    studentCmd.Parameters.AddWithValue("@BookID", bookId);
+                    // Query for borrower details related to the book
+                    string borrowerQuery = @"
+                SELECT m.member_id, m.last_name, m.email, m.phone
+                FROM members_tbl m
+                JOIN borrowers_tbl b ON m.member_id = b.member_id
+                WHERE b.book_id = @BookID AND b.return_date IS NULL";
+                    MySqlCommand borrowerCmd = new MySqlCommand(borrowerQuery, conn);
+                    borrowerCmd.Parameters.AddWithValue("@BookID", bookId);
 
-                    using (MySqlDataReader studentReader = studentCmd.ExecuteReader())
+                    using (MySqlDataReader borrowerReader = borrowerCmd.ExecuteReader())
                     {
-                        if (studentReader.Read())
+                        if (borrowerReader.Read())
                         {
-                            // Populate Student Details
-                            lblStudentID.Text = studentReader["member_id"].ToString();
-                            lblStudentName.Text = studentReader["name"].ToString();
-                            lblEmail.Text = studentReader["email"].ToString();
-                            lblPhone.Text = studentReader["phone"].ToString();
+                            // Populate Borrower Details
+                            lblStudentID.Text = borrowerReader["member_id"].ToString();
+                            lblStudentName.Text = borrowerReader["last_name"].ToString();
+                            lblEmail.Text = borrowerReader["email"].ToString();
+                            lblPhone.Text = borrowerReader["phone"].ToString();
                         }
                         else
                         {
+                            // Clear labels if no borrower found
                             lblStudentID.Text = "Not Found";
                             lblStudentName.Text = "Not Found";
                             lblEmail.Text = "Not Found";

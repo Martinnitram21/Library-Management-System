@@ -19,6 +19,7 @@ namespace Library_Management_System.UI
             InitializeComponent();
             LoadBooks();
             LoadMembers();
+            DisplayDueDate();
         }
         private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
 
@@ -102,14 +103,23 @@ namespace Library_Management_System.UI
                 {
                     conn.Open();
 
-                    // Insert into Borrowers_tbl with auto-calculated due date (7 days from now)
+                    // Insert into Borrowers_tbl and retrieve the borrow_id
                     string borrowQuery = @"
-                INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
-                VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY))";
+            INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
+            VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY));
+            SELECT LAST_INSERT_ID();";
                     MySqlCommand borrowCmd = new MySqlCommand(borrowQuery, conn);
                     borrowCmd.Parameters.AddWithValue("@BookId", bookId);
                     borrowCmd.Parameters.AddWithValue("@MemberId", memberId);
-                    borrowCmd.ExecuteNonQuery();
+                    int borrowId = Convert.ToInt32(borrowCmd.ExecuteScalar());
+
+                    // Insert initial dues record into dues_tbl using borrow_id
+                    string duesQuery = @"
+            INSERT INTO dues_tbl (Borrow_Id, Fine_amount, dues_status)
+            VALUES (@BorrowId, 0, 'Unpaid')";
+                    MySqlCommand duesCmd = new MySqlCommand(duesQuery, conn);
+                    duesCmd.Parameters.AddWithValue("@BorrowId", borrowId);
+                    duesCmd.ExecuteNonQuery();
 
                     // Update the book status to 'Borrowed'
                     string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
@@ -125,6 +135,12 @@ namespace Library_Management_System.UI
             {
                 MessageBox.Show($"Error processing transaction: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void DisplayDueDate()
+        {
+            DateTime dueDate = DateTime.Now.AddDays(7);
+            lblDueDate.Text = $" {dueDate:MMMM dd, yyyy}";
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

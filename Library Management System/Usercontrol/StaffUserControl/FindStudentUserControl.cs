@@ -37,29 +37,29 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         private void SearchStudent(string studentName)
         {
             string query = @"
-                SELECT 
-                    m.Member_Id AS 'Student ID',
-                    m.Name AS 'Name',
-                    m.Email AS 'Email',
-                    m.Phone AS 'Phone',
-                    m.Membership_Date AS 'Membership Date',
-                    m.Member_Status AS 'Status',
-                    t.Transaction_Id AS 'Transaction ID',
-                    b.Book_Id AS 'Book ID',
-                    b.Title AS 'Book Title',
-                    t.Borrow_Date AS 'Borrow Date',
-                    t.Due_Date AS 'Due Date',
-                    t.Transaction_Status AS 'Book Status'
-                FROM 
-                    Members_tbl m
-                LEFT JOIN 
-                    Transactions_tbl t ON m.Member_Id = t.Member_Id
-                LEFT JOIN 
-                    Books_tbl b ON t.Book_Id = b.Book_Id
-                WHERE 
-                    m.Name LIKE @Name
-                ORDER BY 
-                    t.Borrow_Date DESC";
+        SELECT 
+            m.Member_Id AS 'Student ID',
+            m.last_name AS 'Name',
+            m.Email AS 'Email',
+            m.Phone AS 'Phone',
+            m.Membership_Date AS 'Membership Date',
+            m.Member_Status AS 'Status',
+            br.Borrower_Id AS 'Borrow ID',
+            bk.Book_Id AS 'Book ID',
+            bk.Title AS 'Book Title',
+            br.Borrow_Date AS 'Borrow Date',
+            br.Due_Date AS 'Due Date',
+            bk.Book_Status AS 'Book Status'
+        FROM 
+            Members_tbl m
+        LEFT JOIN 
+            Borrowers_tbl br ON m.Member_Id = br.Member_Id
+        LEFT JOIN 
+            Books_tbl bk ON br.Book_Id = bk.Book_Id
+        WHERE 
+            m.last_Name LIKE @Name
+        ORDER BY 
+            br.Borrow_Date DESC";
 
             try
             {
@@ -85,7 +85,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                             lblStatus.Text = reader["Status"].ToString();
 
                             // Fill Issued Book Details
-                            lblTransactionID.Text = reader["Transaction ID"].ToString();
+                            lblTransactionID.Text = reader["Borrow ID"].ToString();
                             lblBookID.Text = reader["Book ID"].ToString();
                             lblBookTitle.Text = reader["Book Title"].ToString();
                             lblBorrowDate.Text = reader["Borrow Date"].ToString();

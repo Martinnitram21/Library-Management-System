@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -39,15 +38,9 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.cmbBooks = new System.Windows.Forms.ComboBox();
             this.cmbMembers = new System.Windows.Forms.ComboBox();
+            this.lblDueDate = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // dtpDueDate
-            // 
-            this.dtpDueDate.Location = new System.Drawing.Point(30, 306);
-            this.dtpDueDate.Name = "dtpDueDate";
-            this.dtpDueDate.Size = new System.Drawing.Size(266, 29);
-            this.dtpDueDate.TabIndex = 20;
             // 
             // btnCancel
             // 
@@ -159,16 +152,27 @@
             this.cmbMembers.TabIndex = 21;
             this.cmbMembers.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
-            // BorrowForm
+            // lblDueDate
+            // 
+            this.lblDueDate.AutoSize = true;
+            this.lblDueDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblDueDate.ForeColor = System.Drawing.Color.Black;
+            this.lblDueDate.Location = new System.Drawing.Point(34, 303);
+            this.lblDueDate.Name = "lblDueDate";
+            this.lblDueDate.Size = new System.Drawing.Size(74, 21);
+            this.lblDueDate.TabIndex = 6;
+            this.lblDueDate.Text = "Due Date";
+            // 
+            // FormBorrowBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 564);
             this.Controls.Add(this.cmbMembers);
             this.Controls.Add(this.cmbBooks);
-            this.Controls.Add(this.dtpDueDate);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSubmit);
+            this.Controls.Add(this.lblDueDate);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
@@ -176,7 +180,7 @@
             this.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.Name = "BorrowForm";
+            this.Name = "FormBorrowBook";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Library Management System || Borrow Books";
             this.panel1.ResumeLayout(false);
@@ -187,8 +191,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.DateTimePicker dtpDueDate;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label8;
@@ -199,5 +201,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cmbBooks;
         private System.Windows.Forms.ComboBox cmbMembers;
+        private System.Windows.Forms.Label lblDueDate;
     }
 }

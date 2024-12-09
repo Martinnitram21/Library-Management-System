@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Library_Management_System.UI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,6 +13,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 {
     public partial class IssueReturnUserControl : UserControl
     {
+
         public IssueReturnUserControl()
         {
             InitializeComponent();
@@ -19,14 +21,24 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
         private void btnBorrow_Click(object sender, EventArgs e)
         {
-            FormIssueBook formIssueBook = new FormIssueBook();
+            /*
+            StaffFormIssueBook formIssueBook = new StaffFormIssueBook();
             formIssueBook.ShowDialog();
+            */
+
+            FormBorrowBook borrowForm = new FormBorrowBook();
+            borrowForm.ShowDialog(); // Opens the borrow form
         }
 
         private void btnReturn_Click(object sender, EventArgs e)
         {
-            FormReturnBook formReturnBook  = new FormReturnBook();
+            /*
+            StaffFormReturnBook formReturnBook  = new StaffFormReturnBook();
             formReturnBook.ShowDialog();
+            */
+
+            FormReturnBook returnForm = new FormReturnBook();
+            returnForm.ShowDialog(); // Opens the return form
         }
     }
 }

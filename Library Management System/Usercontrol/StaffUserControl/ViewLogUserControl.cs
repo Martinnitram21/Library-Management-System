@@ -16,38 +16,40 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         public ViewLogUserControl()
         {
             InitializeComponent();
-            LoadTransactionsReport();
+            LoadBorrowersReport();
         }
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
-        private void LoadTransactionsReport(string searchQuery = "")
+
+        private void LoadBorrowersReport(string searchQuery = "")
         {
             string query = @"
         SELECT 
-            t.Transaction_Id AS 'Transaction ID',
-            m.Name AS 'Member',
-            b.Title AS 'Book',
-            t.Borrow_Date AS 'Borrow Date',
-            t.Due_Date AS 'Due Date',
-            t.Return_Date AS 'Return Date',
-            t.Fine AS 'Fine',
-            t.transaction_Status AS 'Status'
+            b.Borrower_Id AS 'Borrow ID',
+            m.last_Name AS 'Member',
+            bk.Title AS 'Book',
+            b.Borrow_Date AS 'Borrow Date',
+            b.Due_Date AS 'Due Date',
+            b.Return_Date AS 'Return Date',
+            du.Fine_amount AS 'Fine',
+            bk.Book_Status AS 'Status'
         FROM 
-            Transactions_tbl t
-        JOIN Members_tbl m ON t.Member_Id = m.Member_Id
-        JOIN Books_tbl b ON t.Book_Id = b.Book_Id";
+            Borrowers_tbl b
+        JOIN Members_tbl m ON b.Member_Id = m.Member_Id
+        JOIN Books_tbl bk ON b.Book_Id = bk.Book_Id
+        JOIN dues_tbl du ON b.borrower_id = du.borrow_id";
 
             // Add a WHERE clause if there's a search query
             if (!string.IsNullOrEmpty(searchQuery))
             {
                 query += @"
-            WHERE m.Name LIKE @Search 
-            OR b.Title LIKE @Search 
-            OR t.Transaction_Id LIKE @Search
-            OR t.transaction_Status LIKE @Search";
+            WHERE m.last_Name LIKE @Search 
+            OR bk.Title LIKE @Search 
+            OR b.Borrower_Id LIKE @Search
+            OR b.Borrow_Status LIKE @Search";
             }
 
             PopulateDataGridView(query, searchQuery);
@@ -88,6 +90,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 MessageBox.Show($"Error loading data: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         private void FormatDataGridView()
         {
             // Assuming dataGridViewTransactions is the name of your DataGridView
@@ -98,8 +101,9 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             // Set the 'Book' column to fill the remaining space
             dataGridViewTransactions.Columns["Book"].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
 
-            // Optionally, set other columns' AutoSizeMode (e.g., for 'Transaction ID' column to be fixed size)
-            dataGridViewTransactions.Columns["Transaction ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            // Optionally, set other columns' AutoSizeMode (e.g., for 'Borrow ID' column to be fixed size)
+            dataGridViewTransactions.Columns["Borrow ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
+
     }
 }
