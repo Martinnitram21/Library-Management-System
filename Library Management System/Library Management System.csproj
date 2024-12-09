@@ -221,10 +221,10 @@
     <Compile Include="Usercontrol\StaffUserControl\FindBookUserControl.Designer.cs">
       <DependentUpon>FindBookUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FindIssueBookUserControl.cs">
+    <Compile Include="Usercontrol\Obsolete\FindIssueBookUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Usercontrol\StaffUserControl\FindIssueBookUserControl.Designer.cs">
+    <Compile Include="Usercontrol\Obsolete\FindIssueBookUserControl.Designer.cs">
       <DependentUpon>FindIssueBookUserControl.cs</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\StaffUserControl\FindStudentUserControl.cs">
@@ -329,7 +329,7 @@
     <EmbeddedResource Include="Usercontrol\StaffUserControl\FindBookUserControl.resx">
       <DependentUpon>FindBookUserControl.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\StaffUserControl\FindIssueBookUserControl.resx">
+    <EmbeddedResource Include="Usercontrol\Obsolete\FindIssueBookUserControl.resx">
       <DependentUpon>FindIssueBookUserControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\FindStudentUserControl.resx">

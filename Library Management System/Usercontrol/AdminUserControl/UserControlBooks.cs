@@ -54,7 +54,8 @@ namespace Library_Management_System.Usercontrol
                     a.Author_Name AS 'Author Name', 
                     p.Publisher_Name AS 'Publisher Name', 
                     b.Year_Published AS 'Year Published',
-                    b.Book_Status AS 'Status'
+                    b.Book_Status AS 'Status',
+                    b.description AS 'Description'
                 FROM Books_tbl b
                 LEFT JOIN Authors_tbl a ON b.Author_Id = a.Author_Id
                 LEFT JOIN Publishers_tbl p ON b.Publisher_Id = p.Publisher_Id";

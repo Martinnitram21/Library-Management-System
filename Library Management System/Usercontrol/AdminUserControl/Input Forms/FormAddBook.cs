@@ -53,6 +53,7 @@ namespace Library_Management_System.UI
             string genre = comboGenre.Text.Trim();
             string isbn = txtISBN.Text.Trim();
             string yearPublished = txtYear.Text.Trim();
+            string description = rtbDescription.Text.Trim();
 
             // Validate that all fields are filled
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(authorName) || string.IsNullOrWhiteSpace(publisherName)  || string.IsNullOrWhiteSpace(category) ||
@@ -75,8 +76,8 @@ namespace Library_Management_System.UI
                     int publisherId = GetOrInsertPublisher(conn, publisherName);
 
                     // SQL query to insert the new book
-                    string query = @"INSERT INTO books_tbl (Title, Author_Id, Publisher_Id, Category, ISBN, Genre, Year_Published) 
-                             VALUES (@Title, @AuthorId, @PublisherId, @Category, @ISBN, @Genre, @YearPublished)";
+                    string query = @"INSERT INTO books_tbl (Title, Author_Id, Publisher_Id, Category, ISBN, Genre, Year_Published, description) 
+                             VALUES (@Title, @AuthorId, @PublisherId, @Category, @ISBN, @Genre, @YearPublished, @Description)";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -87,6 +88,7 @@ namespace Library_Management_System.UI
                         cmd.Parameters.AddWithValue("@ISBN", isbn);
                         cmd.Parameters.AddWithValue("@Genre", genre);
                         cmd.Parameters.AddWithValue("@YearPublished", yearPublished);
+                        cmd.Parameters.AddWithValue("@Description", description);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
 

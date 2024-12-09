@@ -47,6 +47,8 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.label10 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,7 +65,7 @@
             this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(161, 492);
+            this.btnCancel.Location = new System.Drawing.Point(599, 512);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 40);
             this.btnCancel.TabIndex = 7;
@@ -76,7 +78,7 @@
             this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(291, 492);
+            this.btnEdit.Location = new System.Drawing.Point(729, 512);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(124, 40);
             this.btnEdit.TabIndex = 6;
@@ -247,7 +249,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(447, 100);
+            this.panel1.Size = new System.Drawing.Size(865, 100);
             this.panel1.TabIndex = 12;
             // 
             // txtPublisher
@@ -269,11 +271,33 @@
             this.label9.TabIndex = 14;
             this.label9.Text = "Publisher";
             // 
+            // rtbDescription
+            // 
+            this.rtbDescription.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rtbDescription.Location = new System.Drawing.Point(439, 143);
+            this.rtbDescription.Name = "rtbDescription";
+            this.rtbDescription.Size = new System.Drawing.Size(414, 340);
+            this.rtbDescription.TabIndex = 19;
+            this.rtbDescription.Text = "";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label10.ForeColor = System.Drawing.Color.Black;
+            this.label10.Location = new System.Drawing.Point(435, 119);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(89, 21);
+            this.label10.TabIndex = 18;
+            this.label10.Text = "Description";
+            // 
             // FormEditBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(447, 564);
+            this.ClientSize = new System.Drawing.Size(865, 564);
+            this.Controls.Add(this.rtbDescription);
+            this.Controls.Add(this.label10);
             this.Controls.Add(this.txtPublisher);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtYear);
@@ -323,5 +347,7 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox txtPublisher;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.RichTextBox rtbDescription;
+        private System.Windows.Forms.Label label10;
     }
 }

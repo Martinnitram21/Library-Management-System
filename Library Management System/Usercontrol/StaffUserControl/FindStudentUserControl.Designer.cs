@@ -59,6 +59,11 @@
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchMember = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
+            this.lblMemberType = new System.Windows.Forms.Label();
+            this.btnEditMember = new System.Windows.Forms.Button();
+            this.btnAddMember = new System.Windows.Forms.Button();
+            this.btnDeleteMember = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -69,9 +74,9 @@
             this.label2.ForeColor = System.Drawing.Color.ForestGreen;
             this.label2.Location = new System.Drawing.Point(92, 2);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(114, 21);
+            this.label2.Size = new System.Drawing.Size(120, 21);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Student Details";
+            this.label2.Text = "Member Details";
             // 
             // label16
             // 
@@ -99,7 +104,7 @@
             this.lblStatus.AutoSize = true;
             this.lblStatus.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStatus.ForeColor = System.Drawing.Color.DimGray;
-            this.lblStatus.Location = new System.Drawing.Point(220, 270);
+            this.lblStatus.Location = new System.Drawing.Point(220, 296);
             this.lblStatus.Name = "lblStatus";
             this.lblStatus.Size = new System.Drawing.Size(17, 21);
             this.lblStatus.TabIndex = 50;
@@ -121,7 +126,7 @@
             this.lblMembershipDate.AutoSize = true;
             this.lblMembershipDate.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMembershipDate.ForeColor = System.Drawing.Color.DimGray;
-            this.lblMembershipDate.Location = new System.Drawing.Point(220, 240);
+            this.lblMembershipDate.Location = new System.Drawing.Point(217, 270);
             this.lblMembershipDate.Name = "lblMembershipDate";
             this.lblMembershipDate.Size = new System.Drawing.Size(17, 21);
             this.lblMembershipDate.TabIndex = 48;
@@ -209,7 +214,7 @@
             this.lblStudentID.AutoSize = true;
             this.lblStudentID.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblStudentID.ForeColor = System.Drawing.Color.DimGray;
-            this.lblStudentID.Location = new System.Drawing.Point(220, 117);
+            this.lblStudentID.Location = new System.Drawing.Point(217, 117);
             this.lblStudentID.Name = "lblStudentID";
             this.lblStudentID.Size = new System.Drawing.Size(17, 21);
             this.lblStudentID.TabIndex = 40;
@@ -229,7 +234,7 @@
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(127, 270);
+            this.label9.Location = new System.Drawing.Point(127, 296);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(52, 21);
             this.label9.TabIndex = 39;
@@ -249,7 +254,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(84, 240);
+            this.label7.Location = new System.Drawing.Point(81, 270);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(134, 21);
             this.label7.TabIndex = 36;
@@ -291,19 +296,19 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(127, 147);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(52, 21);
+            this.label4.Size = new System.Drawing.Size(84, 21);
             this.label4.TabIndex = 32;
-            this.label4.Text = "Name";
+            this.label4.Text = "Last Name";
             // 
             // label18
             // 
             this.label18.AutoSize = true;
             this.label18.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label18.Location = new System.Drawing.Point(391, 117);
+            this.label18.Location = new System.Drawing.Point(402, 117);
             this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(108, 21);
+            this.label18.Size = new System.Drawing.Size(80, 21);
             this.label18.TabIndex = 31;
-            this.label18.Text = "Transaction ID";
+            this.label18.Text = "Borrow ID";
             // 
             // label3
             // 
@@ -311,9 +316,9 @@
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(127, 117);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(82, 21);
+            this.label3.Size = new System.Drawing.Size(88, 21);
             this.label3.TabIndex = 30;
-            this.label3.Text = "Student ID";
+            this.label3.Text = "Member ID";
             // 
             // label17
             // 
@@ -357,19 +362,22 @@
             // 
             // btnSearch
             // 
+            this.btnSearch.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnSearch.FlatAppearance.BorderSize = 0;
+            this.btnSearch.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(438, 36);
+            this.btnSearch.Location = new System.Drawing.Point(418, 36);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(94, 20);
             this.btnSearch.TabIndex = 25;
             this.btnSearch.Text = "Search";
-            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.UseVisualStyleBackColor = false;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // txtSearchMember
             // 
             this.txtSearchMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchMember.Location = new System.Drawing.Point(287, 36);
+            this.txtSearchMember.Location = new System.Drawing.Point(266, 36);
             this.txtSearchMember.Name = "txtSearchMember";
             this.txtSearchMember.Size = new System.Drawing.Size(146, 29);
             this.txtSearchMember.TabIndex = 24;
@@ -378,11 +386,74 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(143, 39);
+            this.label1.Location = new System.Drawing.Point(127, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(138, 21);
+            this.label1.Size = new System.Drawing.Size(144, 21);
             this.label1.TabIndex = 23;
-            this.label1.Text = "Search for Student";
+            this.label1.Text = "Search for Member";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(81, 240);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(105, 21);
+            this.label8.TabIndex = 36;
+            this.label8.Text = "Member Type";
+            // 
+            // lblMemberType
+            // 
+            this.lblMemberType.AutoSize = true;
+            this.lblMemberType.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMemberType.ForeColor = System.Drawing.Color.DimGray;
+            this.lblMemberType.Location = new System.Drawing.Point(217, 240);
+            this.lblMemberType.Name = "lblMemberType";
+            this.lblMemberType.Size = new System.Drawing.Size(17, 21);
+            this.lblMemberType.TabIndex = 48;
+            this.lblMemberType.Text = "?";
+            // 
+            // btnEditMember
+            // 
+            this.btnEditMember.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnEditMember.FlatAppearance.BorderSize = 0;
+            this.btnEditMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEditMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEditMember.Location = new System.Drawing.Point(618, 10);
+            this.btnEditMember.Name = "btnEditMember";
+            this.btnEditMember.Size = new System.Drawing.Size(94, 20);
+            this.btnEditMember.TabIndex = 25;
+            this.btnEditMember.Text = "Edit";
+            this.btnEditMember.UseVisualStyleBackColor = false;
+            this.btnEditMember.Click += new System.EventHandler(this.btnEditMember_Click);
+            // 
+            // btnAddMember
+            // 
+            this.btnAddMember.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnAddMember.FlatAppearance.BorderSize = 0;
+            this.btnAddMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAddMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddMember.Location = new System.Drawing.Point(518, 36);
+            this.btnAddMember.Name = "btnAddMember";
+            this.btnAddMember.Size = new System.Drawing.Size(94, 20);
+            this.btnAddMember.TabIndex = 25;
+            this.btnAddMember.Text = "Add";
+            this.btnAddMember.UseVisualStyleBackColor = false;
+            this.btnAddMember.Click += new System.EventHandler(this.btnAddMember_Click);
+            // 
+            // btnDeleteMember
+            // 
+            this.btnDeleteMember.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.btnDeleteMember.FlatAppearance.BorderSize = 0;
+            this.btnDeleteMember.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDeleteMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDeleteMember.Location = new System.Drawing.Point(618, 36);
+            this.btnDeleteMember.Name = "btnDeleteMember";
+            this.btnDeleteMember.Size = new System.Drawing.Size(94, 20);
+            this.btnDeleteMember.TabIndex = 25;
+            this.btnDeleteMember.Text = "Delete";
+            this.btnDeleteMember.UseVisualStyleBackColor = false;
+            this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
             // 
             // FindStudentUserControl
             // 
@@ -391,6 +462,7 @@
             this.Controls.Add(this.lblBookStatus);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblBookID);
+            this.Controls.Add(this.lblMemberType);
             this.Controls.Add(this.lblMembershipDate);
             this.Controls.Add(this.lblDueDate);
             this.Controls.Add(this.lblPhone);
@@ -403,6 +475,7 @@
             this.Controls.Add(this.label22);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label21);
+            this.Controls.Add(this.label8);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label20);
             this.Controls.Add(this.label5);
@@ -413,7 +486,10 @@
             this.Controls.Add(this.label17);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel2);
+            this.Controls.Add(this.btnAddMember);
             this.Controls.Add(this.panel1);
+            this.Controls.Add(this.btnDeleteMember);
+            this.Controls.Add(this.btnEditMember);
             this.Controls.Add(this.btnSearch);
             this.Controls.Add(this.txtSearchMember);
             this.Controls.Add(this.label1);
@@ -461,5 +537,10 @@
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearchMember;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label lblMemberType;
+        private System.Windows.Forms.Button btnEditMember;
+        private System.Windows.Forms.Button btnAddMember;
+        private System.Windows.Forms.Button btnDeleteMember;
     }
 }

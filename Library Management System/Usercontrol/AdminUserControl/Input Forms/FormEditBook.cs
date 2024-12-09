@@ -49,7 +49,8 @@ namespace Library_Management_System.Usercontrol
                     b.Category, 
                     b.Genre, 
                     b.ISBN, 
-                    b.Year_Published 
+                    b.Year_Published,
+                    b.description
                 FROM books_tbl b
                 JOIN authors_tbl a ON b.Author_Id = a.Author_Id
                 JOIN publishers_tbl p ON b.Publisher_Id = p.Publisher_Id
@@ -69,6 +70,7 @@ namespace Library_Management_System.Usercontrol
                                 comboCategory.Text = reader["Category"].ToString();
                                 comboGenre.Text = reader["Genre"].ToString();
                                 txtISBN.Text = reader["ISBN"].ToString();
+                                rtbDescription.Text = reader["Description"].ToString();
 
                                 if (DateTime.TryParse(reader["Year_Published"].ToString(), out DateTime parsedYear))
                                 {
@@ -102,6 +104,7 @@ namespace Library_Management_System.Usercontrol
             string genre = comboGenre.Text.Trim();
             string isbn = txtISBN.Text.Trim();
             string yearPublished = txtYear.Text.Trim();
+            string description = rtbDescription.Text.Trim();
 
             if (string.IsNullOrWhiteSpace(title) || string.IsNullOrWhiteSpace(authorName) || string.IsNullOrWhiteSpace(publisherName) ||
                 string.IsNullOrWhiteSpace(category) || string.IsNullOrWhiteSpace(genre) || string.IsNullOrWhiteSpace(isbn) || string.IsNullOrWhiteSpace(yearPublished))
@@ -131,7 +134,8 @@ namespace Library_Management_System.Usercontrol
                     Category = @Category, 
                     Genre = @Genre, 
                     ISBN = @ISBN, 
-                    Year_Published = @YearPublished 
+                    Year_Published = @YearPublished,
+                    description = @Description 
                 WHERE Book_Id = @BookId";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -143,6 +147,7 @@ namespace Library_Management_System.Usercontrol
                         cmd.Parameters.AddWithValue("@Genre", genre);
                         cmd.Parameters.AddWithValue("@ISBN", isbn);
                         cmd.Parameters.AddWithValue("@YearPublished", yearPublished);
+                        cmd.Parameters.AddWithValue("@Description", description);
                         cmd.Parameters.AddWithValue("@BookId", _bookId);
 
                         int rowsAffected = cmd.ExecuteNonQuery();
