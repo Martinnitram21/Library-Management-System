@@ -37,6 +37,7 @@
             this.lblDateTime = new System.Windows.Forms.Label();
             this.lblWelcome = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnAuthPub = new System.Windows.Forms.Button();
             this.panelSlide = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
             this.btnSettings = new System.Windows.Forms.Button();
@@ -52,7 +53,6 @@
             this.label4 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.btnAuthPub = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
@@ -152,6 +152,27 @@
             this.panel3.Size = new System.Drawing.Size(286, 620);
             this.panel3.TabIndex = 2;
             // 
+            // btnAuthPub
+            // 
+            this.btnAuthPub.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAuthPub.BackColor = System.Drawing.Color.Azure;
+            this.btnAuthPub.FlatAppearance.BorderSize = 0;
+            this.btnAuthPub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthPub.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthPub.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAuthPub.Image = ((System.Drawing.Image)(resources.GetObject("btnAuthPub.Image")));
+            this.btnAuthPub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAuthPub.Location = new System.Drawing.Point(0, 382);
+            this.btnAuthPub.Name = "btnAuthPub";
+            this.btnAuthPub.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnAuthPub.Size = new System.Drawing.Size(286, 65);
+            this.btnAuthPub.TabIndex = 8;
+            this.btnAuthPub.Text = "Authors/Publishers";
+            this.btnAuthPub.UseVisualStyleBackColor = false;
+            this.btnAuthPub.Click += new System.EventHandler(this.btnAuthPub_Click);
+            // 
             // panelSlide
             // 
             this.panelSlide.BackColor = System.Drawing.SystemColors.ActiveCaption;
@@ -203,7 +224,7 @@
             this.btnReports.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 382);
+            this.btnReports.Location = new System.Drawing.Point(0, 449);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnReports.Size = new System.Drawing.Size(286, 67);
@@ -364,27 +385,6 @@
             // timer1
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick_1);
-            // 
-            // btnAuthPub
-            // 
-            this.btnAuthPub.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnAuthPub.BackColor = System.Drawing.Color.Azure;
-            this.btnAuthPub.FlatAppearance.BorderSize = 0;
-            this.btnAuthPub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAuthPub.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAuthPub.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btnAuthPub.Image = ((System.Drawing.Image)(resources.GetObject("btnAuthPub.Image")));
-            this.btnAuthPub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAuthPub.Location = new System.Drawing.Point(0, 449);
-            this.btnAuthPub.Name = "btnAuthPub";
-            this.btnAuthPub.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
-            this.btnAuthPub.Size = new System.Drawing.Size(286, 65);
-            this.btnAuthPub.TabIndex = 8;
-            this.btnAuthPub.Text = "Authors/Publishers";
-            this.btnAuthPub.UseVisualStyleBackColor = false;
-            this.btnAuthPub.Click += new System.EventHandler(this.btnAuthPub_Click);
             // 
             // AdminDashboard
             // 

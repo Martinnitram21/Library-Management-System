@@ -119,7 +119,8 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
 
         private void btnAddPublishers_Click(object sender, EventArgs e)
         {
-
+            FormAddPublisher formAddPublisher = new FormAddPublisher();
+            formAddPublisher.ShowDialog();
         }
 
         private void btnAddAuthors_Click(object sender, EventArgs e)
@@ -250,6 +251,136 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                             MessageBox.Show("Failed to delete the author. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnEditPublishers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvPublishers.SelectedRows.Count > 0) // Ensure a row is selected
+                {
+                    // Retrieve the Author_Id from the DataGridView
+                    DataGridViewRow selectedRow = dgvPublishers.SelectedRows[0];
+
+                    // Check if the column exists before accessing
+                    if (dgvPublishers.Columns.Contains("ID"))
+                    {
+                        int publisherId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+
+                        // Open the update author form with the selected Author_Id
+                        FormEditPublisher updatePublisherForm= new FormEditPublisher(publisherId);
+                        updatePublisherForm.ShowDialog();
+
+                    }
+                    else
+                    {
+                        MessageBox.Show("The column 'ID' does not exist in the DataGridView. Ensure your query includes it.",
+                                        "Column Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void DeletePublisherFromDatabase(int publisherId)
+        {
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                {
+                    conn.Open();
+
+                    // Check if the author is linked to any books
+                    string checkQuery = "SELECT COUNT(*) FROM books_tbl WHERE publisher_id = @PublisherId";
+                    using (MySqlCommand checkCmd = new MySqlCommand(checkQuery, conn))
+                    {
+                        checkCmd.Parameters.AddWithValue("@PublisherId", publisherId);
+                        int linkedBooksCount = Convert.ToInt32(checkCmd.ExecuteScalar());
+
+                        if (linkedBooksCount > 0)
+                        {
+                            MessageBox.Show(
+                                "This publisher is linked to one or more books. You must remove or update the linked books before deleting the publisher.",
+                                "Cannot Delete Publisher",
+                                MessageBoxButtons.OK,
+                                MessageBoxIcon.Warning);
+                            return;
+                        }
+                    }
+
+                    // Proceed to delete the author
+                    string deleteQuery = "DELETE FROM publishers_tbl WHERE publisher_id = @PublisherId";
+                    using (MySqlCommand deleteCmd = new MySqlCommand(deleteQuery, conn))
+                    {
+                        deleteCmd.Parameters.AddWithValue("@PublisherId", publisherId);
+                        int rowsAffected = deleteCmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Publisher deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the publisher. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnDeletePublishers_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (dgvPublishers.SelectedRows.Count > 0) // Ensure a row is selected
+                {
+                    // Retrieve the Author_Id from the DataGridView
+                    DataGridViewRow selectedRow = dgvPublishers.SelectedRows[0];
+
+                    // Check if the column exists before accessing
+                    if (dgvPublishers.Columns.Contains("ID"))
+                    {
+                        int publisherId = Convert.ToInt32(selectedRow.Cells["ID"].Value);
+
+                        // Confirm deletion
+                        DialogResult result = MessageBox.Show(
+                            "Are you sure you want to delete this publishers? This action cannot be undone.",
+                            "Confirm Deletion",
+                            MessageBoxButtons.YesNo,
+                            MessageBoxIcon.Warning);
+
+                        if (result == DialogResult.Yes)
+                        {
+                            DeletePublisherFromDatabase(publisherId);
+                            LoadPublishersReport(); // Reload the DataGridView to reflect changes
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("The column 'ID' does not exist in the DataGridView. Ensure your query includes it.",
+                                        "Column Not Found", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row to delete.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception ex)

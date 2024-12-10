@@ -1,4 +1,5 @@
 ﻿using Library_Management_System.Usercontrol;
+using Library_Management_System.Usercontrol.AdminUserControl;
 using Library_Management_System.Usercontrol.StaffUserControl;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,7 @@ namespace Library_Management_System.UI
         private readonly FindStudentUserControl findStudentUserControl = new FindStudentUserControl();
         private readonly IssueReturnUserControl issueReturnUserControl = new IssueReturnUserControl();
         private readonly ViewLogUserControl viewLogUserControl = new ViewLogUserControl();
+        readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
@@ -86,6 +88,13 @@ namespace Library_Management_System.UI
             MovePanel(btnReports);
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(viewLogUserControl);
+        }
+
+        private void btnAuthPub_Click(object sender, EventArgs e)
+        {
+            MovePanel(btnAuthPub);
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(ucAuthPub);
         }
     }
 }

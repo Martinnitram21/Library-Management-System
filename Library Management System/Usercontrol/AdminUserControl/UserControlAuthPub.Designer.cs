@@ -89,6 +89,7 @@
             this.btnDeletePublishers.TabIndex = 12;
             this.btnDeletePublishers.Text = "Delete";
             this.btnDeletePublishers.UseVisualStyleBackColor = false;
+            this.btnDeletePublishers.Click += new System.EventHandler(this.btnDeletePublishers_Click);
             // 
             // btnEditPublishers
             // 
@@ -105,6 +106,7 @@
             this.btnEditPublishers.TabIndex = 13;
             this.btnEditPublishers.Text = "Edit";
             this.btnEditPublishers.UseVisualStyleBackColor = false;
+            this.btnEditPublishers.Click += new System.EventHandler(this.btnEditPublishers_Click);
             // 
             // btnAddPublishers
             // 
@@ -127,7 +129,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(457, 14);
+            this.label2.Location = new System.Drawing.Point(544, 29);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(82, 21);
             this.label2.TabIndex = 4;
@@ -169,7 +171,7 @@
             this.dgvPublishers.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             this.dgvPublishers.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgvPublishers.Size = new System.Drawing.Size(302, 287);
+            this.dgvPublishers.Size = new System.Drawing.Size(510, 287);
             this.dgvPublishers.TabIndex = 2;
             // 
             // tabPage1
@@ -242,7 +244,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(457, 15);
+            this.label1.Location = new System.Drawing.Point(550, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 21);
             this.label1.TabIndex = 3;
@@ -284,7 +286,7 @@
             this.dgvAuthors.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
             this.dgvAuthors.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dgvAuthors.Size = new System.Drawing.Size(408, 287);
+            this.dgvAuthors.Size = new System.Drawing.Size(510, 287);
             this.dgvAuthors.TabIndex = 2;
             // 
             // tabControAuthPub

@@ -50,6 +50,7 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.lblExit = new System.Windows.Forms.Label();
             this.panel3 = new System.Windows.Forms.Panel();
+            this.btnAuthPub = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -131,7 +132,7 @@
             this.btnSettings.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnSettings.Image = ((System.Drawing.Image)(resources.GetObject("btnSettings.Image")));
             this.btnSettings.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSettings.Location = new System.Drawing.Point(0, 455);
+            this.btnSettings.Location = new System.Drawing.Point(0, 520);
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSettings.Size = new System.Drawing.Size(286, 65);
@@ -152,7 +153,7 @@
             this.btnReports.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 382);
+            this.btnReports.Location = new System.Drawing.Point(0, 454);
             this.btnReports.Name = "btnReports";
             this.btnReports.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnReports.Size = new System.Drawing.Size(286, 67);
@@ -316,6 +317,7 @@
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.Azure;
+            this.panel3.Controls.Add(this.btnAuthPub);
             this.panel3.Controls.Add(this.panelSlide);
             this.panel3.Controls.Add(this.panel7);
             this.panel3.Controls.Add(this.btnSettings);
@@ -333,6 +335,27 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(286, 620);
             this.panel3.TabIndex = 7;
+            // 
+            // btnAuthPub
+            // 
+            this.btnAuthPub.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAuthPub.BackColor = System.Drawing.Color.Azure;
+            this.btnAuthPub.FlatAppearance.BorderSize = 0;
+            this.btnAuthPub.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthPub.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAuthPub.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnAuthPub.Image = ((System.Drawing.Image)(resources.GetObject("btnAuthPub.Image")));
+            this.btnAuthPub.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAuthPub.Location = new System.Drawing.Point(0, 380);
+            this.btnAuthPub.Name = "btnAuthPub";
+            this.btnAuthPub.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnAuthPub.Size = new System.Drawing.Size(286, 65);
+            this.btnAuthPub.TabIndex = 10;
+            this.btnAuthPub.Text = "Authors/Publishers";
+            this.btnAuthPub.UseVisualStyleBackColor = false;
+            this.btnAuthPub.Click += new System.EventHandler(this.btnAuthPub_Click);
             // 
             // panel1
             // 
@@ -420,5 +443,6 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAuthPub;
     }
 }

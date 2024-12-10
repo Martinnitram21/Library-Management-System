@@ -126,6 +126,12 @@
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormAddAuthor.Designer.cs">
       <DependentUpon>FormAddAuthor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormAddPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormAddPublisher.Designer.cs">
+      <DependentUpon>FormAddPublisher.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormBorrowBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -163,6 +169,12 @@
     </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditAuthor.Designer.cs">
       <DependentUpon>FormEditAuthor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditPublisher.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditPublisher.Designer.cs">
+      <DependentUpon>FormEditPublisher.cs</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormReturnBook.cs">
       <SubType>Form</SubType>
@@ -296,6 +308,9 @@
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormAddAuthor.resx">
       <DependentUpon>FormAddAuthor.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormAddPublisher.resx">
+      <DependentUpon>FormAddPublisher.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormBorrowBook.resx">
       <DependentUpon>FormBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -322,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormEditAuthor.resx">
       <DependentUpon>FormEditAuthor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormEditPublisher.resx">
+      <DependentUpon>FormEditPublisher.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormReturnBook.resx">
       <DependentUpon>FormReturnBook.cs</DependentUpon>
