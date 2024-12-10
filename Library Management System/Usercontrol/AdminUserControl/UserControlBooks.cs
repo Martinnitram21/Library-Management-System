@@ -202,5 +202,26 @@ namespace Library_Management_System.Usercontrol
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void dgvBooks_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Check if the column being formatted is the 'Status' column
+            if (dgvBooks.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+            {
+                string status = e.Value.ToString();
+
+                // Apply background color based on the status value
+                if (status == "Available")
+                {
+                    e.CellStyle.BackColor = Color.LightGreen; // Green for 'Available'
+                    e.CellStyle.ForeColor = Color.White;      // Optional: Black text color
+                }
+                else if (status == "Borrowed")
+                {
+                    e.CellStyle.BackColor = Color.LightCoral; // Red for 'Borrowed'
+                    e.CellStyle.ForeColor = Color.White;      // Optional: White text color
+                }
+            }
+        }
     }
 }

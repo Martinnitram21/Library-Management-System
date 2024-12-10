@@ -70,10 +70,10 @@
             this.dataGridViewBooks = new System.Windows.Forms.DataGridView();
             this.tabControlReports = new System.Windows.Forms.TabControl();
             this.tabPage5 = new System.Windows.Forms.TabPage();
-            this.tabPage6 = new System.Windows.Forms.TabPage();
-            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dgvAuthors = new System.Windows.Forms.DataGridView();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
             this.dgvPublishers = new System.Windows.Forms.DataGridView();
+            this.tabPage7 = new System.Windows.Forms.TabPage();
             this.dgvBorrowers = new System.Windows.Forms.DataGridView();
             this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewOverdueBooks)).BeginInit();
@@ -85,10 +85,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).BeginInit();
             this.tabControlReports.SuspendLayout();
             this.tabPage5.SuspendLayout();
-            this.tabPage6.SuspendLayout();
-            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuthors)).BeginInit();
+            this.tabPage6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublishers)).BeginInit();
+            this.tabPage7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).BeginInit();
             this.SuspendLayout();
             // 
@@ -136,10 +136,10 @@
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.dataGridViewOverdueBooks);
-            this.tabPage4.Location = new System.Drawing.Point(32, 4);
+            this.tabPage4.Location = new System.Drawing.Point(4, 26);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(679, 323);
+            this.tabPage4.Size = new System.Drawing.Size(707, 293);
             this.tabPage4.TabIndex = 2;
             this.tabPage4.Text = "Overdue";
             this.tabPage4.UseVisualStyleBackColor = true;
@@ -181,16 +181,16 @@
             this.dataGridViewOverdueBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewOverdueBooks.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridViewOverdueBooks.Size = new System.Drawing.Size(673, 317);
+            this.dataGridViewOverdueBooks.Size = new System.Drawing.Size(701, 287);
             this.dataGridViewOverdueBooks.TabIndex = 1;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.dataGridViewTransactions);
-            this.tabPage3.Location = new System.Drawing.Point(52, 4);
+            this.tabPage3.Location = new System.Drawing.Point(4, 26);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(659, 323);
+            this.tabPage3.Size = new System.Drawing.Size(707, 293);
             this.tabPage3.TabIndex = 1;
             this.tabPage3.Text = "Transaction";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -232,15 +232,15 @@
             this.dataGridViewTransactions.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewTransactions.RowsDefaultCellStyle = dataGridViewCellStyle8;
-            this.dataGridViewTransactions.Size = new System.Drawing.Size(653, 317);
+            this.dataGridViewTransactions.Size = new System.Drawing.Size(701, 287);
             this.dataGridViewTransactions.TabIndex = 1;
             // 
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.dataGridViewMembers);
-            this.tabPage2.Location = new System.Drawing.Point(32, 4);
+            this.tabPage2.Location = new System.Drawing.Point(4, 26);
             this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Size = new System.Drawing.Size(679, 323);
+            this.tabPage2.Size = new System.Drawing.Size(707, 293);
             this.tabPage2.TabIndex = 0;
             this.tabPage2.Text = "Members";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -282,16 +282,16 @@
             this.dataGridViewMembers.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
             dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewMembers.RowsDefaultCellStyle = dataGridViewCellStyle12;
-            this.dataGridViewMembers.Size = new System.Drawing.Size(679, 323);
+            this.dataGridViewMembers.Size = new System.Drawing.Size(707, 293);
             this.dataGridViewMembers.TabIndex = 1;
             this.dataGridViewMembers.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewMembers_CellContentClick);
             // 
             // tabPage1
             // 
             this.tabPage1.Controls.Add(this.dataGridViewBooks);
-            this.tabPage1.Location = new System.Drawing.Point(52, 4);
+            this.tabPage1.Location = new System.Drawing.Point(4, 26);
             this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Size = new System.Drawing.Size(659, 323);
+            this.tabPage1.Size = new System.Drawing.Size(707, 293);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "Books";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -333,13 +333,12 @@
             this.dataGridViewBooks.RowHeadersDefaultCellStyle = dataGridViewCellStyle15;
             dataGridViewCellStyle16.BackColor = System.Drawing.SystemColors.Control;
             this.dataGridViewBooks.RowsDefaultCellStyle = dataGridViewCellStyle16;
-            this.dataGridViewBooks.Size = new System.Drawing.Size(659, 323);
+            this.dataGridViewBooks.Size = new System.Drawing.Size(707, 293);
             this.dataGridViewBooks.TabIndex = 0;
             this.dataGridViewBooks.ColumnHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridViewBooks_ColumnHeaderMouseClick);
             // 
             // tabControlReports
             // 
-            this.tabControlReports.Alignment = System.Windows.Forms.TabAlignment.Left;
             this.tabControlReports.Controls.Add(this.tabPage1);
             this.tabControlReports.Controls.Add(this.tabPage2);
             this.tabControlReports.Controls.Add(this.tabPage3);
@@ -348,46 +347,24 @@
             this.tabControlReports.Controls.Add(this.tabPage6);
             this.tabControlReports.Controls.Add(this.tabPage7);
             this.tabControlReports.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tabControlReports.Location = new System.Drawing.Point(3, 48);
+            this.tabControlReports.Location = new System.Drawing.Point(3, 56);
             this.tabControlReports.Multiline = true;
             this.tabControlReports.Name = "tabControlReports";
             this.tabControlReports.SelectedIndex = 0;
-            this.tabControlReports.Size = new System.Drawing.Size(715, 331);
+            this.tabControlReports.Size = new System.Drawing.Size(715, 323);
             this.tabControlReports.TabIndex = 0;
             this.tabControlReports.SelectedIndexChanged += new System.EventHandler(this.tabControlReports_SelectedIndexChanged);
             // 
             // tabPage5
             // 
             this.tabPage5.Controls.Add(this.dgvAuthors);
-            this.tabPage5.Location = new System.Drawing.Point(52, 4);
+            this.tabPage5.Location = new System.Drawing.Point(4, 26);
             this.tabPage5.Name = "tabPage5";
             this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(659, 323);
+            this.tabPage5.Size = new System.Drawing.Size(707, 293);
             this.tabPage5.TabIndex = 3;
             this.tabPage5.Text = "Authors";
             this.tabPage5.UseVisualStyleBackColor = true;
-            // 
-            // tabPage6
-            // 
-            this.tabPage6.Controls.Add(this.dgvPublishers);
-            this.tabPage6.Location = new System.Drawing.Point(52, 4);
-            this.tabPage6.Name = "tabPage6";
-            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage6.Size = new System.Drawing.Size(659, 323);
-            this.tabPage6.TabIndex = 4;
-            this.tabPage6.Text = "Publishers";
-            this.tabPage6.UseVisualStyleBackColor = true;
-            // 
-            // tabPage7
-            // 
-            this.tabPage7.Controls.Add(this.dgvBorrowers);
-            this.tabPage7.Location = new System.Drawing.Point(52, 4);
-            this.tabPage7.Name = "tabPage7";
-            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage7.Size = new System.Drawing.Size(659, 323);
-            this.tabPage7.TabIndex = 5;
-            this.tabPage7.Text = "Borrowers";
-            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // dgvAuthors
             // 
@@ -426,8 +403,19 @@
             this.dgvAuthors.RowHeadersDefaultCellStyle = dataGridViewCellStyle19;
             dataGridViewCellStyle20.BackColor = System.Drawing.SystemColors.Control;
             this.dgvAuthors.RowsDefaultCellStyle = dataGridViewCellStyle20;
-            this.dgvAuthors.Size = new System.Drawing.Size(653, 317);
+            this.dgvAuthors.Size = new System.Drawing.Size(701, 287);
             this.dgvAuthors.TabIndex = 2;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.dgvPublishers);
+            this.tabPage6.Location = new System.Drawing.Point(4, 26);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(707, 293);
+            this.tabPage6.TabIndex = 4;
+            this.tabPage6.Text = "Publishers";
+            this.tabPage6.UseVisualStyleBackColor = true;
             // 
             // dgvPublishers
             // 
@@ -466,8 +454,19 @@
             this.dgvPublishers.RowHeadersDefaultCellStyle = dataGridViewCellStyle23;
             dataGridViewCellStyle24.BackColor = System.Drawing.SystemColors.Control;
             this.dgvPublishers.RowsDefaultCellStyle = dataGridViewCellStyle24;
-            this.dgvPublishers.Size = new System.Drawing.Size(653, 317);
+            this.dgvPublishers.Size = new System.Drawing.Size(701, 287);
             this.dgvPublishers.TabIndex = 2;
+            // 
+            // tabPage7
+            // 
+            this.tabPage7.Controls.Add(this.dgvBorrowers);
+            this.tabPage7.Location = new System.Drawing.Point(4, 26);
+            this.tabPage7.Name = "tabPage7";
+            this.tabPage7.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage7.Size = new System.Drawing.Size(707, 293);
+            this.tabPage7.TabIndex = 5;
+            this.tabPage7.Text = "Borrowers";
+            this.tabPage7.UseVisualStyleBackColor = true;
             // 
             // dgvBorrowers
             // 
@@ -506,7 +505,7 @@
             this.dgvBorrowers.RowHeadersDefaultCellStyle = dataGridViewCellStyle27;
             dataGridViewCellStyle28.BackColor = System.Drawing.SystemColors.Control;
             this.dgvBorrowers.RowsDefaultCellStyle = dataGridViewCellStyle28;
-            this.dgvBorrowers.Size = new System.Drawing.Size(653, 317);
+            this.dgvBorrowers.Size = new System.Drawing.Size(701, 287);
             this.dgvBorrowers.TabIndex = 2;
             // 
             // UserControlReports
@@ -531,10 +530,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBooks)).EndInit();
             this.tabControlReports.ResumeLayout(false);
             this.tabPage5.ResumeLayout(false);
-            this.tabPage6.ResumeLayout(false);
-            this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAuthors)).EndInit();
+            this.tabPage6.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvPublishers)).EndInit();
+            this.tabPage7.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBorrowers)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

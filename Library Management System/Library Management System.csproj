@@ -36,6 +36,9 @@
     <StartupObject>
     </StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Logo.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="BouncyCastle.Cryptography, Version=2.0.0.0, Culture=neutral, PublicKeyToken=072edcf4a5328938, processorArchitecture=MSIL">
       <HintPath>..\packages\BouncyCastle.Cryptography.2.3.1\lib\net461\BouncyCastle.Cryptography.dll</HintPath>
@@ -117,6 +120,12 @@
     <Compile Include="UI\StaffDashboard.Designer.cs">
       <DependentUpon>StaffDashboard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormAddAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormAddAuthor.Designer.cs">
+      <DependentUpon>FormAddAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormBorrowBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -149,6 +158,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditAuthor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditAuthor.Designer.cs">
+      <DependentUpon>FormEditAuthor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -172,6 +187,12 @@
     </Compile>
     <Compile Include="Usercontrol\AdminUserControl\Input Forms\FormEditMember.Designer.cs">
       <DependentUpon>FormEditMember.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\UserControlAuthPub.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Usercontrol\AdminUserControl\UserControlAuthPub.Designer.cs">
+      <DependentUpon>UserControlAuthPub.cs</DependentUpon>
     </Compile>
     <Compile Include="Usercontrol\AdminUserControl\UserControlBooks.cs">
       <SubType>UserControl</SubType>
@@ -272,6 +293,9 @@
     <EmbeddedResource Include="UI\StaffDashboard.resx">
       <DependentUpon>StaffDashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormAddAuthor.resx">
+      <DependentUpon>FormAddAuthor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormBorrowBook.resx">
       <DependentUpon>FormBorrowBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -296,6 +320,9 @@
     <EmbeddedResource Include="UI\FormSignup.resx">
       <DependentUpon>FormSignup.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormEditAuthor.resx">
+      <DependentUpon>FormEditAuthor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormReturnBook.resx">
       <DependentUpon>FormReturnBook.cs</DependentUpon>
     </EmbeddedResource>
@@ -307,6 +334,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\Input Forms\FormEditMember.resx">
       <DependentUpon>FormEditMember.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Usercontrol\AdminUserControl\UserControlAuthPub.resx">
+      <DependentUpon>UserControlAuthPub.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\AdminUserControl\UserControlBooks.resx">
       <DependentUpon>UserControlBooks.cs</DependentUpon>
@@ -369,6 +399,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Static\Icons\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Logo.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

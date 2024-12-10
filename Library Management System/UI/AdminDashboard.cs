@@ -1,5 +1,6 @@
 ﻿using Library_Management_System.Class;
 using Library_Management_System.Usercontrol;
+using Library_Management_System.Usercontrol.AdminUserControl;
 using MySqlX.XDevAPI;
 using System;
 using System.Collections.Generic;
@@ -31,6 +32,7 @@ namespace Library_Management_System.UI
         readonly UserControlBorrowReturn ucBorrow = new UserControlBorrowReturn();
         readonly UserControlReports ucReport = new UserControlReports();
         readonly UserControlSettings ucSetting = new UserControlSettings();
+        readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
         private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
         {
 
@@ -132,6 +134,13 @@ namespace Library_Management_System.UI
         private void userControlBooks1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnAuthPub_Click(object sender, EventArgs e)
+        {
+            MovePanel(btnAuthPub);
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(ucAuthPub);
         }
     }
 }
