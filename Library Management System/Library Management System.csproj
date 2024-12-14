@@ -107,11 +107,13 @@
   <ItemGroup>
     <Compile Include="Class\Author.cs" />
     <Compile Include="Class\Book.cs" />
+    <Compile Include="Class\BookRepository.cs" />
     <Compile Include="Class\Borrower.cs" />
     <Compile Include="Class\CurrentSession.cs" />
-    <Compile Include="Class\DatabaseHelper.cs" />
+    <Compile Include="Class\DatabaseConnection.cs" />
     <Compile Include="Class\Dues.cs" />
     <Compile Include="Class\Member.cs" />
+    <Compile Include="Class\MemberRepository.cs" />
     <Compile Include="Class\Publisher.cs" />
     <Compile Include="Class\Transaction.cs" />
     <Compile Include="UI\StaffDashboard.cs">
@@ -266,12 +268,6 @@
     <Compile Include="Usercontrol\StaffUserControl\FindStudentUserControl.Designer.cs">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
     </Compile>
-    <Compile Include="Usercontrol\Obsolete\StaffFormIssueBook.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Usercontrol\Obsolete\StaffFormIssueBook.Designer.cs">
-      <DependentUpon>StaffFormIssueBook.cs</DependentUpon>
-    </Compile>
     <Compile Include="Usercontrol\Obsolete\StaffFormReturnBook.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -382,9 +378,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\StaffUserControl\FindStudentUserControl.resx">
       <DependentUpon>FindStudentUserControl.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Usercontrol\Obsolete\StaffFormIssueBook.resx">
-      <DependentUpon>StaffFormIssueBook.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usercontrol\Obsolete\StaffFormReturnBook.resx">
       <DependentUpon>StaffFormReturnBook.cs</DependentUpon>

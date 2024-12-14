@@ -14,9 +14,11 @@ namespace Library_Management_System.Usercontrol
 {
     public partial class UserControlMembers : UserControl
     {
+        private readonly MemberRepository memberRepository;
         public UserControlMembers()
         {
             InitializeComponent();
+            memberRepository = new MemberRepository("Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;");
             LoadMembersData();
         }
         private readonly string connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=martinjericho22@2002;";
@@ -24,64 +26,25 @@ namespace Library_Management_System.Usercontrol
         {
             try
             {
-                if (string.IsNullOrEmpty(connectionString))
+                List<Member> members = memberRepository.GetMembers(searchQuery);
+
+                dgvMembers.DataSource = members.Select(m => new
                 {
-                    MessageBox.Show("Connection string is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
+                    m.MemberId,
+                    m.FirstName,
+                    m.LastName,
+                    m.Email,
+                    m.Phone,
+                    m.MemberType,
+                    m.MembershipDate,
+                    m.Status
+                }).ToList();
 
-                if (dgvMembers == null)
-                {
-                    MessageBox.Show("DataGridView is not initialized.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return;
-                }
-
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
-                {
-                    conn.Open();
-
-                    string query = @"
-                    SELECT 
-                        Member_Id AS 'Member ID',
-                        First_Name AS 'First Name',
-                        Last_Name AS 'Last Name',
-                        Email AS 'Email',
-                        Phone AS 'Phone',
-                        Member_Type AS 'Member Type',
-                        Membership_Date AS 'Membership Date',
-                        Member_Status AS 'Status'
-                    FROM Members_tbl";
-
-                    if (!string.IsNullOrEmpty(searchQuery))
-                    {
-                        query += @"
-                        WHERE Member_Id LIKE @Search
-                        OR First_Name LIKE @Search
-                        OR Last_Name LIKE @Search
-                        OR Email LIKE @Search
-                        OR Phone LIKE @Search
-                        OR Member_Type LIKE @Search
-                        OR Member_Status LIKE @Search";
-                    }
-
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        if (!string.IsNullOrEmpty(searchQuery))
-                        {
-                            cmd.Parameters.AddWithValue("@Search", $"%{searchQuery}%");
-                        }
-
-                        MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
-                        DataTable dataTable = new DataTable();
-                        adapter.Fill(dataTable);
-                        dgvMembers.DataSource = dataTable;
-                        dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                    }
-                }
+                dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Error loading members: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -92,24 +55,23 @@ namespace Library_Management_System.Usercontrol
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            FormAddMember formAddMember = new FormAddMember();
-            formAddMember.ShowDialog();
-            LoadMembersData(); // Refresh after adding a member
+            FormAddMember formAddMember = new FormAddMember(memberRepository);
+            if (formAddMember.ShowDialog() == DialogResult.OK)
+            {
+                LoadMembersData();
+            }
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvMembers.SelectedRows.Count > 0)
             {
-                // Get the selected member's ID
-                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member ID"].Value);
-
-                // Open the edit form and pass the member ID
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["MemberId"].Value);
                 FormEditMember formEditMember = new FormEditMember(memberId);
-                formEditMember.ShowDialog();
-
-                // Refresh data after editing
-                LoadMembersData();
+                if (formEditMember.ShowDialog() == DialogResult.OK)
+                {
+                    LoadMembersData();
+                }
             }
             else
             {
@@ -121,14 +83,27 @@ namespace Library_Management_System.Usercontrol
         {
             if (dgvMembers.SelectedRows.Count > 0)
             {
-                // Get the selected member's ID
-                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["Member ID"].Value);
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["MemberId"].Value);
 
-                // Confirm deletion
                 DialogResult result = MessageBox.Show("Are you sure you want to delete this member?", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
                 if (result == DialogResult.Yes)
                 {
-                    DeleteMemberFromDatabase(memberId);
+                    try
+                    {
+                        if (memberRepository.DeleteMember(memberId))
+                        {
+                            MessageBox.Show("Member deleted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            LoadMembersData();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to delete the member.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
             else

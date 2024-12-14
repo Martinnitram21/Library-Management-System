@@ -16,10 +16,13 @@ namespace Library_Management_System.Usercontrol
 {
     public partial class FormAddMember : Form
     {
-        public FormAddMember()
+        private readonly MemberRepository _memberRepository;
+        public FormAddMember(MemberRepository memberRepository)
         {
             InitializeComponent();
+            _memberRepository = memberRepository;
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Display formatted date
+            _memberRepository = memberRepository;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -33,16 +36,14 @@ namespace Library_Management_System.Usercontrol
         }
         private void AddMemberToDatabase()
         {
-            string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
-
-            // Collect data from form inputs
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string memberType = comboMemberType.Text.Trim();
+            DateTime membershipDate = DateTime.Now;
+            string status = "Active";
 
-            // Validate required fields
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
                 string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone) ||
                 string.IsNullOrWhiteSpace(memberType))
@@ -53,38 +54,22 @@ namespace Library_Management_System.Usercontrol
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                var member = new Member
                 {
-                    conn.Open();
+                    FirstName = firstName,
+                    LastName = lastName,
+                    Email = email,
+                    Phone = phone,
+                    MemberType = memberType,
+                    MembershipDate = membershipDate,
+                    Status = status
+                };
 
-                    string query = @"
-                        INSERT INTO Members_tbl 
-                        (First_Name, Last_Name, Email, Phone, Member_Type) 
-                        VALUES 
-                        (@FirstName, @LastName, @Email, @Phone, @MemberType)";
+                _memberRepository.AddOrUpdateMember(member);
 
-                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
-                    {
-                        cmd.Parameters.AddWithValue("@FirstName", firstName);
-                        cmd.Parameters.AddWithValue("@LastName", lastName);
-                        cmd.Parameters.AddWithValue("@Email", email);
-                        cmd.Parameters.AddWithValue("@Phone", phone);
-                        cmd.Parameters.AddWithValue("@MemberType", memberType);
-
-                        int rowsAffected = cmd.ExecuteNonQuery();
-
-                        if (rowsAffected > 0)
-                        {
-                            MessageBox.Show("Member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            ClearFields();
-                            this.Close();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Failed to add the member. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        }
-                    }
-                }
+                MessageBox.Show("Member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ClearFields();
+                this.Close();
             }
             catch (Exception ex)
             {

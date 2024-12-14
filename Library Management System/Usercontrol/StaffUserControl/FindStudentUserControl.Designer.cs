@@ -55,7 +55,6 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.txtSearchMember = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -64,15 +63,15 @@
             this.btnEditMember = new System.Windows.Forms.Button();
             this.btnAddMember = new System.Windows.Forms.Button();
             this.btnDeleteMember = new System.Windows.Forms.Button();
+            this.cmbSearchResults = new System.Windows.Forms.ComboBox();
             this.panel2.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label2.Location = new System.Drawing.Point(92, 2);
+            this.label2.Location = new System.Drawing.Point(127, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(120, 21);
             this.label2.TabIndex = 0;
@@ -82,7 +81,7 @@
             // 
             this.label16.AutoSize = true;
             this.label16.ForeColor = System.Drawing.Color.ForestGreen;
-            this.label16.Location = new System.Drawing.Point(80, 1);
+            this.label16.Location = new System.Drawing.Point(431, 0);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(144, 21);
             this.label16.TabIndex = 0;
@@ -343,22 +342,13 @@
             // panel2
             // 
             this.panel2.BackColor = System.Drawing.Color.LightGreen;
+            this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label16);
             this.panel2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel2.Location = new System.Drawing.Point(361, 79);
+            this.panel2.Location = new System.Drawing.Point(1, 61);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(298, 21);
+            this.panel2.Size = new System.Drawing.Size(712, 18);
             this.panel2.TabIndex = 27;
-            // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.LightGreen;
-            this.panel1.Controls.Add(this.label2);
-            this.panel1.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.panel1.Location = new System.Drawing.Point(55, 79);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(288, 21);
-            this.panel1.TabIndex = 26;
             // 
             // btnSearch
             // 
@@ -377,7 +367,7 @@
             // txtSearchMember
             // 
             this.txtSearchMember.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearchMember.Location = new System.Drawing.Point(266, 36);
+            this.txtSearchMember.Location = new System.Drawing.Point(266, 31);
             this.txtSearchMember.Name = "txtSearchMember";
             this.txtSearchMember.Size = new System.Drawing.Size(146, 29);
             this.txtSearchMember.TabIndex = 24;
@@ -455,10 +445,22 @@
             this.btnDeleteMember.UseVisualStyleBackColor = false;
             this.btnDeleteMember.Click += new System.EventHandler(this.btnDeleteMember_Click);
             // 
+            // cmbSearchResults
+            // 
+            this.cmbSearchResults.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSearchResults.FormattingEnabled = true;
+            this.cmbSearchResults.Location = new System.Drawing.Point(266, 10);
+            this.cmbSearchResults.Name = "cmbSearchResults";
+            this.cmbSearchResults.Size = new System.Drawing.Size(146, 29);
+            this.cmbSearchResults.TabIndex = 52;
+            this.cmbSearchResults.Visible = false;
+            this.cmbSearchResults.SelectedIndexChanged += new System.EventHandler(this.cmbSearchResults_SelectedIndexChanged);
+            // 
             // FindStudentUserControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.cmbSearchResults);
             this.Controls.Add(this.lblBookStatus);
             this.Controls.Add(this.lblStatus);
             this.Controls.Add(this.lblBookID);
@@ -487,7 +489,6 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.btnAddMember);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnDeleteMember);
             this.Controls.Add(this.btnEditMember);
             this.Controls.Add(this.btnSearch);
@@ -497,8 +498,6 @@
             this.Size = new System.Drawing.Size(715, 327);
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -533,7 +532,6 @@
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox txtSearchMember;
         private System.Windows.Forms.Label label1;
@@ -542,5 +540,6 @@
         private System.Windows.Forms.Button btnEditMember;
         private System.Windows.Forms.Button btnAddMember;
         private System.Windows.Forms.Button btnDeleteMember;
+        private System.Windows.Forms.ComboBox cmbSearchResults;
     }
 }

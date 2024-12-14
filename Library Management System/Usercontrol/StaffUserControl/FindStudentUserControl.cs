@@ -1,4 +1,5 @@
 ﻿using Google.Protobuf.WellKnownTypes;
+using Library_Management_System.Class;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -38,30 +39,31 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         private void SearchStudent(string studentName)
         {
             string query = @"
-        SELECT 
-            m.Member_Id AS 'Student ID',
-            m.last_name AS 'Name',
-            m.Email AS 'Email',
-            m.Phone AS 'Phone',
-            m.member_type AS 'Type',
-            m.Membership_Date AS 'Membership Date',
-            m.Member_Status AS 'Status',
-            br.Borrower_Id AS 'Borrow ID',
-            bk.Book_Id AS 'Book ID',
-            bk.Title AS 'Book Title',
-            br.Borrow_Date AS 'Borrow Date',
-            br.Due_Date AS 'Due Date',
-            bk.Book_Status AS 'Book Status'
-        FROM 
-            Members_tbl m
-        LEFT JOIN 
-            Borrowers_tbl br ON m.Member_Id = br.Member_Id
-        LEFT JOIN 
-            Books_tbl bk ON br.Book_Id = bk.Book_Id
-        WHERE 
-            m.last_Name LIKE @Name
-        ORDER BY 
-            br.Borrow_Date DESC";
+    SELECT 
+        m.Member_Id AS 'Student ID',
+        m.first_name AS 'First Name',
+        m.last_name AS 'Last Name',
+        m.Email AS 'Email',
+        m.Phone AS 'Phone',
+        m.member_type AS 'Type',
+        m.Membership_Date AS 'Membership Date',
+        m.Member_Status AS 'Status',
+        br.Borrower_Id AS 'Borrow ID',
+        bk.Book_Id AS 'Book ID',
+        bk.Title AS 'Book Title',
+        br.Borrow_Date AS 'Borrow Date',
+        br.Due_Date AS 'Due Date',
+        bk.Book_Status AS 'Book Status'
+    FROM 
+        Members_tbl m
+    LEFT JOIN 
+        Borrowers_tbl br ON m.Member_Id = br.Member_Id
+    LEFT JOIN 
+        Books_tbl bk ON br.Book_Id = bk.Book_Id
+    WHERE 
+        m.last_name LIKE @Name OR CONCAT(m.first_name, ' ', m.last_name) LIKE @Name
+    ORDER BY 
+        br.Borrow_Date DESC";
 
             try
             {
@@ -73,34 +75,51 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                         cmd.Parameters.AddWithValue("@Name", "%" + studentName + "%");
                         MySqlDataReader reader = cmd.ExecuteReader();
 
-                        // Clear existing labels or fields
-                        ClearFields();
+                        // Dictionary to store all matching students and their details
+                        Dictionary<int, Dictionary<string, string>> studentDetails = new Dictionary<int, Dictionary<string, string>>();
 
-                        if (reader.Read())
+                        cmbSearchResults.Items.Clear(); // Clear any previous items
+                        while (reader.Read())
                         {
-                            // Store the Student ID in the class-level variable
-                            studentId = Convert.ToInt32(reader["Student ID"]);
+                            int currentStudentId = Convert.ToInt32(reader["Student ID"]);
+                            string displayName = $"{reader["First Name"]} {reader["Last Name"]}";
 
-                            // Fill Student Details
-                            lblStudentID.Text = reader["Student ID"].ToString();
-                            lblName.Text = reader["Name"].ToString();
-                            lblEmail.Text = reader["Email"].ToString();
-                            lblPhone.Text = reader["Phone"].ToString();
-                            lblMemberType.Text = reader["Type"].ToString();
-                            lblMembershipDate.Text = Convert.ToDateTime(reader["Membership Date"]).ToShortDateString();
-                            lblStatus.Text = reader["Status"].ToString();
+                            cmbSearchResults.Items.Add(displayName);
 
-                            // Fill Issued Book Details
-                            lblTransactionID.Text = reader["Borrow ID"].ToString();
-                            lblBookID.Text = reader["Book ID"].ToString();
-                            lblBookTitle.Text = reader["Book Title"].ToString();
-                            lblBorrowDate.Text = reader["Borrow Date"].ToString();
-                            lblDueDate.Text = reader["Due Date"].ToString();
-                            lblBookStatus.Text = reader["Book Status"].ToString();
+                            // Store details for this student
+                            studentDetails[currentStudentId] = new Dictionary<string, string>
+                    {
+                        { "Student ID", currentStudentId.ToString() },
+                        { "Name", displayName },
+                        { "Email", reader["Email"].ToString() },
+                        { "Phone", reader["Phone"].ToString() },
+                        { "Type", reader["Type"].ToString() },
+                        { "Membership Date", Convert.ToDateTime(reader["Membership Date"]).ToShortDateString() },
+                        { "Status", reader["Status"].ToString() },
+                        { "Borrow ID", reader["Borrow ID"].ToString() },
+                        { "Book ID", reader["Book ID"].ToString() },
+                        { "Book Title", reader["Book Title"].ToString() },
+                        { "Borrow Date", reader["Borrow Date"].ToString() },
+                        { "Due Date", reader["Due Date"].ToString() },
+                        { "Book Status", reader["Book Status"].ToString() }
+                    };
+                        }
+
+                        if (cmbSearchResults.Items.Count == 0)
+                        {
+                            MessageBox.Show("No records found!", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+                        else if (cmbSearchResults.Items.Count == 1)
+                        {
+                            // If only one result, auto-select and populate fields
+                            PopulateFields(studentDetails.First().Value);
                         }
                         else
                         {
-                            MessageBox.Show("No records found!", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            // Display ComboBox and allow user to select
+                            cmbSearchResults.Visible = true;
+                            cmbSearchResults.Tag = studentDetails; // Store details in the ComboBox's Tag property
+                            MessageBox.Show("Multiple records found. Please select a student from the list.", "Search Result", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         }
                     }
                 }
@@ -110,7 +129,6 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                 MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
         private void ClearFields()
         {
             lblStudentID.Text = "?";
@@ -127,6 +145,23 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             lblBorrowDate.Text = "?";
             lblDueDate.Text = "?";
             lblBookStatus.Text = "?";
+        }
+
+        private void PopulateFields(Dictionary<string, string> details)
+        {
+            lblStudentID.Text = details["Student ID"];
+            lblName.Text = details["Name"];
+            lblEmail.Text = details["Email"];
+            lblPhone.Text = details["Phone"];
+            lblMemberType.Text = details["Type"];
+            lblMembershipDate.Text = details["Membership Date"];
+            lblStatus.Text = details["Status"];
+            lblTransactionID.Text = details["Borrow ID"];
+            lblBookID.Text = details["Book ID"];
+            lblBookTitle.Text = details["Book Title"];
+            lblBorrowDate.Text = details["Borrow Date"];
+            lblDueDate.Text = details["Due Date"];
+            lblBookStatus.Text = details["Book Status"];
         }
 
         private void btnEditMember_Click(object sender, EventArgs e)
@@ -147,7 +182,9 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
         private void btnAddMember_Click(object sender, EventArgs e)
         {
-            FormAddMember formAddMember = new FormAddMember();
+            string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+            MemberRepository memberRepository = new MemberRepository(connectionString);
+            FormAddMember formAddMember = new FormAddMember(memberRepository);
             formAddMember.ShowDialog();
         }
 
@@ -196,6 +233,29 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             catch (Exception ex)
             {
                 MessageBox.Show($"Error deleting member: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void cmbSearchResults_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbSearchResults.SelectedIndex >= 0)
+            {
+                // Retrieve the selected student's details from the ComboBox's Tag
+                var studentDetails = (Dictionary<int, Dictionary<string, string>>)cmbSearchResults.Tag;
+
+                // Find the selected student's name
+                string selectedName = cmbSearchResults.SelectedItem.ToString();
+
+                // Find the matching student details
+                var selectedStudent = studentDetails.FirstOrDefault(
+                    kvp => kvp.Value["Name"] == selectedName
+                );
+
+                if (selectedStudent.Value != null)
+                {
+                    PopulateFields(selectedStudent.Value);
+                    cmbSearchResults.Visible = false; // Hide ComboBox after selection
+                }
             }
         }
     }

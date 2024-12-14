@@ -8,23 +8,29 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace Library_Management_System.Class
 {
-    internal class Member
+    public class Member
     {
         public int MemberId { get; set; }
-        public string Name { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
+        public string MemberType { get; set; }
         public DateTime MembershipDate { get; set; }
-        public string MemberType { get; set; } // E.g., "Teacher", "Staff", "Student"
-        public string Status { get; set; } // E.g., "Active", "Inactive"
+        public string Status { get; set; }
+
+        // Default constructor
+        public Member() { }
 
         // Constructor
-        public Member(int memberId, string name, string email, string phone, DateTime membershipDate, string status)
+        public Member(int memberId, string firstname, string lastname, string email, string phone, string membertype, DateTime membershipDate, string status)
         {
             MemberId = memberId;
-            Name = name;
+            FirstName = firstname;
+            LastName = lastname;
             Email = email;
             Phone = phone;
+            MemberType = membertype;
             MembershipDate = membershipDate;
             Status = status;
         }
@@ -41,11 +47,12 @@ namespace Library_Management_System.Class
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO Members (FullName, Email, Phone, MembershipDate, Status) VALUES (@Name, @Email, @Phone, @MembershipDate, @Status)";
+                    string query = "INSERT INTO Members (FirstName, LastName, Email, Phone, MembershipDate, Status) VALUES (@Name, @Email, @Phone, @MembershipDate, @Status)";
 
                     using (SqlCommand cmd = new SqlCommand(query, conn))
                     {
-                        cmd.Parameters.AddWithValue("@FullName", Name);
+                        cmd.Parameters.AddWithValue("@FirstName", FirstName);
+                        cmd.Parameters.AddWithValue("@LastName", LastName);
                         cmd.Parameters.AddWithValue("@Email", Email);
                         cmd.Parameters.AddWithValue("@Phone", Phone);
                         cmd.Parameters.AddWithValue("@MembershipDate", MembershipDate);
@@ -88,11 +95,13 @@ namespace Library_Management_System.Class
                             {
                                 return new Member(
                                     reader.GetInt32(0), // MemberId
-                                    reader.GetString(1), // FullName
-                                    reader.GetString(2), // Email
-                                    reader.GetString(3), // Phone
-                                    reader.GetDateTime(4), // MembershipDate
-                                    reader.GetString(5)  // Status
+                                    reader.GetString(1), // First Name
+                                    reader.GetString(2), // Last Name
+                                    reader.GetString(3), // Email
+                                    reader.GetString(4), // Phone
+                                    reader.GetString(5), // Member Type
+                                    reader.GetDateTime(6), // MembershipDate
+                                    reader.GetString(7)  // Status
                                 );
                             }
                             else
