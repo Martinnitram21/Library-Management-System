@@ -43,6 +43,7 @@ namespace Library_Management_System.Usercontrol
             string memberType = comboMemberType.Text.Trim();
             DateTime membershipDate = DateTime.Now;
             string status = "Active";
+            string profilePicPath = profilePictureBox.Tag?.ToString() ?? "";
 
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
                 string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone) ||
@@ -62,7 +63,8 @@ namespace Library_Management_System.Usercontrol
                     Phone = phone,
                     MemberType = memberType,
                     MembershipDate = membershipDate,
-                    Status = status
+                    Status = status,
+                    ProfilePic = profilePicPath // Add the profile picture path
                 };
 
                 _memberRepository.AddOrUpdateMember(member);
@@ -86,6 +88,26 @@ namespace Library_Management_System.Usercontrol
         }
 
         private void FormAddMember_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnUploadPhoto_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    profilePictureBox.Image = Image.FromFile(filePath);
+                    profilePictureBox.Tag = filePath; // Temporarily store the file path
+                }
+            }
+
+        }
+
+        private void profilePictureBox_Click(object sender, EventArgs e)
         {
 
         }

@@ -41,6 +41,7 @@
             this.rbtnStaff = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pictureBoxExit = new System.Windows.Forms.PictureBox();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxExit)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +106,8 @@
             // btnLogin
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnLogin.FlatAppearance.BorderSize = 0;
+            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.btnLogin.Location = new System.Drawing.Point(108, 476);
@@ -119,7 +121,8 @@
             // btnSignup
             // 
             this.btnSignup.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSignup.FlatAppearance.BorderSize = 0;
+            this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSignup.ForeColor = System.Drawing.SystemColors.ControlLight;
             this.btnSignup.Location = new System.Drawing.Point(108, 527);
@@ -174,11 +177,23 @@
             this.pictureBoxExit.TabStop = false;
             this.pictureBoxExit.Click += new System.EventHandler(this.pictureBoxExit_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Location = new System.Drawing.Point(254, 629);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.Size = new System.Drawing.Size(171, 21);
+            this.linkLabel1.TabIndex = 11;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Don\'t have an account?";
+            this.linkLabel1.Visible = false;
+            // 
             // FormLogin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(549, 681);
+            this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.pictureBoxExit);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSignup);
@@ -218,6 +233,7 @@
         private System.Windows.Forms.RadioButton rbtnStaff;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.PictureBox pictureBoxExit;
+        private System.Windows.Forms.LinkLabel linkLabel1;
     }
 }
 

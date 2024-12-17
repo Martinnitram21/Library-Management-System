@@ -305,7 +305,7 @@
             // btnSearch
             // 
             this.btnSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSearch.Location = new System.Drawing.Point(424, 16);
+            this.btnSearch.Location = new System.Drawing.Point(412, 28);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 27);
             this.btnSearch.TabIndex = 14;
@@ -316,7 +316,7 @@
             // txtSearch
             // 
             this.txtSearch.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(318, 18);
+            this.txtSearch.Location = new System.Drawing.Point(306, 30);
             this.txtSearch.Name = "txtSearch";
             this.txtSearch.Size = new System.Drawing.Size(100, 29);
             this.txtSearch.TabIndex = 13;
@@ -326,7 +326,7 @@
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.DarkGray;
-            this.label3.Location = new System.Drawing.Point(255, 21);
+            this.label3.Location = new System.Drawing.Point(243, 33);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(57, 21);
             this.label3.TabIndex = 15;

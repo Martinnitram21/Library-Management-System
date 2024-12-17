@@ -20,6 +20,7 @@ namespace Library_Management_System.UI
         public AdminDashboard()
         {
             InitializeComponent();
+            mainPanel.Controls.Add(ucDash);
         }
         private void MovePanel(Control btn)
         {

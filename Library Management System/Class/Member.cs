@@ -18,6 +18,8 @@ namespace Library_Management_System.Class
         public string MemberType { get; set; }
         public DateTime MembershipDate { get; set; }
         public string Status { get; set; }
+        public string ProfilePic { get; set; } // Path to the profile picture
+
 
         // Default constructor
         public Member() { }

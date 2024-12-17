@@ -48,6 +48,7 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
         m.member_type AS 'Type',
         m.Membership_Date AS 'Membership Date',
         m.Member_Status AS 'Status',
+        m.profile_pic AS 'Profile Pic',
         br.Borrower_Id AS 'Borrow ID',
         bk.Book_Id AS 'Book ID',
         bk.Title AS 'Book Title',
@@ -77,8 +78,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
 
                         // Dictionary to store all matching students and their details
                         Dictionary<int, Dictionary<string, string>> studentDetails = new Dictionary<int, Dictionary<string, string>>();
-
                         cmbSearchResults.Items.Clear(); // Clear any previous items
+
                         while (reader.Read())
                         {
                             int currentStudentId = Convert.ToInt32(reader["Student ID"]);
@@ -101,7 +102,8 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                         { "Book Title", reader["Book Title"].ToString() },
                         { "Borrow Date", reader["Borrow Date"].ToString() },
                         { "Due Date", reader["Due Date"].ToString() },
-                        { "Book Status", reader["Book Status"].ToString() }
+                        { "Book Status", reader["Book Status"].ToString() },
+                        { "Profile Pic", reader["Profile Pic"].ToString() }
                     };
                         }
 
@@ -162,6 +164,17 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             lblBorrowDate.Text = details["Borrow Date"];
             lblDueDate.Text = details["Due Date"];
             lblBookStatus.Text = details["Book Status"];
+
+            // Display the profile image
+            string profilePicPath = details["Profile Pic"];
+            if (!string.IsNullOrEmpty(profilePicPath) && System.IO.File.Exists(profilePicPath))
+            {
+                pictureBoxProfile.Image = Image.FromFile(profilePicPath); // Assuming you have a PictureBox control for the profile image
+            }
+            else
+            {
+                pictureBoxProfile.Image = null; // No image found, set to null or default image
+            }
         }
 
         private void btnEditMember_Click(object sender, EventArgs e)
@@ -257,6 +270,11 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
                     cmbSearchResults.Visible = false; // Hide ComboBox after selection
                 }
             }
+        }
+
+        private void FindStudentUserControl_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

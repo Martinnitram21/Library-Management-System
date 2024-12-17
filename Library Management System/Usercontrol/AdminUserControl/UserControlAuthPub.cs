@@ -38,7 +38,6 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                     WHERE author_id LIKE @Search 
                     OR author_name LIKE @Search";
             }
-
             PopulateDataGridView(query, dgvAuthors, searchQuery);
         }
 
@@ -58,7 +57,6 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                     WHERE publisher_id LIKE @Search 
                     OR publisher_name LIKE @Search";
             }
-
             PopulateDataGridView(query, dgvPublishers, searchQuery);
         }
         private void PopulateDataGridView(string query, DataGridView dataGridView, string searchQuery = "")
@@ -81,6 +79,12 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                         DataTable dataTable = new DataTable();
                         adapter.Fill(dataTable);
                         dataGridView.DataSource = dataTable;
+
+                        // Hide the ID column
+                        if (dataGridView.Columns.Contains("ID"))
+                        {
+                            dataGridView.Columns["ID"].Visible = false; // Make the 'ID' column hidden
+                        }
                     }
                 }
             }

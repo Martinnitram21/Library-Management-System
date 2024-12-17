@@ -29,7 +29,7 @@ namespace Library_Management_System.Usercontrol
                 using (MySqlConnection conn = new MySqlConnection(_connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT first_Name, last_name, Email, Phone, member_type, Membership_Date, Member_Status FROM Members_tbl WHERE Member_Id = @MemberId";
+                    string query = "SELECT first_Name, last_name, Email, Phone, member_type, Membership_Date, Member_Status, profile_pic FROM Members_tbl WHERE Member_Id = @MemberId";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -45,6 +45,19 @@ namespace Library_Management_System.Usercontrol
                                 comboMemberType.Text = reader["Member_type"].ToString();
                                 dtpMembershipDate.Value = Convert.ToDateTime(reader["Membership_Date"]);
                                 comboStatus.Text = reader["Member_Status"].ToString();
+
+                                // Check if profile_pic is NULL or empty
+                                var profilePicPath = reader["profile_pic"]?.ToString();
+                                if (!string.IsNullOrEmpty(profilePicPath) && System.IO.File.Exists(profilePicPath))
+                                {
+                                    // Load the image if the path is valid
+                                    profilePictureBox.Image = Image.FromFile(profilePicPath);
+                                    profilePictureBox.Tag = profilePicPath; // Store the file path in the Tag
+                                }
+                                else
+                                {
+                                    profilePictureBox.Image = null; // No profile image found
+                                }
                             }
                         }
                     }
@@ -69,7 +82,7 @@ namespace Library_Management_System.Usercontrol
                 {
                     conn.Open();
                     string query = @"UPDATE Members_tbl 
-                                 SET first_Name = @FirstName, last_name = @LastName, Email = @Email, Phone = @Phone, member_type = @MemberType, Membership_Date = @MembershipDate, Member_Status = @Status 
+                                 SET first_Name = @FirstName, last_name = @LastName, Email = @Email, Phone = @Phone, member_type = @MemberType, Membership_Date = @MembershipDate, Member_Status = @Status, profile_pic = @ProfilePic 
                                  WHERE Member_Id = @MemberId";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
@@ -82,6 +95,9 @@ namespace Library_Management_System.Usercontrol
                         cmd.Parameters.AddWithValue("@MembershipDate", dtpMembershipDate.Value);
                         cmd.Parameters.AddWithValue("@Status", comboStatus.Text);
                         cmd.Parameters.AddWithValue("@MemberId", _memberId);
+                        cmd.Parameters.AddWithValue("@ProfilePic", profilePictureBox.Tag != null
+                        ? profilePictureBox.Tag.ToString()
+                        : (object)DBNull.Value);
 
                         cmd.ExecuteNonQuery();
                         MessageBox.Show("Member details updated successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -103,6 +119,20 @@ namespace Library_Management_System.Usercontrol
         private void FormEditMember_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnUploadPhoto_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog openFileDialog = new OpenFileDialog())
+            {
+                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
+                if (openFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    string filePath = openFileDialog.FileName;
+                    profilePictureBox.Image = Image.FromFile(filePath);
+                    profilePictureBox.Tag = filePath; // Temporarily store the file path
+                }
+            }
         }
     }
 }

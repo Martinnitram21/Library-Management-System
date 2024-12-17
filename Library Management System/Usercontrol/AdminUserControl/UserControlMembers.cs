@@ -40,6 +40,8 @@ namespace Library_Management_System.Usercontrol
                     m.Status
                 }).ToList();
 
+                // Hide the BookId column
+                dgvMembers.Columns["MemberId"].Visible = false;
                 dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             }
             catch (Exception ex)
@@ -159,6 +161,33 @@ namespace Library_Management_System.Usercontrol
         {
             string searchQuery = txtSearchMembers.Text.Trim();
             LoadMembersData(searchQuery);
+        }
+
+        private void dgvMembers_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            try
+            {
+                if (dgvMembers.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
+                {
+                    string status = e.Value.ToString();
+                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+                    // Apply background color based on the status value
+                    if (status == "Active")
+                    {
+                        e.CellStyle.BackColor = Color.LightGreen; // Green for 'Available'
+                        e.CellStyle.ForeColor = Color.White;
+                    }
+                    else if (status == "Inactive")
+                    {
+                        e.CellStyle.BackColor = Color.LightCoral; // Red for 'Borrowed'
+                        e.CellStyle.ForeColor = Color.White;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error formatting cells: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -19,6 +19,7 @@ namespace Library_Management_System.UI
         public StaffDashboard()
         {
             InitializeComponent();
+            mainPanel.Controls.Add(userControlDashboard);
         }
 
         //private readonly StaffDashBoardUserControl staffDashBoardUserControl = new StaffDashBoardUserControl();

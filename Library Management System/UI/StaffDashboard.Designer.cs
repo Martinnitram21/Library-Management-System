@@ -201,7 +201,7 @@
             this.btnBorrowReturn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBorrowReturn.Size = new System.Drawing.Size(286, 63);
             this.btnBorrowReturn.TabIndex = 6;
-            this.btnBorrowReturn.Text = "Issue/Return Books";
+            this.btnBorrowReturn.Text = "Session";
             this.btnBorrowReturn.UseVisualStyleBackColor = false;
             this.btnBorrowReturn.Click += new System.EventHandler(this.btnBorrowReturn_Click);
             // 
@@ -222,7 +222,7 @@
             this.btnMembers.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMembers.Size = new System.Drawing.Size(286, 63);
             this.btnMembers.TabIndex = 6;
-            this.btnMembers.Text = "FInd Members";
+            this.btnMembers.Text = "Members";
             this.btnMembers.UseVisualStyleBackColor = false;
             this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
             // 
@@ -243,7 +243,7 @@
             this.btnBooks.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBooks.Size = new System.Drawing.Size(286, 63);
             this.btnBooks.TabIndex = 6;
-            this.btnBooks.Text = "Find Books";
+            this.btnBooks.Text = "Books";
             this.btnBooks.UseVisualStyleBackColor = false;
             this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
             // 

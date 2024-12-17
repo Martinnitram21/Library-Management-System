@@ -109,10 +109,10 @@ namespace Library_Management_System.Class
                     string query = isUpdate
                         ? @"UPDATE Members_tbl 
                             SET First_Name = @FirstName, Last_Name = @LastName, Email = @Email, Phone = @Phone, 
-                            Member_Type = @MemberType, Membership_Date = @MembershipDate, Member_Status = @Status 
+                            Member_Type = @MemberType, Membership_Date = @MembershipDate, Member_Status = @Status, Profile_Pic = @ProfilePic  
                             WHERE Member_Id = @MemberId"
-                        : @"INSERT INTO Members_tbl (First_Name, Last_Name, Email, Phone, Member_Type, Membership_Date, Member_Status) 
-                            VALUES (@FirstName, @LastName, @Email, @Phone, @MemberType, @MembershipDate, @Status)";
+                        : @"INSERT INTO Members_tbl (First_Name, Last_Name, Email, Phone, Member_Type, Membership_Date, Member_Status, Profile_Pic) 
+                            VALUES (@FirstName, @LastName, @Email, @Phone, @MemberType, @MembershipDate, @Status, @ProfilePic)";
 
                     using (MySqlCommand cmd = new MySqlCommand(query, conn))
                     {
@@ -127,6 +127,7 @@ namespace Library_Management_System.Class
                         cmd.Parameters.AddWithValue("@MemberType", member.MemberType);
                         cmd.Parameters.AddWithValue("@MembershipDate", member.MembershipDate);
                         cmd.Parameters.AddWithValue("@Status", member.Status);
+                        cmd.Parameters.AddWithValue("@ProfilePic", member.ProfilePic);
 
                         cmd.ExecuteNonQuery();
                     }

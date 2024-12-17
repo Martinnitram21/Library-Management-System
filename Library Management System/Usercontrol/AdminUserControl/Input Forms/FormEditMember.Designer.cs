@@ -47,7 +47,11 @@
             this.label8 = new System.Windows.Forms.Label();
             this.comboMemberType = new System.Windows.Forms.ComboBox();
             this.label9 = new System.Windows.Forms.Label();
+            this.btnUploadPhoto = new System.Windows.Forms.Button();
+            this.profilePictureBox = new System.Windows.Forms.PictureBox();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // btnCancel
@@ -55,7 +59,7 @@
             this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(161, 518);
+            this.btnCancel.Location = new System.Drawing.Point(181, 512);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(124, 40);
             this.btnCancel.TabIndex = 17;
@@ -68,7 +72,7 @@
             this.btnEdit.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnEdit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEdit.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(291, 518);
+            this.btnEdit.Location = new System.Drawing.Point(311, 512);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(124, 40);
             this.btnEdit.TabIndex = 16;
@@ -81,7 +85,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtEmail.Location = new System.Drawing.Point(31, 243);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(380, 29);
+            this.txtEmail.Size = new System.Drawing.Size(242, 29);
             this.txtEmail.TabIndex = 14;
             // 
             // label6
@@ -133,7 +137,7 @@
             this.txtPhone.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPhone.Location = new System.Drawing.Point(30, 301);
             this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(380, 29);
+            this.txtPhone.Size = new System.Drawing.Size(243, 29);
             this.txtPhone.TabIndex = 15;
             // 
             // label5
@@ -195,7 +199,7 @@
             this.txtLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLastName.Location = new System.Drawing.Point(29, 190);
             this.txtLastName.Name = "txtLastName";
-            this.txtLastName.Size = new System.Drawing.Size(380, 26);
+            this.txtLastName.Size = new System.Drawing.Size(244, 26);
             this.txtLastName.TabIndex = 27;
             // 
             // label3
@@ -214,7 +218,7 @@
             this.txtFirstName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtFirstName.Location = new System.Drawing.Point(29, 137);
             this.txtFirstName.Name = "txtFirstName";
-            this.txtFirstName.Size = new System.Drawing.Size(380, 26);
+            this.txtFirstName.Size = new System.Drawing.Size(244, 26);
             this.txtFirstName.TabIndex = 26;
             // 
             // label8
@@ -252,11 +256,39 @@
             this.label9.TabIndex = 31;
             this.label9.Text = "Member Type";
             // 
+            // btnUploadPhoto
+            // 
+            this.btnUploadPhoto.FlatAppearance.BorderSize = 0;
+            this.btnUploadPhoto.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnUploadPhoto.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnUploadPhoto.Location = new System.Drawing.Point(325, 246);
+            this.btnUploadPhoto.Name = "btnUploadPhoto";
+            this.btnUploadPhoto.Size = new System.Drawing.Size(75, 27);
+            this.btnUploadPhoto.TabIndex = 33;
+            this.btnUploadPhoto.Text = "Upload";
+            this.btnUploadPhoto.UseVisualStyleBackColor = true;
+            this.btnUploadPhoto.Click += new System.EventHandler(this.btnUploadPhoto_Click);
+            // 
+            // profilePictureBox
+            // 
+            this.profilePictureBox.Location = new System.Drawing.Point(291, 132);
+            this.profilePictureBox.Name = "profilePictureBox";
+            this.profilePictureBox.Size = new System.Drawing.Size(144, 108);
+            this.profilePictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.profilePictureBox.TabIndex = 32;
+            this.profilePictureBox.TabStop = false;
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            // 
             // FormEditMember
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(447, 564);
+            this.Controls.Add(this.btnUploadPhoto);
+            this.Controls.Add(this.profilePictureBox);
             this.Controls.Add(this.comboMemberType);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.txtLastName);
@@ -281,6 +313,7 @@
             this.Load += new System.EventHandler(this.FormEditMember_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.profilePictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -307,5 +340,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.ComboBox comboMemberType;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Button btnUploadPhoto;
+        private System.Windows.Forms.PictureBox profilePictureBox;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }

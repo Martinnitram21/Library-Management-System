@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlBorrowReturn));
             this.btnBorrow = new System.Windows.Forms.Button();
             this.btnReturn = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,11 +44,14 @@
             this.btnBorrow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBorrow.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBorrow.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnBorrow.Image = ((System.Drawing.Image)(resources.GetObject("btnBorrow.Image")));
+            this.btnBorrow.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBorrow.Location = new System.Drawing.Point(210, 202);
             this.btnBorrow.Name = "btnBorrow";
-            this.btnBorrow.Size = new System.Drawing.Size(128, 29);
+            this.btnBorrow.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnBorrow.Size = new System.Drawing.Size(128, 50);
             this.btnBorrow.TabIndex = 9;
-            this.btnBorrow.Text = "Borrow";
+            this.btnBorrow.Text = " Borrow";
             this.btnBorrow.UseVisualStyleBackColor = false;
             this.btnBorrow.Click += new System.EventHandler(this.btnBorrow_Click);
             // 
@@ -60,11 +64,14 @@
             this.btnReturn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnReturn.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReturn.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btnReturn.Image = ((System.Drawing.Image)(resources.GetObject("btnReturn.Image")));
+            this.btnReturn.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnReturn.Location = new System.Drawing.Point(344, 202);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(128, 29);
+            this.btnReturn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
+            this.btnReturn.Size = new System.Drawing.Size(128, 50);
             this.btnReturn.TabIndex = 9;
-            this.btnReturn.Text = "Return";
+            this.btnReturn.Text = "  Return";
             this.btnReturn.UseVisualStyleBackColor = false;
             this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 

@@ -45,6 +45,9 @@ namespace Library_Management_System.Usercontrol
                         b.Status,
                         b.Description
                     }).ToList();
+
+                    // Hide the BookId column
+                    dgvBooks.Columns["BookId"].Visible = false;
                 }
                 else
                 {
@@ -152,7 +155,7 @@ namespace Library_Management_System.Usercontrol
                 if (dgvBooks.Columns[e.ColumnIndex].Name == "Status" && e.Value != null)
                 {
                     string status = e.Value.ToString();
-
+                    e.CellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
                     // Apply background color based on the status value
                     if (status == "Available")
                     {

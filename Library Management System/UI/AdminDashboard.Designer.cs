@@ -92,7 +92,7 @@
             this.lblExit.Location = new System.Drawing.Point(1293, 9);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(34, 21);
-            this.lblExit.TabIndex = 5;
+            this.lblExit.TabIndex = 0;
             this.lblExit.Text = "Exit";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
             // 
@@ -168,7 +168,7 @@
             this.btnAuthPub.Name = "btnAuthPub";
             this.btnAuthPub.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnAuthPub.Size = new System.Drawing.Size(286, 65);
-            this.btnAuthPub.TabIndex = 8;
+            this.btnAuthPub.TabIndex = 5;
             this.btnAuthPub.Text = "Authors/Publishers";
             this.btnAuthPub.UseVisualStyleBackColor = false;
             this.btnAuthPub.Click += new System.EventHandler(this.btnAuthPub_Click);
@@ -179,7 +179,7 @@
             this.panelSlide.Location = new System.Drawing.Point(0, 116);
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(10, 49);
-            this.panelSlide.TabIndex = 6;
+            this.panelSlide.TabIndex = 1;
             // 
             // panel7
             // 
@@ -207,7 +207,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSettings.Size = new System.Drawing.Size(286, 65);
-            this.btnSettings.TabIndex = 6;
+            this.btnSettings.TabIndex = 7;
             this.btnSettings.Text = "Logout";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -249,8 +249,8 @@
             this.btnBorrowReturn.Name = "btnBorrowReturn";
             this.btnBorrowReturn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBorrowReturn.Size = new System.Drawing.Size(286, 63);
-            this.btnBorrowReturn.TabIndex = 6;
-            this.btnBorrowReturn.Text = "Borrow/Return";
+            this.btnBorrowReturn.TabIndex = 4;
+            this.btnBorrowReturn.Text = "Session";
             this.btnBorrowReturn.UseVisualStyleBackColor = false;
             this.btnBorrowReturn.Click += new System.EventHandler(this.btnBorrowReturn_Click);
             // 
@@ -270,7 +270,7 @@
             this.btnMembers.Name = "btnMembers";
             this.btnMembers.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMembers.Size = new System.Drawing.Size(286, 63);
-            this.btnMembers.TabIndex = 6;
+            this.btnMembers.TabIndex = 3;
             this.btnMembers.Text = "Members";
             this.btnMembers.UseVisualStyleBackColor = false;
             this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
@@ -291,7 +291,7 @@
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBooks.Size = new System.Drawing.Size(286, 63);
-            this.btnBooks.TabIndex = 6;
+            this.btnBooks.TabIndex = 2;
             this.btnBooks.Text = "Books";
             this.btnBooks.UseVisualStyleBackColor = false;
             this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
@@ -312,7 +312,7 @@
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnDashboard.Size = new System.Drawing.Size(286, 62);
-            this.btnDashboard.TabIndex = 6;
+            this.btnDashboard.TabIndex = 0;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.button1_Click);
