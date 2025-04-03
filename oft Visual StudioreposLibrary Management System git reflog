@@ -1,0 +1,59 @@
+[33mf434efe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{0}: checkout: moving from OOP to master
+[33m022e5fe[m[33m ([m[1;31morigin/OOP[m[33m, [m[1;32mOOP[m[33m)[m HEAD@{1}: reset: moving to HEAD
+[33m022e5fe[m[33m ([m[1;31morigin/OOP[m[33m, [m[1;32mOOP[m[33m)[m HEAD@{2}: commit: added charts, final update before turning in
+[33m7b96021[m HEAD@{3}: commit: in staff member usercontrol added contingency for duplicate last name
+[33mf434efe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{4}: checkout: moving from master to OOP
+[33mf434efe[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m HEAD@{5}: commit: update, brought authors'publisher tab to staff view
+[33m4d30502[m HEAD@{6}: commit: Updated, logo, add authors and publisher tab
+[33md39c62f[m HEAD@{7}: commit: update - add and edit for member and books
+[33m771d626[m HEAD@{8}: commit: update changes to staff form
+[33m96a5b62[m HEAD@{9}: checkout: moving from ReturnForm to master
+[33m96a5b62[m HEAD@{10}: checkout: moving from master to ReturnForm
+[33m96a5b62[m HEAD@{11}: commit: Update Member Form
+[33m0dab3ad[m HEAD@{12}: commit: Big Fix, fix datagrid correctly showing data, fix add book form, added authors and publisher report
+[33mfa2f604[m HEAD@{13}: checkout: moving from fa2f6047b74af690498cdef704e504878a2d2857 to master
+[33mfa2f604[m HEAD@{14}: checkout: moving from master to fa2f6047b74af690498cdef704e504878a2d2857
+[33mfa2f604[m HEAD@{15}: reset: moving to HEAD
+[33mfa2f604[m HEAD@{16}: commit: Major Update, Checked Progress, update staff dashboard ui
+[33m0d85a5c[m HEAD@{17}: commit: update
+[33m02b10a4[m HEAD@{18}: commit: follow up commit
+[33m98c883c[m HEAD@{19}: commit: image
+[33md88a713[m HEAD@{20}: checkout: moving from 07eb5f64f35a7939290a78cafb5e87b1db67bff2 to master
+[33m07eb5f6[m HEAD@{21}: checkout: moving from d88a713ffde82ec4c1a00f326dffda4c2160d28a to 07eb5f64f35a7939290a78cafb5e87b1db67bff2
+[33md88a713[m HEAD@{22}: checkout: moving from master to d88a713ffde82ec4c1a00f326dffda4c2160d28a
+[33md88a713[m HEAD@{23}: commit: checkpoint
+[33m07eb5f6[m HEAD@{24}: commit: Working on staffdashboard added some basic functions like find book and member
+[33mdac97d1[m HEAD@{25}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{26}: checkout: moving from master to feature1
+[33mdac97d1[m HEAD@{27}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{28}: checkout: moving from master to feature1
+[33mdac97d1[m HEAD@{29}: reset: moving to HEAD
+[33mdac97d1[m HEAD@{30}: commit: fixed form returnbook
+[33mca39c69[m HEAD@{31}: commit: add edit book form
+[33mbe1dc79[m HEAD@{32}: commit: CleanUP UI, almost finised reports, remove the search button
+[33maee90d9[m HEAD@{33}: commit: added a user control for reports
+[33ma0b06e1[m HEAD@{34}: commit: added borrowreturn user control with return form and borrow form
+[33m8e63cf6[m HEAD@{35}: commit: adjust UI, added members User control
+[33m2ad34b2[m HEAD@{36}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{37}: checkout: moving from feature1 to feature1
+[33m845b49b[m HEAD@{38}: checkout: moving from master to feature1
+[33m2ad34b2[m HEAD@{39}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{40}: checkout: moving from master to feature1
+[33m2ad34b2[m HEAD@{41}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{42}: checkout: moving from master to feature1
+[33m2ad34b2[m HEAD@{43}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{44}: checkout: moving from feature1 to feature1
+[33m845b49b[m HEAD@{45}: checkout: moving from master to feature1
+[33m2ad34b2[m HEAD@{46}: pull --progress --no-edit --no-stat --recurse-submodules=no origin: Fast-forward
+[33m7c6cffd[m HEAD@{47}: pull origin master: Fast-forward
+[33m845b49b[m HEAD@{48}: checkout: moving from feature1 to master
+[33m845b49b[m HEAD@{49}: checkout: moving from master to feature1
+[33m845b49b[m HEAD@{50}: commit: update login
+[33me9ed1d4[m HEAD@{51}: commit: updated database
+[33mbcb26f4[m HEAD@{52}: commit: function to add button, add a form to add book
+[33mcae1b15[m HEAD@{53}: commit: Unused db config file, used local setting instead, fixed usercontrol UI
+[33m99e9a29[m HEAD@{54}: commit: Clean up UI, added a db config file and dashboard User control
+[33maf1b90a[m HEAD@{55}: commit: Mainform cleanup
+[33m710c21d[m HEAD@{56}: commit: added database sql
+[33mcb83747[m HEAD@{57}: commit: Add project files.
+[33mb5cad1d[m HEAD@{58}: commit (initial): Add .gitattributes and .gitignore.
