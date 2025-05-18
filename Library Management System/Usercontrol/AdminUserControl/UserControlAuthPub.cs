@@ -39,6 +39,7 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                     OR author_name LIKE @Search";
             }
             PopulateDataGridView(query, dgvAuthors, searchQuery);
+            GridStyler.ApplyStyle(dgvAuthors);
         }
 
         private void LoadPublishersReport(string searchQuery = "")
@@ -58,6 +59,7 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
                     OR publisher_name LIKE @Search";
             }
             PopulateDataGridView(query, dgvPublishers, searchQuery);
+            GridStyler.ApplyStyle(dgvPublishers);
         }
         private void PopulateDataGridView(string query, DataGridView dataGridView, string searchQuery = "")
         {
@@ -391,6 +393,11 @@ namespace Library_Management_System.Usercontrol.AdminUserControl
             {
                 MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void dgvAuthors_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

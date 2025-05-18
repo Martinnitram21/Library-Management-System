@@ -107,9 +107,8 @@
             // 
             this.btnLogin.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnLogin.FlatAppearance.BorderSize = 0;
-            this.btnLogin.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnLogin.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLogin.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnLogin.ForeColor = System.Drawing.Color.Ivory;
             this.btnLogin.Location = new System.Drawing.Point(108, 476);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(317, 45);
@@ -122,9 +121,8 @@
             // 
             this.btnSignup.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.btnSignup.FlatAppearance.BorderSize = 0;
-            this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignup.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSignup.ForeColor = System.Drawing.Color.Ivory;
             this.btnSignup.Location = new System.Drawing.Point(108, 527);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(317, 45);

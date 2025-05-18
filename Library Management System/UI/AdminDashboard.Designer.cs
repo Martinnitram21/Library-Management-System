@@ -367,9 +367,10 @@
             this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(319, 15);
+            this.label4.Size = new System.Drawing.Size(405, 15);
             this.label4.TabIndex = 3;
-            this.label4.Text = "BSIT-2C SY: 2024-2025 || Jay Ababon and Jericho Earl Martin";
+            this.label4.Text = "BSIT-2B SY: 2024-2025 || Amaba || Formentera || Martin || Pasigado || Villareal";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // panel6
             // 

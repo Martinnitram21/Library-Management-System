@@ -67,9 +67,9 @@
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(3, 3);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(319, 15);
+            this.label4.Size = new System.Drawing.Size(405, 15);
             this.label4.TabIndex = 3;
-            this.label4.Text = "BSIT-2C SY: 2024-2025 || Jay Ababon and Jericho Earl Martin";
+            this.label4.Text = "BSIT-2B SY: 2024-2025 || Amaba || Formentera || Martin || Pasigado || Villareal";
             // 
             // mainPanel
             // 

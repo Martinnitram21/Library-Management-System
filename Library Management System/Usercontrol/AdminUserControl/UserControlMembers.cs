@@ -43,6 +43,7 @@ namespace Library_Management_System.Usercontrol
                 // Hide the BookId column
                 dgvMembers.Columns["MemberId"].Visible = false;
                 dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                GridStyler.ApplyStyle(dgvMembers);
             }
             catch (Exception ex)
             {
@@ -52,7 +53,7 @@ namespace Library_Management_System.Usercontrol
 
         private void UserControlMembers_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -187,6 +188,23 @@ namespace Library_Management_System.Usercontrol
             catch (Exception ex)
             {
                 MessageBox.Show($"Error formatting cells: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvMembers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvMembers.SelectedRows.Count > 0)
+            {
+                int memberId = Convert.ToInt32(dgvMembers.SelectedRows[0].Cells["MemberId"].Value);
+                FormEditMember formEditMember = new FormEditMember(memberId);
+                if (formEditMember.ShowDialog() == DialogResult.OK)
+                {
+                    LoadMembersData();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a member to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
     }

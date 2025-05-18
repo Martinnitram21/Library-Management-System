@@ -117,6 +117,7 @@
     <Compile Include="Class\MemberRepository.cs" />
     <Compile Include="Class\Publisher.cs" />
     <Compile Include="Class\Transaction.cs" />
+    <Compile Include="HelperMethod\GridStyler.cs" />
     <Compile Include="UI\StaffDashboard.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -87,7 +87,7 @@
             this.btnDeletePublishers.Name = "btnDeletePublishers";
             this.btnDeletePublishers.Size = new System.Drawing.Size(128, 29);
             this.btnDeletePublishers.TabIndex = 12;
-            this.btnDeletePublishers.Text = "Delete";
+            this.btnDeletePublishers.Text = "Delete 🗑️";
             this.btnDeletePublishers.UseVisualStyleBackColor = false;
             this.btnDeletePublishers.Click += new System.EventHandler(this.btnDeletePublishers_Click);
             // 
@@ -104,7 +104,7 @@
             this.btnEditPublishers.Name = "btnEditPublishers";
             this.btnEditPublishers.Size = new System.Drawing.Size(128, 29);
             this.btnEditPublishers.TabIndex = 13;
-            this.btnEditPublishers.Text = "Edit";
+            this.btnEditPublishers.Text = "Edit ✏️";
             this.btnEditPublishers.UseVisualStyleBackColor = false;
             this.btnEditPublishers.Click += new System.EventHandler(this.btnEditPublishers_Click);
             // 
@@ -121,7 +121,7 @@
             this.btnAddPublishers.Name = "btnAddPublishers";
             this.btnAddPublishers.Size = new System.Drawing.Size(128, 29);
             this.btnAddPublishers.TabIndex = 14;
-            this.btnAddPublishers.Text = "Add";
+            this.btnAddPublishers.Text = "Add ➕";
             this.btnAddPublishers.UseVisualStyleBackColor = false;
             this.btnAddPublishers.Click += new System.EventHandler(this.btnAddPublishers_Click);
             // 
@@ -202,7 +202,7 @@
             this.btnDeleteAuthors.Name = "btnDeleteAuthors";
             this.btnDeleteAuthors.Size = new System.Drawing.Size(128, 29);
             this.btnDeleteAuthors.TabIndex = 10;
-            this.btnDeleteAuthors.Text = "Delete";
+            this.btnDeleteAuthors.Text = "Delete 🗑️";
             this.btnDeleteAuthors.UseVisualStyleBackColor = false;
             this.btnDeleteAuthors.Click += new System.EventHandler(this.btnDeleteAuthors_Click);
             // 
@@ -219,7 +219,7 @@
             this.btnEditAuthors.Name = "btnEditAuthors";
             this.btnEditAuthors.Size = new System.Drawing.Size(128, 29);
             this.btnEditAuthors.TabIndex = 10;
-            this.btnEditAuthors.Text = "Edit";
+            this.btnEditAuthors.Text = "Edit ✏️";
             this.btnEditAuthors.UseVisualStyleBackColor = false;
             this.btnEditAuthors.Click += new System.EventHandler(this.btnEditAuthors_Click);
             // 
@@ -236,7 +236,7 @@
             this.btnAddAuthors.Name = "btnAddAuthors";
             this.btnAddAuthors.Size = new System.Drawing.Size(128, 29);
             this.btnAddAuthors.TabIndex = 11;
-            this.btnAddAuthors.Text = "Add";
+            this.btnAddAuthors.Text = "Add ➕";
             this.btnAddAuthors.UseVisualStyleBackColor = false;
             this.btnAddAuthors.Click += new System.EventHandler(this.btnAddAuthors_Click);
             // 
@@ -288,6 +288,7 @@
             this.dgvAuthors.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgvAuthors.Size = new System.Drawing.Size(510, 287);
             this.dgvAuthors.TabIndex = 2;
+            this.dgvAuthors.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAuthors_CellContentClick);
             // 
             // tabControAuthPub
             // 
@@ -309,7 +310,7 @@
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(75, 27);
             this.btnSearch.TabIndex = 14;
-            this.btnSearch.Text = "Search";
+            this.btnSearch.Text = "🔎";
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 

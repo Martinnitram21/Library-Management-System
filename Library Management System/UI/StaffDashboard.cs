@@ -26,6 +26,7 @@ namespace Library_Management_System.UI
         private readonly UserControlDashboard userControlDashboard = new UserControlDashboard();
         private readonly FindBookUserControl findBookUserControl = new FindBookUserControl();
         private readonly FindStudentUserControl findStudentUserControl = new FindStudentUserControl();
+        private readonly UserControlBorrowReturn userControlBorrowReturn = new UserControlBorrowReturn();   
         private readonly IssueReturnUserControl issueReturnUserControl = new IssueReturnUserControl();
         private readonly ViewLogUserControl viewLogUserControl = new ViewLogUserControl();
         readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
@@ -41,7 +42,8 @@ namespace Library_Management_System.UI
         {
             MovePanel(btnBorrowReturn);
             mainPanel.Controls.Clear();
-            mainPanel.Controls.Add(issueReturnUserControl);
+            //mainPanel.Controls.Add(issueReturnUserControl);
+            mainPanel.Controls.Add(userControlBorrowReturn);
         }
         private void MovePanel(Control btn)
         {

@@ -50,9 +50,8 @@
             // btnSignup
             // 
             this.btnSignup.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnSignup.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSignup.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSignup.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnSignup.ForeColor = System.Drawing.Color.Ivory;
             this.btnSignup.Location = new System.Drawing.Point(120, 502);
             this.btnSignup.Name = "btnSignup";
             this.btnSignup.Size = new System.Drawing.Size(317, 45);
@@ -138,9 +137,8 @@
             // btnCancel
             // 
             this.btnCancel.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.btnCancel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnCancel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.btnCancel.ForeColor = System.Drawing.Color.Ivory;
             this.btnCancel.Location = new System.Drawing.Point(120, 553);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(317, 45);

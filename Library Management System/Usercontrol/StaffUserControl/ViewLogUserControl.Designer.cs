@@ -67,6 +67,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ViewLogUserControl";
             this.Size = new System.Drawing.Size(714, 290);
+            this.Load += new System.EventHandler(this.ViewLogUserControl_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewTransactions)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

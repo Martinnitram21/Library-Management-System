@@ -105,5 +105,9 @@ namespace Library_Management_System.Usercontrol.StaffUserControl
             dataGridViewTransactions.Columns["Borrow ID"].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
         }
 
+        private void ViewLogUserControl_Load(object sender, EventArgs e)
+        {
+            GridStyler.ApplyStyle(dataGridViewTransactions);
+        }
     }
 }

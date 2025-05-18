@@ -22,6 +22,7 @@ namespace Library_Management_System.Usercontrol
             // Initialize BookManager with the connection string
             bookManager = new BookRepository("Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;");
             LoadBooksData();
+            GridStyler.ApplyStyle(dgvBooks);
         }
         private void LoadBooksData(string searchQuery = "")
         {
@@ -172,6 +173,36 @@ namespace Library_Management_System.Usercontrol
             catch (Exception ex)
             {
                 MessageBox.Show($"Error formatting cells: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void dgvBooks_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            try
+            {
+                if (dgvBooks.SelectedRows.Count > 0)
+                {
+                    // Retrieve the BookId from the selected row
+                    DataGridViewRow selectedRow = dgvBooks.SelectedRows[0];
+                    int bookId = Convert.ToInt32(selectedRow.Cells["BookId"].Value);
+
+                    // Open the edit book form with the selected BookId
+                    using (FormEditBook updateBookForm = new FormEditBook(bookId))
+                    {
+                        if (updateBookForm.ShowDialog() == DialogResult.OK)
+                        {
+                            LoadBooksData(); // Refresh the DataGridView after editing a book
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a row to edit.", "No Selection", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

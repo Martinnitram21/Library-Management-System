@@ -143,5 +143,10 @@ namespace Library_Management_System.UI
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(ucAuthPub);
         }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
