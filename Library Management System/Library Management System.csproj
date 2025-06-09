@@ -112,6 +112,7 @@
     <Compile Include="Class\Borrower.cs" />
     <Compile Include="Class\CurrentSession.cs" />
     <Compile Include="Class\DatabaseConnection.cs" />
+    <Compile Include="Class\DatabaseManager.cs" />
     <Compile Include="Class\Dues.cs" />
     <Compile Include="Class\Member.cs" />
     <Compile Include="Class\MemberRepository.cs" />
@@ -396,6 +397,7 @@
     <EmbeddedResource Include="Usercontrol\StaffUserControl\ViewLogUserControl.resx">
       <DependentUpon>ViewLogUserControl.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="app.config.example" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

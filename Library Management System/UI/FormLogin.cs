@@ -28,8 +28,7 @@ namespace Library_Management_System
         {
 
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
-
+        //string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Get user inputs
@@ -47,7 +46,7 @@ namespace Library_Management_System
             try
             {
                 // Connect to the database
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = DatabaseManager.GetConnection())
                 {
                     conn.Open();
 

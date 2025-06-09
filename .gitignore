@@ -3,10 +3,23 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/master/VisualStudio.gitignore
 
+# Configuration files with sensitive data
+App.config
+app.config
+*.config
+
+# Database files
+*.mdf
+*.ldf
+*.sdf
+
 # User-specific files
 *.rsuser
 *.suo
 *.user
+bin/
+obj/
+.vs/
 *.userosscache
 *.sln.docstates
 
