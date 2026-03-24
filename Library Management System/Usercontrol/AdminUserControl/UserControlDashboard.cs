@@ -24,7 +24,7 @@ namespace Library_Management_System.Usercontrol
             LoadMemberTypesChart();
         }
         // Connection string (replace with your actual connection string)
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void LoadDashboardData()
         {
             try
@@ -156,6 +156,11 @@ namespace Library_Management_System.Usercontrol
                 object result = cmd.ExecuteScalar();
                 return result != null ? Convert.ToInt32(result) : 0;
             }
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

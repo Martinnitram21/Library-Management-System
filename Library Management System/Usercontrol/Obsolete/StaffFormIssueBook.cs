@@ -10,23 +10,21 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Library_Management_System.UI
+namespace Library_Management_System.Usercontrol.StaffUserControl
 {
-    public partial class FormBorrowBook : Form
+    public partial class StaffFormIssueBook : Form
     {
-        public FormBorrowBook()
+        // Connection string to the database
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
+
+        public StaffFormIssueBook()
         {
             InitializeComponent();
             LoadBooks();
             LoadMembers();
-            DisplayDueDate();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
-        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
+        // Method to load available books into the ComboBox
         private void LoadBooks()
         {
             try
@@ -44,8 +42,8 @@ namespace Library_Management_System.UI
                             books.Add(new KeyValuePair<string, int>(reader["Title"].ToString(), Convert.ToInt32(reader["Book_Id"])));
                         }
                         cmbBooks.DataSource = books;
-                        cmbBooks.DisplayMember = "Key"; // Use the Title (Key) for display
-                        cmbBooks.ValueMember = "Value"; // Use Book_Id (Value) for selection
+                        cmbBooks.DisplayMember = "Key";  // Display the title of the book
+                        cmbBooks.ValueMember = "Value";  // Use the BookId for selection
                     }
                 }
             }
@@ -54,6 +52,8 @@ namespace Library_Management_System.UI
                 MessageBox.Show($"Error loading books: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        // Method to load active members into the ComboBox
         private void LoadMembers()
         {
             try
@@ -61,19 +61,18 @@ namespace Library_Management_System.UI
                 using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
                     conn.Open();
-                    string query = "SELECT Member_Id, CONCAT(first_name, ' ', last_name) AS FullName FROM Members_tbl WHERE member_Status = 'Active'";
+                    string query = "SELECT Member_Id, Name FROM Members_tbl WHERE member_Status = 'Active'";
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     using (MySqlDataReader reader = cmd.ExecuteReader())
                     {
                         var members = new List<KeyValuePair<string, int>>();
                         while (reader.Read())
                         {
-                            // Add combined first and last name along with MemberId to the ComboBox data source
-                            members.Add(new KeyValuePair<string, int>(reader["FullName"].ToString(), Convert.ToInt32(reader["Member_Id"])));
+                            members.Add(new KeyValuePair<string, int>(reader["Name"].ToString(), Convert.ToInt32(reader["Member_Id"])));
                         }
                         cmbMembers.DataSource = members;
-                        cmbMembers.DisplayMember = "Key"; // Use the FullName (Key) for display
-                        cmbMembers.ValueMember = "Value"; // Use the MemberId (Value) for selection
+                        cmbMembers.DisplayMember = "Key";  // Display member name
+                        cmbMembers.ValueMember = "Value";  // Use MemberId for selection
                     }
                 }
             }
@@ -83,7 +82,8 @@ namespace Library_Management_System.UI
             }
         }
 
-        private void btnSubmit_Click(object sender, EventArgs e)
+        // Issue book when the "Issue" button is clicked
+        private void btnIssue_Click(object sender, EventArgs e)
         {
             if (cmbBooks.SelectedItem == null || cmbMembers.SelectedItem == null)
             {
@@ -96,38 +96,30 @@ namespace Library_Management_System.UI
 
             int bookId = selectedBook.Value;
             int memberId = selectedMember.Value;
+            DateTime dueDate = dtpDueDate.Value;
 
             try
             {
-                using (MySqlConnection conn = new MySqlConnection(connectionString))
+                using (MySqlConnection conn = DatabaseHelper.GetConnection())
                 {
                     conn.Open();
 
-                    // Insert into Borrowers_tbl and retrieve the borrow_id
-                    string borrowQuery = @"
-            INSERT INTO Borrowers_tbl (Book_Id, Member_Id, Borrow_Date, Due_Date)
-            VALUES (@BookId, @MemberId, NOW(), DATE_ADD(NOW(), INTERVAL 7 DAY));
-            SELECT LAST_INSERT_ID();";
-                    MySqlCommand borrowCmd = new MySqlCommand(borrowQuery, conn);
-                    borrowCmd.Parameters.AddWithValue("@BookId", bookId);
-                    borrowCmd.Parameters.AddWithValue("@MemberId", memberId);
-                    int borrowId = Convert.ToInt32(borrowCmd.ExecuteScalar());
+                    // Insert transaction
+                    string transactionQuery = "INSERT INTO Transactions_tbl (Member_Id, Book_Id, Borrow_Date, Due_Date, transaction_Status) " +
+                                               "VALUES (@MemberId, @BookId, NOW(), @DueDate, 'Borrowed')";
+                    MySqlCommand transactionCmd = new MySqlCommand(transactionQuery, conn);
+                    transactionCmd.Parameters.AddWithValue("@MemberId", memberId);
+                    transactionCmd.Parameters.AddWithValue("@BookId", bookId);
+                    transactionCmd.Parameters.AddWithValue("@DueDate", dueDate);
+                    transactionCmd.ExecuteNonQuery();
 
-                    // Insert initial dues record into dues_tbl using borrow_id
-                    string duesQuery = @"
-            INSERT INTO dues_tbl (Borrow_Id, Fine_amount, dues_status)
-            VALUES (@BorrowId, 0, 'Unpaid')";
-                    MySqlCommand duesCmd = new MySqlCommand(duesQuery, conn);
-                    duesCmd.Parameters.AddWithValue("@BorrowId", borrowId);
-                    duesCmd.ExecuteNonQuery();
-
-                    // Update the book status to 'Borrowed'
+                    // Update book status
                     string updateBookQuery = "UPDATE Books_tbl SET book_Status = 'Borrowed' WHERE Book_Id = @BookId";
                     MySqlCommand updateBookCmd = new MySqlCommand(updateBookQuery, conn);
                     updateBookCmd.Parameters.AddWithValue("@BookId", bookId);
                     updateBookCmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Book borrowed successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Book issued successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     this.Close();
                 }
             }
@@ -137,12 +129,7 @@ namespace Library_Management_System.UI
             }
         }
 
-        private void DisplayDueDate()
-        {
-            DateTime dueDate = DateTime.Now.AddDays(7);
-            lblDueDate.Text = $" {dueDate:MMMM dd, yyyy}";
-        }
-
+        // Cancel the operation when the "Cancel" button is clicked
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();

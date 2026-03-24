@@ -21,7 +21,7 @@ namespace Library_Management_System.UI
             LoadMembers();
             timer1.Start();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         private void LoadMembers()
         {
             try
@@ -200,6 +200,11 @@ namespace Library_Management_System.UI
         private void timer1_Tick(object sender, EventArgs e)
         {
             lblDateNow.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt");
+        }
+
+        private void FormReturnBook_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

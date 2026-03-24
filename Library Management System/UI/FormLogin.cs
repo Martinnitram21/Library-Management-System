@@ -28,7 +28,7 @@ namespace Library_Management_System
         {
 
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
