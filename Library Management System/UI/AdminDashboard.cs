@@ -15,12 +15,12 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace Library_Management_System.UI
 {
+   
     public partial class AdminDashboard : Form
     {
         public AdminDashboard()
         {
             InitializeComponent();
-            mainPanel.Controls.Add(ucDash);
         }
         private void MovePanel(Control btn)
         {
@@ -52,8 +52,14 @@ namespace Library_Management_System.UI
         {
             timer1.Start();
             lblWelcome.Text = $"Welcome, {CurrentSession.Username}!"; // Example: Display username
-            //lblRole.Text = $"Role: {CurrentSession.Role}";            // Example: Display role
+                                                                      // lblRole.Text = $"Role: {CurrentSession.Role}"; // Example: Display role
+
+            // Set default panel to Dashboard on form load
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(ucDash);
+            MovePanel(btnDashboard); // Move panelSlide to Dashboard button
         }
+
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -144,9 +150,19 @@ namespace Library_Management_System.UI
             mainPanel.Controls.Add(ucAuthPub);
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void lblDateTime_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+            
         }
     }
 }

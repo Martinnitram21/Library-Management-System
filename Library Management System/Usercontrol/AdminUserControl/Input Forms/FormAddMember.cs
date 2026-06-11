@@ -16,13 +16,10 @@ namespace Library_Management_System.Usercontrol
 {
     public partial class FormAddMember : Form
     {
-        private readonly MemberRepository _memberRepository;
-        public FormAddMember(MemberRepository memberRepository)
+        public FormAddMember()
         {
             InitializeComponent();
-            _memberRepository = memberRepository;
             lblDate.Text = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"); // Display formatted date
-            _memberRepository = memberRepository;
         }
 
         private void btnCancel_Click(object sender, EventArgs e)
@@ -36,15 +33,16 @@ namespace Library_Management_System.Usercontrol
         }
         private void AddMemberToDatabase()
         {
+            string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
+
+            // Collect data from form inputs
             string firstName = txtFirstName.Text.Trim();
             string lastName = txtLastName.Text.Trim();
             string email = txtEmail.Text.Trim();
             string phone = txtPhone.Text.Trim();
             string memberType = comboMemberType.Text.Trim();
-            DateTime membershipDate = DateTime.Now;
-            string status = "Active";
-            string profilePicPath = profilePictureBox.Tag?.ToString() ?? "";
 
+            // Validate required fields
             if (string.IsNullOrWhiteSpace(firstName) || string.IsNullOrWhiteSpace(lastName) ||
                 string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(phone) ||
                 string.IsNullOrWhiteSpace(memberType))
@@ -55,23 +53,38 @@ namespace Library_Management_System.Usercontrol
 
             try
             {
-                var member = new Member
+                using (MySqlConnection conn = new MySqlConnection(connectionString))
                 {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Email = email,
-                    Phone = phone,
-                    MemberType = memberType,
-                    MembershipDate = membershipDate,
-                    Status = status,
-                    ProfilePic = profilePicPath // Add the profile picture path
-                };
+                    conn.Open();
 
-                _memberRepository.AddOrUpdateMember(member);
+                    string query = @"
+                        INSERT INTO Members_tbl 
+                        (First_Name, Last_Name, Email, Phone, Member_Type) 
+                        VALUES 
+                        (@FirstName, @LastName, @Email, @Phone, @MemberType)";
 
-                MessageBox.Show("Member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                ClearFields();
-                this.Close();
+                    using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                    {
+                        cmd.Parameters.AddWithValue("@FirstName", firstName);
+                        cmd.Parameters.AddWithValue("@LastName", lastName);
+                        cmd.Parameters.AddWithValue("@Email", email);
+                        cmd.Parameters.AddWithValue("@Phone", phone);
+                        cmd.Parameters.AddWithValue("@MemberType", memberType);
+
+                        int rowsAffected = cmd.ExecuteNonQuery();
+
+                        if (rowsAffected > 0)
+                        {
+                            MessageBox.Show("Member added successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            ClearFields();
+                            this.Close();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Failed to add the member. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
@@ -92,22 +105,32 @@ namespace Library_Management_System.Usercontrol
 
         }
 
-        private void btnUploadPhoto_Click(object sender, EventArgs e)
+        private void timer1_Tick(object sender, EventArgs e)
         {
-            using (OpenFileDialog openFileDialog = new OpenFileDialog())
-            {
-                openFileDialog.Filter = "Image Files|*.jpg;*.jpeg;*.png;*.bmp";
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    string filePath = openFileDialog.FileName;
-                    profilePictureBox.Image = Image.FromFile(filePath);
-                    profilePictureBox.Tag = filePath; // Temporarily store the file path
-                }
-            }
 
         }
 
-        private void profilePictureBox_Click(object sender, EventArgs e)
+        private void txtFirstName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLastName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtEmail_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtPhone_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboMemberType_SelectedIndexChanged(object sender, EventArgs e)
         {
 
         }

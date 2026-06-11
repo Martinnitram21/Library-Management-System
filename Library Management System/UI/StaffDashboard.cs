@@ -1,4 +1,5 @@
-﻿using Library_Management_System.Usercontrol;
+﻿using Library_Management_System.Class;
+using Library_Management_System.Usercontrol;
 using Library_Management_System.Usercontrol.AdminUserControl;
 using Library_Management_System.Usercontrol.StaffUserControl;
 using System;
@@ -16,6 +17,7 @@ namespace Library_Management_System.UI
 {
     public partial class StaffDashboard : Form
     {
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=root;";
         public StaffDashboard()
         {
             InitializeComponent();
@@ -30,6 +32,9 @@ namespace Library_Management_System.UI
         private readonly IssueReturnUserControl issueReturnUserControl = new IssueReturnUserControl();
         private readonly ViewLogUserControl viewLogUserControl = new ViewLogUserControl();
         readonly UserControlAuthPub ucAuthPub = new UserControlAuthPub();
+
+        
+
 
         private void btnDashboard_Click(object sender, EventArgs e)
         {
@@ -98,6 +103,37 @@ namespace Library_Management_System.UI
             MovePanel(btnAuthPub);
             mainPanel.Controls.Clear();
             mainPanel.Controls.Add(ucAuthPub);
+        }
+
+        private void lblDateTime_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void timer1_Tick_1(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void StaffDashboard_Load(object sender, EventArgs e)
+        {
+            timer1.Start();
+
+            // Set default panel to Dashboard on form load
+            mainPanel.Controls.Clear();
+            mainPanel.Controls.Add(userControlDashboard);
+            MovePanel(btnDashboard); // Move panelSlide to Dashboard button
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            lblDateTime.Text = DateTime.Now.ToString("dd-MMM-yyyy hh:mm:ss tt");
         }
     }
 }

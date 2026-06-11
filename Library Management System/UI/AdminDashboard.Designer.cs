@@ -49,15 +49,15 @@
             this.panel5 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.mainPanel = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.mainPanel = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            this.panel6.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -73,6 +73,7 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1366, 100);
             this.panel1.TabIndex = 0;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // pictureBox1
             // 
@@ -92,7 +93,7 @@
             this.lblExit.Location = new System.Drawing.Point(1293, 9);
             this.lblExit.Name = "lblExit";
             this.lblExit.Size = new System.Drawing.Size(34, 21);
-            this.lblExit.TabIndex = 0;
+            this.lblExit.TabIndex = 5;
             this.lblExit.Text = "Exit";
             this.lblExit.Click += new System.EventHandler(this.lblExit_Click);
             // 
@@ -118,6 +119,7 @@
             this.lblDateTime.Size = new System.Drawing.Size(74, 21);
             this.lblDateTime.TabIndex = 5;
             this.lblDateTime.Text = "Welcome";
+            this.lblDateTime.Click += new System.EventHandler(this.lblDateTime_Click);
             // 
             // lblWelcome
             // 
@@ -168,7 +170,7 @@
             this.btnAuthPub.Name = "btnAuthPub";
             this.btnAuthPub.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnAuthPub.Size = new System.Drawing.Size(286, 65);
-            this.btnAuthPub.TabIndex = 5;
+            this.btnAuthPub.TabIndex = 8;
             this.btnAuthPub.Text = "Authors/Publishers";
             this.btnAuthPub.UseVisualStyleBackColor = false;
             this.btnAuthPub.Click += new System.EventHandler(this.btnAuthPub_Click);
@@ -179,7 +181,7 @@
             this.panelSlide.Location = new System.Drawing.Point(0, 116);
             this.panelSlide.Name = "panelSlide";
             this.panelSlide.Size = new System.Drawing.Size(10, 49);
-            this.panelSlide.TabIndex = 1;
+            this.panelSlide.TabIndex = 6;
             // 
             // panel7
             // 
@@ -207,7 +209,7 @@
             this.btnSettings.Name = "btnSettings";
             this.btnSettings.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnSettings.Size = new System.Drawing.Size(286, 65);
-            this.btnSettings.TabIndex = 7;
+            this.btnSettings.TabIndex = 6;
             this.btnSettings.Text = "Logout";
             this.btnSettings.UseVisualStyleBackColor = false;
             this.btnSettings.Click += new System.EventHandler(this.btnSettings_Click);
@@ -249,8 +251,8 @@
             this.btnBorrowReturn.Name = "btnBorrowReturn";
             this.btnBorrowReturn.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBorrowReturn.Size = new System.Drawing.Size(286, 63);
-            this.btnBorrowReturn.TabIndex = 4;
-            this.btnBorrowReturn.Text = "Session";
+            this.btnBorrowReturn.TabIndex = 6;
+            this.btnBorrowReturn.Text = "Borrow/Return";
             this.btnBorrowReturn.UseVisualStyleBackColor = false;
             this.btnBorrowReturn.Click += new System.EventHandler(this.btnBorrowReturn_Click);
             // 
@@ -270,7 +272,7 @@
             this.btnMembers.Name = "btnMembers";
             this.btnMembers.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnMembers.Size = new System.Drawing.Size(286, 63);
-            this.btnMembers.TabIndex = 3;
+            this.btnMembers.TabIndex = 6;
             this.btnMembers.Text = "Members";
             this.btnMembers.UseVisualStyleBackColor = false;
             this.btnMembers.Click += new System.EventHandler(this.btnMembers_Click);
@@ -291,7 +293,7 @@
             this.btnBooks.Name = "btnBooks";
             this.btnBooks.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnBooks.Size = new System.Drawing.Size(286, 63);
-            this.btnBooks.TabIndex = 2;
+            this.btnBooks.TabIndex = 6;
             this.btnBooks.Text = "Books";
             this.btnBooks.UseVisualStyleBackColor = false;
             this.btnBooks.Click += new System.EventHandler(this.btnBooks_Click);
@@ -312,7 +314,7 @@
             this.btnDashboard.Name = "btnDashboard";
             this.btnDashboard.Padding = new System.Windows.Forms.Padding(15, 0, 0, 0);
             this.btnDashboard.Size = new System.Drawing.Size(286, 62);
-            this.btnDashboard.TabIndex = 0;
+            this.btnDashboard.TabIndex = 6;
             this.btnDashboard.Text = "Dashboard";
             this.btnDashboard.UseVisualStyleBackColor = false;
             this.btnDashboard.Click += new System.EventHandler(this.button1_Click);
@@ -344,12 +346,24 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.SystemColors.ActiveCaption;
+            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel4.Location = new System.Drawing.Point(0, 591);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(286, 29);
             this.panel4.TabIndex = 4;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.label4.Location = new System.Drawing.Point(4, 7);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(123, 15);
+            this.label4.TabIndex = 3;
+            this.label4.Text = "BSIT-2C SY: 2025-2026";
             // 
             // mainPanel
             // 
@@ -359,23 +373,11 @@
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1080, 591);
             this.mainPanel.TabIndex = 4;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label4.Location = new System.Drawing.Point(3, 3);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(405, 15);
-            this.label4.TabIndex = 3;
-            this.label4.Text = "BSIT-2B SY: 2024-2025 || Amaba || Formentera || Martin || Pasigado || Villareal";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+            this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.mainPanel_Paint);
             // 
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.panel6.Controls.Add(this.label4);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panel6.Location = new System.Drawing.Point(286, 691);
@@ -410,8 +412,8 @@
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -437,9 +439,9 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panelSlide;
         private System.Windows.Forms.Label lblExit;
-        private System.Windows.Forms.Label lblDateTime;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAuthPub;
+        private System.Windows.Forms.Label lblDateTime;
     }
 }

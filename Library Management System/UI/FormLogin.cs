@@ -28,7 +28,8 @@ namespace Library_Management_System
         {
 
         }
-        //string connectionString = Environment.GetEnvironmentVariable("DB_CONNECTION_STRING") ?? ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        private readonly string connectionString = "Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;";
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             // Get user inputs

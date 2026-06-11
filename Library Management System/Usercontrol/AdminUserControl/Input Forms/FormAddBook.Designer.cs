@@ -49,7 +49,12 @@
             this.txtPublisher = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.rtbDescription = new System.Windows.Forms.RichTextBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.cboDevice = new System.Windows.Forms.ComboBox();
+            this.btnStart = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -268,7 +273,7 @@
             // 
             // txtPublisher
             // 
-            this.txtPublisher.Location = new System.Drawing.Point(30, 278);
+            this.txtPublisher.Location = new System.Drawing.Point(35, 278);
             this.txtPublisher.Name = "txtPublisher";
             this.txtPublisher.Size = new System.Drawing.Size(380, 29);
             this.txtPublisher.TabIndex = 2;
@@ -278,7 +283,7 @@
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label10.ForeColor = System.Drawing.Color.Black;
-            this.label10.Location = new System.Drawing.Point(434, 126);
+            this.label10.Location = new System.Drawing.Point(434, 370);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(89, 21);
             this.label10.TabIndex = 15;
@@ -287,17 +292,60 @@
             // 
             // rtbDescription
             // 
-            this.rtbDescription.Location = new System.Drawing.Point(438, 150);
+            this.rtbDescription.Location = new System.Drawing.Point(439, 395);
             this.rtbDescription.Name = "rtbDescription";
-            this.rtbDescription.Size = new System.Drawing.Size(414, 340);
+            this.rtbDescription.Size = new System.Drawing.Size(414, 95);
             this.rtbDescription.TabIndex = 17;
             this.rtbDescription.Text = "";
+            // 
+            // pictureBox
+            // 
+            this.pictureBox.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox.Location = new System.Drawing.Point(517, 159);
+            this.pictureBox.Name = "pictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(267, 192);
+            this.pictureBox.TabIndex = 18;
+            this.pictureBox.TabStop = false;
+            this.pictureBox.Click += new System.EventHandler(this.pictureBox_Click);
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(436, 118);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(75, 21);
+            this.label11.TabIndex = 20;
+            this.label11.Text = "Camera : ";
+            // 
+            // cboDevice
+            // 
+            this.cboDevice.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboDevice.FormattingEnabled = true;
+            this.cboDevice.Location = new System.Drawing.Point(517, 115);
+            this.cboDevice.Name = "cboDevice";
+            this.cboDevice.Size = new System.Drawing.Size(121, 29);
+            this.cboDevice.TabIndex = 19;
+            this.cboDevice.SelectedIndexChanged += new System.EventHandler(this.cboDevice_SelectedIndexChanged);
+            // 
+            // btnStart
+            // 
+            this.btnStart.Location = new System.Drawing.Point(661, 116);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(85, 28);
+            this.btnStart.TabIndex = 21;
+            this.btnStart.Text = "&Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
             // FormAddBook
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 21F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(865, 564);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.cboDevice);
+            this.Controls.Add(this.pictureBox);
             this.Controls.Add(this.rtbDescription);
             this.Controls.Add(this.txtYear);
             this.Controls.Add(this.btnCancel);
@@ -325,6 +373,7 @@
             this.Text = "Library Management System || Add a Book";
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -353,5 +402,9 @@
         private System.Windows.Forms.TextBox txtPublisher;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.RichTextBox rtbDescription;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox cboDevice;
+        private System.Windows.Forms.Button btnStart;
     }
 }

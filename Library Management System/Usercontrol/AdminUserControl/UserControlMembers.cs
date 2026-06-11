@@ -21,7 +21,7 @@ namespace Library_Management_System.Usercontrol
             memberRepository = new MemberRepository("Server=localhost;Database=librarydb;Uid=root;Pwd=martinjericho22@2002;");
             LoadMembersData();
         }
-        private readonly string connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=martinjericho22@2002;";
+        private readonly string connectionString = "Server=localhost;Database=librarydb;uid=root;Pwd=root;";
         private void LoadMembersData(string searchQuery = "")
         {
             try
